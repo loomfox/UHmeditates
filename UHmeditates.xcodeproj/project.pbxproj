@@ -25,6 +25,7 @@
 		4961DA5825BFD69B001DE248 /* MeditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA5725BFD69B001DE248 /* MeditationViewController.swift */; };
 		4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */; };
 		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
+		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		4961DA5725BFD69B001DE248 /* MeditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewController.swift; sourceTree = "<group>"; };
 		4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemographicSignupViewController.swift; sourceTree = "<group>"; };
 		4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
 		F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +201,7 @@
 				4961DA5725BFD69B001DE248 /* MeditationViewController.swift */,
 				4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */,
 				4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */,
+				F5897C5F25E57877006511AF /* Week1Med1Controller.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -288,7 +291,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4961D9E925BFD57A001DE248 /* Build configuration list for PBXProject "UHmain" */;
+			buildConfigurationList = 4961D9E925BFD57A001DE248 /* Build configuration list for PBXProject "UHmeditates" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -377,6 +380,7 @@
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
 				4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */,
 				4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */,
+				F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,7 +678,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4961D9E925BFD57A001DE248 /* Build configuration list for PBXProject "UHmain" */ = {
+		4961D9E925BFD57A001DE248 /* Build configuration list for PBXProject "UHmeditates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4961DA1625BFD57B001DE248 /* Debug */,

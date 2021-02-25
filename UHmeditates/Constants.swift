@@ -11,6 +11,7 @@ import SwiftUI
 struct Constants {
     struct Storyboard{
         static let homeViewController = "HomeVC"
+        static let checkInController = "checkin"
         //static let tabViewController = "tb"
         
         // small change here 

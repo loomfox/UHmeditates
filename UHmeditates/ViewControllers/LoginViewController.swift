@@ -37,7 +37,6 @@ class LoginViewController: UIViewController {
     */
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         self.transitionToApp()
-        //self.performSegue(withIdentifier: "TabBarControl", sender: nil)
         
         
         // this is a small change 
