@@ -574,16 +574,16 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
         });
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         if (permissions & ORKPermissionCoreMotionAccelerometer) {
-            _grantedPermissions |= ORKPermissionCoreMotionAccelerometer;
+            self->_grantedPermissions |= ORKPermissionCoreMotionAccelerometer;
         }
         if (permissions & ORKPermissionCoreMotionActivity) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 ORK_Log_Debug(@"Requesting pedometer access");
                 [self requestPedometerAccessWithHandler:^(BOOL success) {
                     if (success) {
-                        _grantedPermissions |= ORKPermissionCoreMotionActivity;
+                        self->_grantedPermissions |= ORKPermissionCoreMotionActivity;
                     } else {
-                        _grantedPermissions &= ~ORKPermissionCoreMotionActivity;
+                        self->_grantedPermissions &= ~ORKPermissionCoreMotionActivity;
                     }
                     dispatch_semaphore_signal(semaphore);
                 }];
@@ -596,9 +596,9 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
                 ORK_Log_Debug(@"Requesting audio access");
                 [self requestAudioRecordingAccessWithHandler:^(BOOL success) {
                     if (success) {
-                        _grantedPermissions |= ORKPermissionAudioRecording;
+                        self->_grantedPermissions |= ORKPermissionAudioRecording;
                     } else {
-                        _grantedPermissions &= ~ORKPermissionAudioRecording;
+                        self->_grantedPermissions &= ~ORKPermissionAudioRecording;
                     }
                     dispatch_semaphore_signal(semaphore);
                 }];
@@ -611,9 +611,9 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
                 ORK_Log_Debug(@"Requesting location access");
                 [self requestLocationAccessWithHandler:^(BOOL success) {
                     if (success) {
-                        _grantedPermissions |= ORKPermissionCoreLocation;
+                        self->_grantedPermissions |= ORKPermissionCoreLocation;
                     } else {
-                        _grantedPermissions &= ~ORKPermissionCoreLocation;
+                        self->_grantedPermissions &= ~ORKPermissionCoreLocation;
                     }
                     dispatch_semaphore_signal(semaphore);
                 }];
@@ -626,9 +626,9 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
                 ORK_Log_Debug(@"Requesting camera access");
                 [self requestCameraAccessWithHandler:^(BOOL success) {
                     if (success) {
-                        _grantedPermissions |= ORKPermissionCamera;
+                        self->_grantedPermissions |= ORKPermissionCamera;
                     } else {
-                        _grantedPermissions &= ~ORKPermissionCamera;
+                        self->_grantedPermissions &= ~ORKPermissionCamera;
                     }
                     dispatch_semaphore_signal(semaphore);
                 }];
@@ -637,9 +637,9 @@ static NSString *const _ChildNavigationControllerRestorationKey = @"childNavigat
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         }
         
-        _hasRequestedHealthData = YES;
+        self->_hasRequestedHealthData = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
-            _hasRequestedHealthData = YES;
+            self->_hasRequestedHealthData = YES;
             if (completion) completion();
         });
     });

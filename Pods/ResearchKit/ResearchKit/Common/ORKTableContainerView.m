@@ -293,20 +293,20 @@ static const CGFloat CellBottomPadding = 20.0;
         CGSize intersectionSize = [self keyboardIntersectionSizeFromNotification:notification];
         
         // Keep track of the keyboard overlap, so we can adjust the constraint properly.
-        _keyboardOverlap = intersectionSize.height;
+        self->_keyboardOverlap = intersectionSize.height;
         
         [self updateBottomConstraintConstant];
         
         // Trigger layout inside the animation block to get the constraint change to animate.
         [scrollView layoutIfNeeded];
         
-        if (_keyboardIsUp) {
+        if (self->_keyboardIsUp) {
             // The content ends at the bottom of the continueSkipContainer.
             // We want to calculate new insets so it's possible to scroll it fully visible, but no more.
             // Made a little more complicated because the contentSize will still extend below the bottom of this container,
             // because we haven't changed our bounds.
             
-            CGFloat contentMaxY = CGRectGetMaxY([scrollView convertRect:_realFooterView.bounds fromView:_realFooterView]) + _realFooterView.layoutMargins.bottom + CellBottomPadding;
+            CGFloat contentMaxY = CGRectGetMaxY([scrollView convertRect:self->_realFooterView.bounds fromView:_realFooterView]) + _realFooterView.layoutMargins.bottom + CellBottomPadding;
             
             CGFloat keyboardOverlapWithActualContent = MAX(contentMaxY - (contentSize.height - intersectionSize.height), 0);
             UIEdgeInsets insets = (UIEdgeInsets){.bottom = keyboardOverlapWithActualContent };

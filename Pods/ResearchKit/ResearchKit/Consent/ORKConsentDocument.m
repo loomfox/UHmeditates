@@ -112,7 +112,7 @@
         } else {
             completionBlock(data, nil);
         }
-        _writer.printRenderer = nil;
+        self->_writer.printRenderer = nil;
     }];
 
 }

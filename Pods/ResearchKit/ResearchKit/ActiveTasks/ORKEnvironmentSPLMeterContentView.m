@@ -138,7 +138,7 @@ static const CGFloat DBLabelFontSize = 35.0;
     
     [_progressView setProgress:progress animated:animated];
     [UIView animateWithDuration:animated ? 0.2 : 0 animations:^{
-        [_progressView setAlpha:(progress == 0) ? 0 : 1];
+        [self->_progressView setAlpha:(progress == 0) ? 0 : 1];
     }];
 
 }

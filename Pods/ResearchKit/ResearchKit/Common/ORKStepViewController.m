@@ -554,7 +554,7 @@ static const CGFloat iPadStepTitleLabelFontSize = 50.0;
     
     _presentingAlert = YES;
     [self presentViewController:alert animated:YES completion:^{
-        _presentingAlert = NO;
+        self->_presentingAlert = NO;
     }];
 }
 

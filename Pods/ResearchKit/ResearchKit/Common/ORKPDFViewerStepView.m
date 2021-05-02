@@ -493,10 +493,10 @@ const CGFloat PDFhideViewAnimationDuration = 0.5;
 
 - (void)searchButtonAction {
     [UIView animateWithDuration:0.5 animations:^{
-        if (!_searchBar.isHidden) {
+        if (!self->_searchBar.isHidden) {
             [self searchBarDismissKeyboard];
         }
-        _searchBar.hidden = !_searchBar.isHidden;
+        self->_searchBar.hidden = !_searchBar.isHidden;
     }];
     [self updateActionButtonsAppearance];
 }

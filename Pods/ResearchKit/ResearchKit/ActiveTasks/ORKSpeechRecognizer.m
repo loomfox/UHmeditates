@@ -110,13 +110,13 @@
 
 - (void)addAudio:(AVAudioPCMBuffer *)audioBuffer {
     dispatch_async(_requestQueue, ^{
-        [request appendAudioPCMBuffer:audioBuffer];
+        [self->request appendAudioPCMBuffer:audioBuffer];
     });
 }
 
 - (void)endAudio {
     dispatch_async(_requestQueue, ^{
-        [request endAudio];
+        [self->request endAudio];
     });
 }
 
@@ -125,7 +125,7 @@
 - (void)speechRecognizer:(SFSpeechRecognizer *)speechRecognizer availabilityDidChange:(BOOL)available {
     dispatch_async(_responseQueue, ^{
         ORK_Log_Debug(@"Availability did change = %d", available);
-        [_responseDelegate availabilityDidChange:available];
+        [self->_responseDelegate availabilityDidChange:available];
     });
 }
 
@@ -134,23 +134,23 @@
 - (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishRecognition:(SFSpeechRecognitionResult *)recognitionResult {
     dispatch_async(_responseQueue, ^{
         ORK_Log_Debug(@"did produce final result %@", [[recognitionResult bestTranscription] formattedString]);
-        [_responseDelegate didHypothesizeTranscription:[recognitionResult bestTranscription]];
+        [self->_responseDelegate didHypothesizeTranscription:[recognitionResult bestTranscription]];
     });
 }
 - (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didHypothesizeTranscription:(SFTranscription *)transcription {
     dispatch_async(_responseQueue, ^{
         // Produces transcription if shouldReportPartialResults is true
         ORK_Log_Debug(@"did produce partial results %@", [transcription formattedString]);
-        [_responseDelegate didHypothesizeTranscription:transcription];
+        [self->_responseDelegate didHypothesizeTranscription:transcription];
     });
 }
 
 - (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishSuccessfully:(BOOL)successfully {
     dispatch_async(_responseQueue, ^{
         if (!successfully) {
-            [_responseDelegate didFinishRecognitionWithError:task.error];
+            [self->_responseDelegate didFinishRecognitionWithError:task.error];
         } else {
-            [_responseDelegate didFinishRecognitionWithError:nil];
+            [self->_responseDelegate didFinishRecognitionWithError:nil];
         }
     });
 }
@@ -158,7 +158,7 @@
 - (void)speechRecognitionTaskWasCancelled:(SFSpeechRecognitionTask *)task {
     dispatch_async(_responseQueue, ^{
         ORK_Log_Debug(@"Request cancelled");
-        [_responseDelegate didFinishRecognitionWithError:nil];
+        [self->_responseDelegate didFinishRecognitionWithError:nil];
     });
 }
 

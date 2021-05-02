@@ -116,7 +116,7 @@
 
 - (void)queue_sessionRunning {
     dispatch_async(dispatch_get_main_queue(), ^{
-        _previewView.templateImageHidden = NO;
+        self->_previewView.templateImageHidden = NO;
     });
 }
 
@@ -141,7 +141,7 @@
                 return;
         }
         
-        [_previewView setVideoOrientation:orientation];
+        [self->_previewView setVideoOrientation:orientation];
         [self.delegate videoOrientationDidChange:orientation];
         [self setNeedsUpdateConstraints];
     });
@@ -406,7 +406,7 @@
     // Capture the video via the delegate
     [self.delegate capturePressed:^ {
         // Stop ignoring presses
-        _capturePressesIgnored = NO;
+        self->_capturePressesIgnored = NO;
     }];
 }
 
@@ -424,7 +424,7 @@
     // Stop the video capture via the delegate
     [self.delegate stopCapturePressed:^ {
         // Stop ignoring presses
-        _stopCapturePressesIgnored = NO;
+        self->_stopCapturePressesIgnored = NO;
     }];
 
 }
@@ -440,7 +440,7 @@
     // Tell the delegate to start capturing again
     [self.delegate retakePressed:^{
         // Stop ignoring presses
-        _retakePressesIgnored = NO;
+        self->_retakePressesIgnored = NO;
     }];
 }
 

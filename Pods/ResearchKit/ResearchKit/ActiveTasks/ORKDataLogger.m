@@ -683,7 +683,7 @@ static NSInteger _ORKJSON_terminatorLength = 0;
         _directoryDirty = YES;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), _queue, ^{
-            if (!_directoryDirty) {
+            if (!self->_directoryDirty) {
                 return;
             }
             [self queue_updateBytes];

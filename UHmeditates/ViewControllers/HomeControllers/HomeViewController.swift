@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
     
     
     @objc func week1med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week1Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week1Med2")
         //present(vc, animated: true)
     }
     
@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week1med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week1Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week1Med3")
         //present(vc, animated: true)
     }
     
@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week2med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -93,7 +93,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week2med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week2med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     
@@ -136,7 +136,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week3med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -149,7 +149,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week3med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -162,7 +162,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week3med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     
@@ -193,7 +193,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week4med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -206,7 +206,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week4med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -219,7 +219,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week4med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     
@@ -251,7 +251,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week5med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -264,7 +264,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week5med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -277,7 +277,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week5med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     
@@ -309,7 +309,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week6med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -322,7 +322,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week6med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -335,7 +335,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week6med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     
@@ -365,7 +365,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week7med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -378,7 +378,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week7med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -391,7 +391,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week7med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     
@@ -418,7 +418,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week8med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med1")
         //present(vc, animated: true)
     }
     
@@ -431,7 +431,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week8med2Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med2")
         //present(vc, animated: true)
     }
     
@@ -444,7 +444,7 @@ class HomeViewController: UIViewController {
     }()
     
     @objc func week8med3Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
+        _ = storyboard?.instantiateViewController(withIdentifier: "Week2Med3")
         //present(vc, animated: true)
     }
     

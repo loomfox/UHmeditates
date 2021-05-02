@@ -217,7 +217,7 @@ static const CGFloat iPadStepTitleLabelFontSize = 50.0;
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if (navigationType != UIWebViewNavigationTypeOther) {
-        [[UIApplication sharedApplication] openURL:request.URL];
+        [[UIApplication sharedApplication] openURL:options:completionHandler::request.URL];
         return NO;
     }
     return YES;
@@ -226,8 +226,8 @@ static const CGFloat iPadStepTitleLabelFontSize = 50.0;
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     //need a delay here because of a race condition where the webview may not have fully rendered by the time this is called in which case scrolledToBottom returns YES because everything == 0
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (!_agreeButton.isEnabled && [self scrolledToBottom:_webView.scrollView]) {
-            [_agreeButton setEnabled:YES];
+        if (!self->_agreeButton.isEnabled && [self scrolledToBottom:_webView.scrollView]) {
+            [self->_agreeButton setEnabled:YES];
         }
     });
 }

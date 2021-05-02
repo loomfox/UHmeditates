@@ -221,7 +221,7 @@
 
     UIActivityViewController * activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[@"sendPDF", pdfData] applicationActivities:nil];
     [activityViewController setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
-        [_pdfView updateShareButton];
+        [self->_pdfView updateShareButton];
     }];
     
     if ( [activityViewController respondsToSelector:@selector(popoverPresentationController)] ) {

@@ -149,7 +149,7 @@
 - (void)retakePressed:(void (^)(void))handler {
     // Start the capture session, and reset the captured image to nil
     dispatch_async(_sessionQueue, ^{
-        [_captureSession startRunning];
+        [self->_captureSession startRunning];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.capturedImageData = nil;
             if (handler) {
@@ -162,7 +162,7 @@
 - (void)capturePressed:(void (^)(BOOL))handler {
     // Capture the image via the output
     dispatch_async(_sessionQueue, ^{
-    	[_stillImageOutput captureStillImageAsynchronouslyFromConnection:[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+        [self->_stillImageOutput captureStillImageAsynchronouslyFromConnection:[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
             [self queue_CaptureImageFromData:imageDataSampleBuffer handler:handler];
     	}];
     });
@@ -209,7 +209,7 @@
     // If we don't already have a captured image, then start the capture session running
     if (!_capturedImageData) {
         dispatch_async(_sessionQueue, ^{
-            [_captureSession startRunning];
+            [self->_captureSession startRunning];
         });
     }
 }
@@ -218,7 +218,7 @@
     // If the capture session is running, stop it
     if (_captureSession.isRunning) {
         dispatch_async(_sessionQueue, ^{
-            [_captureSession stopRunning];
+            [self->_captureSession stopRunning];
         });
     }
     

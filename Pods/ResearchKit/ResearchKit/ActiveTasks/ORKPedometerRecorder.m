@@ -117,7 +117,7 @@
         
         BOOL success = NO;
         if (pedometerData) {
-            success = [_logger append:[pedometerData ork_JSONDictionary] error:&error];
+            success = [self->_logger append:[pedometerData ork_JSONDictionary] error:&error];
             dispatch_async(dispatch_get_main_queue(), ^{
                 ORKStrongTypeOf(self) strongSelf = weakSelf;
                 [strongSelf updateStatisticsWithData:pedometerData];
