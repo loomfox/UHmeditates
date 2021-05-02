@@ -1,13 +1,13 @@
 //
-//  PostSurveyViewController.swift
+//  Week1Med2Controller.swift
 //  UHmeditates
 //
-//  Created by Chase Philip on 1/25/21.
+//  Created by Piya Malhan on 2/23/21.
 //
 
 import UIKit
 
-class PostSurveyViewController: UIViewController {
+class Week1Med2Controller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

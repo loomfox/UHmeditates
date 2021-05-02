@@ -17,7 +17,6 @@
 		4961DA1425BFD57B001DE248 /* UHmeditatesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA1325BFD57B001DE248 /* UHmeditatesUITests.swift */; };
 		4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA3825BFD5FF001DE248 /* HomeViewController.swift */; };
 		4961DA3E25BFD624001DE248 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA3D25BFD624001DE248 /* LoginViewController.swift */; };
-		4961DA4425BFD632001DE248 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4325BFD632001DE248 /* SignUpViewController.swift */; };
 		4961DA4825BFD64F001DE248 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */; };
 		4961DA4C25BFD668001DE248 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4B25BFD668001DE248 /* ProfileViewController.swift */; };
 		4961DA5025BFD680001DE248 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4F25BFD680001DE248 /* SurveyViewController.swift */; };
@@ -76,7 +75,6 @@
 		4961DA2425BFD5A2001DE248 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		4961DA3825BFD5FF001DE248 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4961DA3D25BFD624001DE248 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4961DA4325BFD632001DE248 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		4961DA4B25BFD668001DE248 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4961DA4F25BFD680001DE248 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				4961D9F525BFD57A001DE248 /* ViewController.swift */,
 				4961DA3825BFD5FF001DE248 /* HomeViewController.swift */,
 				4961DA3D25BFD624001DE248 /* LoginViewController.swift */,
-				4961DA4325BFD632001DE248 /* SignUpViewController.swift */,
 				4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */,
 				4961DA4B25BFD668001DE248 /* ProfileViewController.swift */,
 				4961DA4F25BFD680001DE248 /* SurveyViewController.swift */,
@@ -360,7 +357,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4961DA4425BFD632001DE248 /* SignUpViewController.swift in Sources */,
 				4961D9F625BFD57A001DE248 /* ViewController.swift in Sources */,
 				4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */,
 				4961DA4825BFD64F001DE248 /* DashBoardViewController.swift in Sources */,
