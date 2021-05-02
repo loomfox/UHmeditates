@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X36-Xa-1YF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X36-Xa-1YF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -174,8 +174,6 @@
                                         </constraints>
                                         <state key="normal" title="Next"/>
                                         <connections>
-                                            <action selector="nextButton:" destination="Vjn-oL-3mK" eventType="touchUpInside" id="T7r-NL-5eb"/>
-                                            <action selector="nextButtonTapped:" destination="Vjn-oL-3mK" eventType="touchUpInside" id="JNw-So-Yia"/>
                                             <segue destination="FMg-06-zyX" kind="show" id="wbg-1F-jri"/>
                                         </connections>
                                     </button>
@@ -203,6 +201,7 @@
                         <outlet property="LastNameTextField" destination="WkZ-E0-2X6" id="k97-Aq-mDD"/>
                         <outlet property="PasswordTextField" destination="M7e-5K-iWh" id="nPG-A7-LGZ"/>
                         <outlet property="errorLabel" destination="RVA-TZ-oNs" id="r2H-o2-zMS"/>
+                        <outlet property="nextButton" destination="S2X-42-fFv" id="sdw-7c-xE8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BZ-7E-Gdi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
