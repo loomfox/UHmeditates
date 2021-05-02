@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var PasswordTextField: UITextField!
     
     
-    @IBOutlet weak var nextButton: UIButton!
+
     
     @IBOutlet weak var errorLabel: UILabel!
     
