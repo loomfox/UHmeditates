@@ -1,0 +1,6 @@
+framework module Pods_UHmeditates_UHmeditatesUITests {
+  umbrella header "Pods-UHmeditates-UHmeditatesUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
