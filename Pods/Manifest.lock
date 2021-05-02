@@ -356,7 +356,6 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
-  - ResearchKit (2.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -364,7 +363,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - ResearchKit (= 2.0.0)
 
 SPEC REPOS:
   trunk:
@@ -387,7 +385,6 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - ResearchKit
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -409,8 +406,7 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  ResearchKit: 06020ff370f830138b5efd10bd3606acc4de49d6
 
-PODFILE CHECKSUM: 1b79c28e720b2b76304043cb37ae212f503ff06d
+PODFILE CHECKSUM: 4ed0688751ee8147d4f160dd22810f61616bb3c6
 
 COCOAPODS: 1.10.1

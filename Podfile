@@ -11,7 +11,6 @@ target 'UHmeditates' do
    pod 'Firebase/Firestore'
    pod 'Firebase/Storage'
    pod 'Firebase/Core'
-   pod 'ResearchKit', '2.0.0'
 
   target 'UHmeditatesTests' do
     inherit! :search_paths

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ResearchKit
+
 
 class ConsentViewController: UIViewController {
 
