@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ConsentViewController: UIViewController {
 
     override func viewDidLoad() {

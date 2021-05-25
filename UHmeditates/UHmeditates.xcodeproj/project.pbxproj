@@ -41,20 +41,6 @@
 			remoteGlobalIDString = 4961D9ED25BFD57A001DE248;
 			remoteInfo = UHmeditates;
 		};
-		4961DA2A25BFD5A3001DE248 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4961DA2425BFD5A2001DE248 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		4961DA2C25BFD5A3001DE248 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4961DA2425BFD5A2001DE248 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +58,6 @@
 		4961DA0F25BFD57B001DE248 /* UHmeditatesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UHmeditatesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4961DA1325BFD57B001DE248 /* UHmeditatesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHmeditatesUITests.swift; sourceTree = "<group>"; };
 		4961DA1525BFD57B001DE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4961DA2425BFD5A2001DE248 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		4961DA3825BFD5FF001DE248 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4961DA3D25BFD624001DE248 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +97,6 @@
 		4961D9E525BFD57A001DE248 = {
 			isa = PBXGroup;
 			children = (
-				4961DA2425BFD5A2001DE248 /* ResearchKit.xcodeproj */,
 				4961DA0725BFD57B001DE248 /* UHmeditatesTests */,
 				4961DA1225BFD57B001DE248 /* UHmeditatesUITests */,
 				4961D9EF25BFD57A001DE248 /* Products */,
@@ -161,15 +145,6 @@
 				4961DA1525BFD57B001DE248 /* Info.plist */,
 			);
 			path = UHmeditatesUITests;
-			sourceTree = "<group>";
-		};
-		4961DA2525BFD5A2001DE248 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4961DA2B25BFD5A3001DE248 /* ResearchKit.framework */,
-				4961DA2D25BFD5A3001DE248 /* ResearchKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4961DA3425BFD5AD001DE248 /* Frameworks */ = {
@@ -293,12 +268,6 @@
 			mainGroup = 4961D9E525BFD57A001DE248;
 			productRefGroup = 4961D9EF25BFD57A001DE248 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4961DA2525BFD5A2001DE248 /* Products */;
-					ProjectRef = 4961DA2425BFD5A2001DE248 /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4961D9ED25BFD57A001DE248 /* UHmeditates */,
@@ -307,23 +276,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4961DA2B25BFD5A3001DE248 /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = 4961DA2A25BFD5A3001DE248 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4961DA2D25BFD5A3001DE248 /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = 4961DA2C25BFD5A3001DE248 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4961D9EC25BFD57A001DE248 /* Resources */ = {
