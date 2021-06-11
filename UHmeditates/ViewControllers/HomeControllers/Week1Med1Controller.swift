@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+import FirebaseCore
+
 
 class Week1Med1Controller: UIViewController {
+    
+    
+    @IBOutlet weak var EmailTextField: UITextField!
+    //let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +33,12 @@ class Week1Med1Controller: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func surveyButtonTapped(_ sender: Any){
+        let db = Firestore.firestore()
+        let email = EmailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        db.collection("week1").addDocument(data: ["email": email])
+    }
 
 }

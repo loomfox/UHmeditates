@@ -99,6 +99,7 @@ class SignUpViewController: UIViewController {
                     
                     db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
                         
+                        
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
