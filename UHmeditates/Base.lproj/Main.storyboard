@@ -174,7 +174,7 @@
                                         </constraints>
                                         <state key="normal" title="Next"/>
                                         <connections>
-<<<<<<< HEAD
+
 =======
                                             <action selector="nextButtonTapped:" destination="Vjn-oL-3mK" eventType="touchUpInside" id="dHQ-64-eXE"/>
 >>>>>>> loginsystem
