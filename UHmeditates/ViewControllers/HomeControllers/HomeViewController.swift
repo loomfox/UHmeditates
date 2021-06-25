@@ -5,6 +5,14 @@
 //  Created by Chase Philip on 1/25/21.
 //
 
+//MARK: Review Video from Piya
+    /// Questions:
+        // Is it necessary to create another VC for each button or can we use a function that switches out that information and then can store the information that's dependent on the Unique Identifier which could be the string for each buttons name?
+        // Can this be done using a struct that will replace the information dependent on a switch case statement?
+        // If it can, create a separate file to house the quiz structure + elements w/ the functions. The physical elements that belong to the UIKit will be programmed in to the ViewController housing the items.
+        //
+
+
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -14,6 +22,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var scrollView:UIScrollView!
     
+    // For week 1 label
     lazy var week1Label: UILabel = {
         let week1Button = UILabel()
         week1Button.text = "Week 1"
@@ -23,11 +32,13 @@ class HomeViewController: UIViewController {
         return week1Button
     }()
     
+    // For week 1 meditation 1 action
     @objc func week1med1Action(button: UIButton){
         let vc = storyboard?.instantiateViewController(withIdentifier: "Week1Med1") as! Week1Med1Controller
         present(vc, animated: true)
     }
     
+    // For week 1 meditation 1 button to initiate the action
     lazy var week1Med1: UIButton = {
         let week1Med1 = UIButton()
         week1Med1.setImage(UIImage(named: "W1Med1"), for: .normal)
