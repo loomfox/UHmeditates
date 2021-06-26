@@ -27,6 +27,8 @@
 		4961DA4C25BFD668001DE248 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4B25BFD668001DE248 /* ProfileViewController.swift */; };
 		4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */; };
 		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
+		D8009ADA2687593300EA99FD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009AD92687593300EA99FD /* Question.swift */; };
+		D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -81,6 +83,8 @@
 		6C41374FD6DC849455B637E0 /* Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DB3AB9F5F6F85A2C0955E70 /* Pods_UHmeditates_UHmeditatesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UHmeditates_UHmeditatesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8009AD92687593300EA99FD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationQuiz.swift; sourceTree = "<group>"; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
 		F5754A1F261263C40047A510 /* Week1Med2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med2Controller.swift; sourceTree = "<group>"; };
 		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				4961DA3825BFD5FF001DE248 /* HomeViewController.swift */,
 				F5897C5F25E57877006511AF /* Week1Med1Controller.swift */,
 				F5754A1F261263C40047A510 /* Week1Med2Controller.swift */,
+				D8009AD92687593300EA99FD /* Question.swift */,
+				D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */,
 			);
 			path = HomeControllers;
 			sourceTree = "<group>";
@@ -497,8 +503,10 @@
 				4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */,
 				4961DA4825BFD64F001DE248 /* DashBoardViewController.swift in Sources */,
 				4961D9F425BFD57A001DE248 /* SceneDelegate.swift in Sources */,
+				D8009ADA2687593300EA99FD /* Question.swift in Sources */,
 				4961DA3E25BFD624001DE248 /* LoginViewController.swift in Sources */,
 				4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */,
+				D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */,
 				4961DA4C25BFD668001DE248 /* ProfileViewController.swift in Sources */,
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
 				4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */,
