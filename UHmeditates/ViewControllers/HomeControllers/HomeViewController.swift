@@ -520,7 +520,7 @@ class HomeViewController: UIViewController {
     
     
     
-    
+    let dog = "Bark"
     
     /*
     // MARK: - Navigation

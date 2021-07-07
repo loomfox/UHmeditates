@@ -29,6 +29,7 @@
 		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
 		D8009ADA2687593300EA99FD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009AD92687593300EA99FD /* Question.swift */; };
 		D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */; };
+		D8907F312690998400D4A631 /* FireStoreLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8907F302690998400D4A631 /* FireStoreLogic.swift */; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -85,6 +86,7 @@
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8009AD92687593300EA99FD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationQuiz.swift; sourceTree = "<group>"; };
+		D8907F302690998400D4A631 /* FireStoreLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreLogic.swift; sourceTree = "<group>"; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
 		F5754A1F261263C40047A510 /* Week1Med2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med2Controller.swift; sourceTree = "<group>"; };
 		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				F5754A1F261263C40047A510 /* Week1Med2Controller.swift */,
 				D8009AD92687593300EA99FD /* Question.swift */,
 				D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */,
+				D8907F302690998400D4A631 /* FireStoreLogic.swift */,
 			);
 			path = HomeControllers;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8907F312690998400D4A631 /* FireStoreLogic.swift in Sources */,
 				4961DA4425BFD632001DE248 /* SignUpViewController.swift in Sources */,
 				4961D9F625BFD57A001DE248 /* FirstViewController.swift in Sources */,
 				4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */,
@@ -691,7 +695,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = JK9LT4R4A2;
+				DEVELOPMENT_TEAM = QVD3TP56PF;
 				INFOPLIST_FILE = UHmeditates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -712,7 +716,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = JK9LT4R4A2;
+				DEVELOPMENT_TEAM = QVD3TP56PF;
 				INFOPLIST_FILE = UHmeditates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,7 +9,8 @@ import UIKit
 import Firebase
 
 
-class Week1Med1Controller: UIViewController {
+
+class Week1Med1Controller:  UIViewController {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var buttonOne: UIButton!
@@ -21,23 +22,38 @@ class Week1Med1Controller: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     
+    private let db = Firestore.firestore()
+    private var quizDoc = db.collection("ButtonNamedCollectionHere").document("MeditationButton")
     
+    var relevantVC = HomeViewController()
     var quizBrain = MeditationQuiz()
-    var userAnswer = "String"
+    var userAnswer: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let db = Firestore.firestore()
+        let
         
-        db.collection("ButtonNamedCollectionHere").addDocument(data: [String(format: "Test", quizBrain.questionNumber) : userAnswer])
+        
+        // MARK: TASK - setup an if statement for if the db collection with "name" is not present in firebase, then create one w/ name. Else, print("Database is present")
+        
+        
+        
+    
+        
+//db.collection("ButtonNamedCollectionHere").addDocument(data: [String(format: "Test", quizBrain.questionNumber) : userAnswer])
+      
+//        print("\(relevantVC.buttonName)")
     
 // MARK: Code that only needs to be ran once here
             updateUI()
         
     }
-
-
+    
+    
+    
+    setData(["\(quizBrain.getQuestionText())":"\(userAnswer ?? "no answer")"])
 // MARK: IBActions Go Here
 
     @IBAction func answerPressed(_ sender: UIButton) {
@@ -50,7 +66,7 @@ class Week1Med1Controller: UIViewController {
     @IBAction func nextQuestion(_ sender: UIButton) {
         
         Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
-        print(userAnswer)
+        print(userAnswer ?? "nil")
         quizBrain.nextQuestion()
     }
     
@@ -68,7 +84,7 @@ class Week1Med1Controller: UIViewController {
         buttonOne.backgroundColor = UIColor.clear
         buttonTwo.backgroundColor = UIColor.clear
         buttonThree.backgroundColor = UIColor.clear
-    
+        
     }
     
 
