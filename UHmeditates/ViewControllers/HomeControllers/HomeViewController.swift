@@ -14,6 +14,8 @@
 
 
 import UIKit
+import Firebase
+
 
 class HomeViewController: UIViewController {
     
@@ -21,6 +23,8 @@ class HomeViewController: UIViewController {
     //@IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var scrollView:UIScrollView!
+    
+    let db = Firestore.firestore()
     
     // For week 1 label
     lazy var week1Label: UILabel = {
@@ -34,8 +38,13 @@ class HomeViewController: UIViewController {
     
     // For week 1 meditation 1 action
     @objc func week1med1Action(button: UIButton){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Week1Med1") as! Week1Med1Controller
-        present(vc, animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "Week1Med1VC") as! Week1Med1Controller
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        
+        //present(vc, animated: true)
+        MeditationQuiz.weekTitle = "Week1Med1"
+        print(MeditationQuiz.weekTitle)
     }
     
     // For week 1 meditation 1 button to initiate the action
@@ -44,9 +53,19 @@ class HomeViewController: UIViewController {
         week1Med1.setImage(UIImage(named: "W1Med1"), for: .normal)
         week1Med1.frame = CGRect(x:20, y: 326, width:120, height: 107)
         week1Med1.addTarget(self, action: #selector(week1med1Action), for: .touchUpInside)
+        
+       // Creates a doc reference for the check below. If doc exists, button = hidden.
+        let docRef = db.collection("ExampleUser").document("Week1Med1")
+        docRef.getDocument { document, error in
+            if document!.exists {
+                week1Med1.isHidden = true
+            } else {
+                week1Med1.isHidden = false
+            }
+        }
+
         return week1Med1
     }()
-    
     
     @objc func week1med2Action(button: UIButton){
         _ = storyboard?.instantiateViewController(withIdentifier: "Week1Med2")
@@ -514,14 +533,13 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(week8Med2)
         scrollView.addSubview(week8Med3)
         
-            
+            print(week1Med1)
     }
     
     
     
     
-    let dog = "Bark"
-    
+        
     /*
     // MARK: - Navigation
 

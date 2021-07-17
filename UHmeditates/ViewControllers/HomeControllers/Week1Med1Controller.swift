@@ -11,7 +11,7 @@ import Firebase
 
 
 class Week1Med1Controller:  UIViewController {
-
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
@@ -22,45 +22,54 @@ class Week1Med1Controller:  UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     
-    private let db = Firestore.firestore()
-    private var quizDoc = db.collection("ButtonNamedCollectionHere").document("MeditationButton")
+    @IBOutlet weak var submitButton: UIButton!
     
+    var quizSubmission: [String : Any] = [:]
     var relevantVC = HomeViewController()
     var quizBrain = MeditationQuiz()
     var userAnswer: String?
-    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationItem.title = MeditationQuiz.weekTitle
         
+        submitButton.isHidden = true
         
-        // MARK: TASK - setup an if statement for if the db collection with "name" is not present in firebase, then create one w/ name. Else, print("Database is present")
+        buttonOne.layer.borderWidth = 1 / 2
+        buttonOne.layer.cornerRadius = 15
+        buttonOne.layer.borderColor = UIColor.gray.cgColor
         
+        buttonTwo.layer.borderWidth = 1 / 2
+        buttonTwo.layer.cornerRadius = 15
+        buttonTwo.layer.borderColor = UIColor.gray.cgColor
         
+        buttonThree.layer.borderWidth = 1 / 2
+        buttonThree.layer.cornerRadius = 15
+        buttonThree.layer.borderColor = UIColor.gray.cgColor
         
-    
+        buttonFour.layer.borderWidth = 1 / 2
+        buttonFour.layer.cornerRadius = 15
+        buttonFour.layer.borderColor = UIColor.gray.cgColor
         
-//db.collection("ButtonNamedCollectionHere").addDocument(data: [String(format: "Test", quizBrain.questionNumber) : userAnswer])
-      
-//        print("\(relevantVC.buttonName)")
-    
-// MARK: Code that only needs to be ran once here
-            updateUI()
+        buttonFive.layer.borderWidth = 1 / 2
+        buttonFive.layer.cornerRadius = 15
+        buttonFive.layer.borderColor = UIColor.gray.cgColor
+        
+        // MARK: Code that only needs to be ran once here
+        updateUI()
         
     }
+    //MARK: IBActions Go Here
     
-    
-    
-    setData(["\(quizBrain.getQuestionText())":"\(userAnswer ?? "no answer")"])
-// MARK: IBActions Go Here
-
     @IBAction func answerPressed(_ sender: UIButton) {
-        userAnswer = sender.currentTitle!
-            if userAnswer != nil {
-                sender.backgroundColor = UIColor.cyan
-            }
+        
+        if let userAnswer = sender.currentTitle,
+           let questionNumber = questionLabel.text {
+            sender.backgroundColor = UIColor.cyan
+            quizSubmission[questionNumber] = userAnswer
+        }
     }
     
     @IBAction func nextQuestion(_ sender: UIButton) {
@@ -70,8 +79,28 @@ class Week1Med1Controller:  UIViewController {
         quizBrain.nextQuestion()
     }
     
-
-// MARK: Refreshes UI
+    @IBAction func submitAction(_ sender: Any) {
+        print(quizSubmission)
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+        
+        db.collection("ExampleUser").document(MeditationQuiz.weekTitle).setData( quizSubmission) { (error) in
+            if let e = error{
+                print("There was an issue saving data to firestore, \(e)")
+            } else {
+                print("Successfully saved data.")
+            }
+            
+        }
+        resetQuizArray()
+        performSegue(withIdentifier: "QuizToHome", sender: self)
+    }
+    
+    func resetQuizArray () {
+        quizSubmission.removeAll(keepingCapacity: false)
+    }
+    
+    // MARK: Refreshes UI
     @objc func updateUI(){
         
         questionLabel.text = "\(quizBrain.questionNumber + 1). " + quizBrain.getQuestionText()
@@ -85,7 +114,9 @@ class Week1Med1Controller:  UIViewController {
         buttonTwo.backgroundColor = UIColor.clear
         buttonThree.backgroundColor = UIColor.clear
         
+        if quizBrain.questionNumber == 2 {
+            nextButton.isHidden = true
+            submitButton.isHidden = false
+        }
     }
-    
-
 }

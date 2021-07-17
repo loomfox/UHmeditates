@@ -6,8 +6,20 @@
 //
 
 import Foundation
-
+import Firebase
 struct MeditationQuiz {
+    
+// Use for later code clean up
+//    let db = Firestore.firestore()
+//    var quizSubmission: [String : Any] = [:]
+//
+//    mutating func StoreAnswer () {
+//        quizSubmission
+//    }
+//
+//    func UploadAnswers () {
+//    }
+    
     //MARK: TASK: View the Quiz on either firebase or Qualtrics website and complete the structure
     let quiz = [
         Question(q: "Excited", a:["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely"], selectedAnswer: "Test3"),
@@ -17,29 +29,15 @@ struct MeditationQuiz {
         Question(q: "Happy (NiS)", a:["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely"], selectedAnswer: "Test3")]
     
     var questionNumber = 0 // starting point for quiz
-    var score = 0
+   static  var weekTitle = ""
     
     //MARK: Functions
     
         /// Grabs next question to be displayed on the UILabel
     mutating func nextQuestion () {
         if questionNumber != quiz.count - 1 {questionNumber += 1}
-        else if questionNumber == quiz.count - 1 {questionNumber = 0
-            score = 0}
+        else if questionNumber == quiz.count - 1 {questionNumber = 0}
     }
-    
-        /// For setting the score
-    func getScore() -> Int {
-        return score
-    }
-    
-    
-//    mutating func checkAnswer(_ userAnswer: String!) -> Bool {
-//        if userAnswer == quiz[questionNumber].rightAnswer {score += 1
-//            return true }
-//        else {
-//            return false}
-        
     
     func getQuestionText () -> String {
         return quiz[questionNumber].text
