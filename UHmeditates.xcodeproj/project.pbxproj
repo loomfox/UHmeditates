@@ -26,6 +26,13 @@
 		D827C9A026BA151500BBFF72 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827C99F26BA151500BBFF72 /* ConsentTask.swift */; };
 		D884A53226BCE27200767B96 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53126BCE27200767B96 /* SurveyTask.swift */; };
 		D884A53426BD877F00767B96 /* PrePostSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53326BD877F00767B96 /* PrePostSurvey.swift */; };
+		D8F08AC526BF3FC200E512FC /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08ABC26BF3FC200E512FC /* DashBoardViewController.swift */; };
+		D8F08AC626BF3FC200E512FC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08ABE26BF3FC200E512FC /* SignUpViewController.swift */; };
+		D8F08AC726BF3FC200E512FC /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08ABF26BF3FC200E512FC /* ConsentViewController.swift */; };
+		D8F08AC826BF3FC200E512FC /* DemographicSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC026BF3FC200E512FC /* DemographicSignupViewController.swift */; };
+		D8F08AC926BF3FC200E512FC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC126BF3FC200E512FC /* FirstViewController.swift */; };
+		D8F08ACA26BF3FC200E512FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC226BF3FC200E512FC /* LoginViewController.swift */; };
+		D8F08ACB26BF3FC200E512FC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC426BF3FC200E512FC /* ProfileViewController.swift */; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -79,6 +86,13 @@
 		D827C99F26BA151500BBFF72 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		D884A53126BCE27200767B96 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		D884A53326BD877F00767B96 /* PrePostSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostSurvey.swift; sourceTree = "<group>"; };
+		D8F08ABC26BF3FC200E512FC /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		D8F08ABE26BF3FC200E512FC /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D8F08ABF26BF3FC200E512FC /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
+		D8F08AC026BF3FC200E512FC /* DemographicSignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemographicSignupViewController.swift; sourceTree = "<group>"; };
+		D8F08AC126BF3FC200E512FC /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D8F08AC226BF3FC200E512FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D8F08AC426BF3FC200E512FC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
 		F5754A1F261263C40047A510 /* Week1Med2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med2Controller.swift; sourceTree = "<group>"; };
 		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
@@ -224,9 +238,40 @@
 		D8F08AA726BF15DD00E512FC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D8F08ABB26BF3FC200E512FC /* DashBoardControllers */,
+				D8F08ABD26BF3FC200E512FC /* Login_SignUp_Controllers */,
+				D8F08AC326BF3FC200E512FC /* ProfileControllers */,
 				F54C7B1D263E30A00060582B /* HomeControllers */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D8F08ABB26BF3FC200E512FC /* DashBoardControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8F08ABC26BF3FC200E512FC /* DashBoardViewController.swift */,
+			);
+			path = DashBoardControllers;
+			sourceTree = "<group>";
+		};
+		D8F08ABD26BF3FC200E512FC /* Login_SignUp_Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8F08ABE26BF3FC200E512FC /* SignUpViewController.swift */,
+				D8F08ABF26BF3FC200E512FC /* ConsentViewController.swift */,
+				D8F08AC026BF3FC200E512FC /* DemographicSignupViewController.swift */,
+				D8F08AC126BF3FC200E512FC /* FirstViewController.swift */,
+				D8F08AC226BF3FC200E512FC /* LoginViewController.swift */,
+			);
+			path = Login_SignUp_Controllers;
+			sourceTree = "<group>";
+		};
+		D8F08AC326BF3FC200E512FC /* ProfileControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8F08AC426BF3FC200E512FC /* ProfileViewController.swift */,
+			);
+			path = ProfileControllers;
 			sourceTree = "<group>";
 		};
 		F54C7B1D263E30A00060582B /* HomeControllers */ = {
@@ -481,13 +526,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F08ACA26BF3FC200E512FC /* LoginViewController.swift in Sources */,
 				D827C99D26BA104E00BBFF72 /* TestViewController.swift in Sources */,
 				4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */,
 				4961D9F425BFD57A001DE248 /* SceneDelegate.swift in Sources */,
 				D8009ADA2687593300EA99FD /* Question.swift in Sources */,
+				D8F08AC526BF3FC200E512FC /* DashBoardViewController.swift in Sources */,
 				D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */,
 				D827C9A026BA151500BBFF72 /* ConsentTask.swift in Sources */,
+				D8F08AC726BF3FC200E512FC /* ConsentViewController.swift in Sources */,
+				D8F08ACB26BF3FC200E512FC /* ProfileViewController.swift in Sources */,
+				D8F08AC826BF3FC200E512FC /* DemographicSignupViewController.swift in Sources */,
+				D8F08AC926BF3FC200E512FC /* FirstViewController.swift in Sources */,
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
+				D8F08AC626BF3FC200E512FC /* SignUpViewController.swift in Sources */,
 				D884A53226BCE27200767B96 /* SurveyTask.swift in Sources */,
 				F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */,
 				4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */,
