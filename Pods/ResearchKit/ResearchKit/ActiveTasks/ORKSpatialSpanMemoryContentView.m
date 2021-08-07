@@ -94,8 +94,8 @@
             }
         }
         
-        self->_tileViews = newViews;
-        for (ORKSpatialSpanTargetView *view in self->_tileViews) {
+        _tileViews = newViews;
+        for (ORKSpatialSpanTargetView *view in _tileViews) {
             [view setState:ORKSpatialSpanTargetStateQuiescent];
         }
         
@@ -318,7 +318,7 @@
                                                                          toItem:nil
                                                                       attribute:NSLayoutAttributeNotAnAttribute
                                                                      multiplier:1.0
-                                                                       constant:ORKScreenMetricMaxDimension];
+                                                                       constant:CGFLOAT_MIN];
     gameViewHeightConstraint.priority = UILayoutPriorityDefaultLow - 1;
     [constraints addObject:gameViewHeightConstraint];
     

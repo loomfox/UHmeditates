@@ -11,7 +11,7 @@ target 'UHmeditates' do
    pod 'Firebase/Firestore'
    pod 'Firebase/Storage'
    pod 'Firebase/Core'
-
+   pod 'ResearchKit', :git => 'https://github.com/ResearchKit/ResearchKit.git', :branch => 'master'
   target 'UHmeditatesTests' do
     inherit! :search_paths
     # Pods for testing

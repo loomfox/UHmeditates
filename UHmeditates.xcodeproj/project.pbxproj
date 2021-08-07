@@ -14,21 +14,18 @@
 		1177F5A0FB6F5EFB8CB61FD0 /* Pods_UHmeditates_UHmeditatesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB3AB9F5F6F85A2C0955E70 /* Pods_UHmeditates_UHmeditatesUITests.framework */; };
 		4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961D9F125BFD57A001DE248 /* AppDelegate.swift */; };
 		4961D9F425BFD57A001DE248 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961D9F325BFD57A001DE248 /* SceneDelegate.swift */; };
-		4961D9F625BFD57A001DE248 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961D9F525BFD57A001DE248 /* FirstViewController.swift */; };
 		4961D9F925BFD57A001DE248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4961D9F725BFD57A001DE248 /* Main.storyboard */; };
 		4961D9FB25BFD57B001DE248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4961D9FA25BFD57B001DE248 /* Assets.xcassets */; };
 		4961D9FE25BFD57B001DE248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4961D9FC25BFD57B001DE248 /* LaunchScreen.storyboard */; };
 		4961DA0925BFD57B001DE248 /* UHmeditatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA0825BFD57B001DE248 /* UHmeditatesTests.swift */; };
 		4961DA1425BFD57B001DE248 /* UHmeditatesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA1325BFD57B001DE248 /* UHmeditatesUITests.swift */; };
 		4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA3825BFD5FF001DE248 /* HomeViewController.swift */; };
-		4961DA3E25BFD624001DE248 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA3D25BFD624001DE248 /* LoginViewController.swift */; };
-		4961DA4425BFD632001DE248 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4325BFD632001DE248 /* SignUpViewController.swift */; };
-		4961DA4825BFD64F001DE248 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */; };
-		4961DA4C25BFD668001DE248 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4B25BFD668001DE248 /* ProfileViewController.swift */; };
-		4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */; };
-		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
 		D8009ADA2687593300EA99FD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009AD92687593300EA99FD /* Question.swift */; };
 		D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */; };
+		D827C99D26BA104E00BBFF72 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827C99C26BA104E00BBFF72 /* TestViewController.swift */; };
+		D827C9A026BA151500BBFF72 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827C99F26BA151500BBFF72 /* ConsentTask.swift */; };
+		D884A53226BCE27200767B96 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53126BCE27200767B96 /* SurveyTask.swift */; };
+		D884A53426BD877F00767B96 /* PrePostSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53326BD877F00767B96 /* PrePostSurvey.swift */; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -60,7 +57,6 @@
 		4961D9EE25BFD57A001DE248 /* UHmeditates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UHmeditates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4961D9F125BFD57A001DE248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4961D9F325BFD57A001DE248 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4961D9F525BFD57A001DE248 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		4961D9F825BFD57A001DE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4961D9FA25BFD57B001DE248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4961D9FD25BFD57B001DE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,12 +68,6 @@
 		4961DA1325BFD57B001DE248 /* UHmeditatesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHmeditatesUITests.swift; sourceTree = "<group>"; };
 		4961DA1525BFD57B001DE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4961DA3825BFD5FF001DE248 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		4961DA3D25BFD624001DE248 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4961DA4325BFD632001DE248 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
-		4961DA4B25BFD668001DE248 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemographicSignupViewController.swift; sourceTree = "<group>"; };
-		4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		4D1A6F51A52C3025D26AE7F1 /* Pods_UHmeditates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UHmeditates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4AA2F918CE2552914094D /* Pods-UHmeditates-UHmeditatesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates-UHmeditatesUITests.release.xcconfig"; path = "Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6C41374FD6DC849455B637E0 /* Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +75,10 @@
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8009AD92687593300EA99FD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationQuiz.swift; sourceTree = "<group>"; };
+		D827C99C26BA104E00BBFF72 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		D827C99F26BA151500BBFF72 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
+		D884A53126BCE27200767B96 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
+		D884A53326BD877F00767B96 /* PrePostSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostSurvey.swift; sourceTree = "<group>"; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
 		F5754A1F261263C40047A510 /* Week1Med2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med2Controller.swift; sourceTree = "<group>"; };
 		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
@@ -157,14 +151,12 @@
 		4961D9F025BFD57A001DE248 /* UHmeditates */ = {
 			isa = PBXGroup;
 			children = (
+				4961D9FF25BFD57B001DE248 /* Info.plist */,
 				4961D9F125BFD57A001DE248 /* AppDelegate.swift */,
 				4961D9F325BFD57A001DE248 /* SceneDelegate.swift */,
-				F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */,
-				4961DA3C25BFD606001DE248 /* ViewControllers */,
-				4961D9F725BFD57A001DE248 /* Main.storyboard */,
-				4961D9FA25BFD57B001DE248 /* Assets.xcassets */,
-				4961D9FC25BFD57B001DE248 /* LaunchScreen.storyboard */,
-				4961D9FF25BFD57B001DE248 /* Info.plist */,
+				D8F08AA526BF15C200E512FC /* Model */,
+				D8F08AA626BF15CB00E512FC /* View */,
+				D8F08AA726BF15DD00E512FC /* Controller */,
 				4961DA6725BFDC4E001DE248 /* consent */,
 			);
 			path = UHmeditates;
@@ -199,17 +191,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4961DA3C25BFD606001DE248 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				F54C7B1D263E30A00060582B /* HomeControllers */,
-				F54C7B1C263E2FF40060582B /* Login_SignUp_Controllers */,
-				F54C7B2A263E31990060582B /* DashBoardControllers */,
-				F54C7B2B263E31CE0060582B /* ProfileControllers */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		4961DA6725BFDC4E001DE248 /* consent */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,44 +198,46 @@
 			path = consent;
 			sourceTree = "<group>";
 		};
-		F54C7B1C263E2FF40060582B /* Login_SignUp_Controllers */ = {
+		D8F08AA526BF15C200E512FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4961D9F525BFD57A001DE248 /* FirstViewController.swift */,
-				4961DA4325BFD632001DE248 /* SignUpViewController.swift */,
-				4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */,
-				4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */,
-				4961DA3D25BFD624001DE248 /* LoginViewController.swift */,
+				D827C99F26BA151500BBFF72 /* ConsentTask.swift */,
+				F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */,
+				D884A53126BCE27200767B96 /* SurveyTask.swift */,
+				D884A53326BD877F00767B96 /* PrePostSurvey.swift */,
+				D8009AD92687593300EA99FD /* Question.swift */,
+				D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */,
 			);
-			path = Login_SignUp_Controllers;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8F08AA626BF15CB00E512FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4961D9FA25BFD57B001DE248 /* Assets.xcassets */,
+				4961D9FC25BFD57B001DE248 /* LaunchScreen.storyboard */,
+				4961D9F725BFD57A001DE248 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D8F08AA726BF15DD00E512FC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F54C7B1D263E30A00060582B /* HomeControllers */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		F54C7B1D263E30A00060582B /* HomeControllers */ = {
 			isa = PBXGroup;
 			children = (
 				4961DA3825BFD5FF001DE248 /* HomeViewController.swift */,
+				D827C99C26BA104E00BBFF72 /* TestViewController.swift */,
 				F5897C5F25E57877006511AF /* Week1Med1Controller.swift */,
 				F5754A1F261263C40047A510 /* Week1Med2Controller.swift */,
-				D8009AD92687593300EA99FD /* Question.swift */,
-				D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */,
 			);
 			path = HomeControllers;
-			sourceTree = "<group>";
-		};
-		F54C7B2A263E31990060582B /* DashBoardControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4961DA4725BFD64F001DE248 /* DashBoardViewController.swift */,
-			);
-			path = DashBoardControllers;
-			sourceTree = "<group>";
-		};
-		F54C7B2B263E31CE0060582B /* ProfileControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4961DA4B25BFD668001DE248 /* ProfileViewController.swift */,
-			);
-			path = ProfileControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,21 +481,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4961DA4425BFD632001DE248 /* SignUpViewController.swift in Sources */,
-				4961D9F625BFD57A001DE248 /* FirstViewController.swift in Sources */,
+				D827C99D26BA104E00BBFF72 /* TestViewController.swift in Sources */,
 				4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */,
-				4961DA4825BFD64F001DE248 /* DashBoardViewController.swift in Sources */,
 				4961D9F425BFD57A001DE248 /* SceneDelegate.swift in Sources */,
 				D8009ADA2687593300EA99FD /* Question.swift in Sources */,
-				4961DA3E25BFD624001DE248 /* LoginViewController.swift in Sources */,
-				4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */,
 				D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */,
-				4961DA4C25BFD668001DE248 /* ProfileViewController.swift in Sources */,
+				D827C9A026BA151500BBFF72 /* ConsentTask.swift in Sources */,
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
-				4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */,
+				D884A53226BCE27200767B96 /* SurveyTask.swift in Sources */,
 				F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */,
 				4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */,
 				F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */,
+				D884A53426BD877F00767B96 /* PrePostSurvey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -673,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -693,6 +673,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = QVD3TP56PF;
 				INFOPLIST_FILE = UHmeditates/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -714,6 +695,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = QVD3TP56PF;
 				INFOPLIST_FILE = UHmeditates/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

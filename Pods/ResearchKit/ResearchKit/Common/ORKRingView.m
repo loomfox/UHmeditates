@@ -31,10 +31,13 @@
 @import UIKit;
 #import "ORKRingView.h"
 
-static const double VALUE_MIN = 0.0;
-static const double VALUE_MAX = 1.0;
-static const double VIEW_DIMENSION = 200.0;
+const double ORKRingViewMinimumValue = 0.001;
+const double ORKRingViewMaximumValue = 1.0;
+
+static const double VIEW_DIMENSION = 150.0;
 static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
+static const CGFloat RingLineWidth = 3.0;
+static const CGFloat CircleLineWidth = 6.0;
 
 @implementation ORKRingView {
     CAShapeLayer *_circleLayer;
@@ -44,36 +47,38 @@ static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
     NSUUID *_transactionID;
 }
 
-
 - (instancetype)init {
     self = [super init];
+    
     if (self) {
         _color = [[self tintColor] colorWithAlphaComponent:0.8];
         _animationDuration = DEFAULT_ANIMATION_DURATION;
-        self.frame = CGRectMake(0.0, 0.0, VIEW_DIMENSION, VIEW_DIMENSION);
-        _value = VALUE_MIN;
+        _value = ORKRingViewMinimumValue;
         _backgroundLayer = [self createShapeLayer];
         _backgroundLayer.borderColor = _color.CGColor;
         
-        _backgroundLayer.strokeColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
+        [self resetLayerColors];
+        
         [self.layer addSublayer:_backgroundLayer];
 
         _filledCircleLayer = [self filledCircleLayer];
-
+        
+        [NSLayoutConstraint activateConstraints:@[
+            [self.safeAreaLayoutGuide.widthAnchor constraintEqualToConstant:VIEW_DIMENSION],
+            [self.safeAreaLayoutGuide.heightAnchor constraintEqualToConstant:VIEW_DIMENSION]
+        ]];
     }
     
     return self;
 }
 
 - (CAShapeLayer *)createShapeLayer {
-    CGFloat diameter = VIEW_DIMENSION;
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.lineCap = kCALineCapRound;
     layer.path = [self createPath].CGPath;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.strokeColor = _color.CGColor;
-    
-    layer.lineWidth = diameter * 0.075;
+    layer.lineWidth = RingLineWidth;
     return layer;
 }
 
@@ -81,7 +86,7 @@ static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
     CGFloat radius = VIEW_DIMENSION / 2.0;
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:[self ringCenter]
                                                         radius:radius
-                                                    startAngle:2 * M_PI * (VALUE_MAX - 0.25)
+                                                    startAngle:2 * M_PI * (ORKRingViewMaximumValue - 0.25)
                                                       endAngle:-M_PI_2
                                                      clockwise:NO];
     return path;
@@ -94,7 +99,7 @@ static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
 
 - (CAShapeLayer *)filledCircleLayer {
     CAShapeLayer *filledCircle = [CAShapeLayer layer];
-    CGRect bounds = CGRectMake(1, 5, VIEW_DIMENSION, VIEW_DIMENSION);
+    CGRect bounds = self.bounds;
     UIBezierPath *maskLayerPath = [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:VIEW_DIMENSION / 2.0];
     filledCircle.path = maskLayerPath.CGPath;
     filledCircle.fillColor = [UIColor whiteColor].CGColor;
@@ -102,6 +107,7 @@ static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
 }
 
 - (void)setValue:(double)value {
+    
     if (value != _value) {
         
         double oldValue = _value;
@@ -109,48 +115,54 @@ static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSNumber *presentationLayerValue;
-            if (![self->_circleLayer.presentationLayer animationForKey:@"strokeStart"]) {
+            if (![_circleLayer.presentationLayer animationForKey:@"strokeStart"]) {
                 presentationLayerValue = @(1.0 - oldValue);
             } else {
-                presentationLayerValue = [self->_circleLayer.presentationLayer valueForKey:@"strokeStart"];
-                [self->_circleLayer removeAllAnimations];
+                presentationLayerValue = [_circleLayer.presentationLayer valueForKey:@"strokeStart"];
+                [_circleLayer removeAllAnimations];
             }
             
             NSUUID *caid = [NSUUID UUID];
-            self->_transactionID = caid;
+            _transactionID = caid;
             
             [CATransaction begin];
             
-            [self->_circleLayer removeFromSuperlayer];
-            self->_circleLayer = [self createShapeLayer];
-            [self.layer addSublayer:self->_circleLayer];
+            [_circleLayer removeFromSuperlayer];
+            _circleLayer = [self createShapeLayer];
+            _circleLayer.lineWidth = CircleLineWidth;
+            _circleLayer.strokeColor = UIColor.systemGrayColor.CGColor;
+            [self.layer addSublayer:_circleLayer];
             
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeStart"];
             animation.fromValue = @([presentationLayerValue doubleValue]);
             animation.toValue = @(1.0 - value);
             animation.beginTime = 0.0;
-            animation.duration = self->_animationDuration;
+            animation.duration = _animationDuration;
             animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             animation.fillMode = kCAFillModeBoth;
             animation.removedOnCompletion = NO;
             
             [CATransaction setCompletionBlock:^{
-                if([caid isEqual:self->_transactionID]){
-                    if (self->_value == VALUE_MIN) {
-                        [self->_circleLayer removeFromSuperlayer];
+                if([caid isEqual:_transactionID]){
+                    if (_value == ORKRingViewMinimumValue) {
+                        [_circleLayer removeFromSuperlayer];
                     }
                     else {
-                        [self->_circleLayer setStrokeColor:_color.CGColor];
+                        _circleLayer.strokeColor = _color.CGColor;
+                        if (_value == ORKRingViewMaximumValue && self.delegate && [self.delegate respondsToSelector:@selector(ringViewDidFinishFillAnimation)]) {
+                            [self.delegate ringViewDidFinishFillAnimation];
+                        }
                     }
                 }
             }];
             
-            [self->_circleLayer addAnimation:animation forKey:animation.keyPath];
+            [_circleLayer addAnimation:animation forKey:animation.keyPath];
             [CATransaction commit];
         });
         
     } else {
-        if (value != VALUE_MAX) {
+        
+        if (value != ORKRingViewMaximumValue) {
             _backgroundLayer.fillColor = [UIColor clearColor].CGColor;
             [_filledCircleLayer removeFromSuperlayer];
         }
@@ -162,6 +174,56 @@ static const CFTimeInterval DEFAULT_ANIMATION_DURATION = 1.25;
         _color = color;
     }
     [self setValue:value];
+}
+
+- (void)setBackgroundLayerStrokeColor:(UIColor *)backgroundStrokeColor circleStrokeColor:(UIColor *)circleStrokeColor withAnimationDuration:(NSTimeInterval)animationDuration {
+    
+    if (_backgroundLayer) {
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:(CFTimeInterval)animationDuration];
+        _backgroundLayer.strokeColor = backgroundStrokeColor.CGColor;
+        [CATransaction commit];
+    }
+        
+    if (_circleLayer) {
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:(CFTimeInterval)animationDuration];
+        _circleLayer.strokeColor = circleStrokeColor.CGColor;
+        [CATransaction commit];
+    }
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [super traitCollectionDidChange:previousTraitCollection];
+    
+    [self resetLayerColors];
+}
+
+- (void)resetLayerColors
+{
+    if (@available(iOS 13.0, *))
+    {
+        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark)
+        {
+            _backgroundLayer.strokeColor = [[UIColor systemGray3Color] CGColor];
+        }
+        else
+        {
+            _backgroundLayer.strokeColor = [[UIColor systemGray3Color] CGColor];
+        }
+    }
+    else
+    {
+        _backgroundLayer.strokeColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3].CGColor;
+    }
+    
+    _circleLayer.strokeColor = UIColor.systemGrayColor.CGColor;
+}
+
+- (void)fillRingWithDuration:(NSTimeInterval)duration {
+    _animationDuration = duration;
+    [self setValue:1.0];
 }
 
 - (void)ringAnimation {

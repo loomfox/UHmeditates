@@ -50,7 +50,6 @@
 @implementation ORKPDFViewerStepViewController {
     NSArray<NSLayoutConstraint *> *_constraints;
     ORKPDFViewerStepView *_pdfView;
-    ORKNavigationContainerView *_navigationFooterView;
     
     NSString *_newFilename;
 }
@@ -90,7 +89,6 @@
     }
     _navigationFooterView.continueButtonItem = self.continueButtonItem;
     _navigationFooterView.continueEnabled = YES;
-    _navigationFooterView.cancelButtonItem = self.cancelButtonItem;
     _navigationFooterView.hidden = self.isBeingReviewed;
     [_navigationFooterView updateContinueAndSkipEnabled];
     [self.view addSubview:_navigationFooterView];
@@ -210,18 +208,16 @@
 
 - (void)setCancelButtonItem:(UIBarButtonItem *)cancelButtonItem {
     [super setCancelButtonItem:cancelButtonItem];
-    _navigationFooterView.cancelButtonItem = cancelButtonItem;
 }
 
-#pragma ORKPDFViewerStepViewDelegate
-
+#pragma mark ORKPDFViewerStepViewDelegate
 
 - (void)didSelectShareButton:(id)sender {
     NSData *pdfData = [[_pdfView getDocument] dataRepresentation];
 
     UIActivityViewController * activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[@"sendPDF", pdfData] applicationActivities:nil];
     [activityViewController setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
-        [self->_pdfView updateShareButton];
+        [_pdfView updateShareButton];
     }];
     
     if ( [activityViewController respondsToSelector:@selector(popoverPresentationController)] ) {
