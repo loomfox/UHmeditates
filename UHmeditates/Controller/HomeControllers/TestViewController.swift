@@ -8,6 +8,9 @@
 import Foundation
 import Firebase
 import ResearchKit
+import CareKit
+import CareKitUI
+import CareKitStore
 
 class TestViewController: UIViewController, ORKTaskViewControllerDelegate {
     
@@ -15,7 +18,6 @@ class TestViewController: UIViewController, ORKTaskViewControllerDelegate {
         taskViewController.dismiss(animated: true, completion: nil)
 
     }
-    
     
     @IBOutlet weak var ConsentButton: UIButton!
     
@@ -36,10 +38,15 @@ class TestViewController: UIViewController, ORKTaskViewControllerDelegate {
     @IBAction func surveyClicked(_ sender: UIButton) {
        
 //        SurveyTask().showForm()
-        let taskViewController = ORKTaskViewController(task: showMeditationSurvey(), taskRun: nil); present(taskViewController, animated: true, completion: nil)
+        let taskViewController = ORKTaskViewController(task: Surveys.showMeditationSurvey(), taskRun: nil);
+        present(taskViewController, animated: true, completion: nil)
+        
     }
     @IBAction func activeTaskClicked(_ sender: UIButton) {
        
     }
     
+    @IBAction func careFeedClicked(_ sender: UIButton) {
+     
+    }
 }

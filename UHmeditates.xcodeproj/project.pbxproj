@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,7 +25,11 @@
 		D827C99D26BA104E00BBFF72 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827C99C26BA104E00BBFF72 /* TestViewController.swift */; };
 		D827C9A026BA151500BBFF72 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827C99F26BA151500BBFF72 /* ConsentTask.swift */; };
 		D884A53226BCE27200767B96 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53126BCE27200767B96 /* SurveyTask.swift */; };
-		D884A53426BD877F00767B96 /* PrePostSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53326BD877F00767B96 /* PrePostSurvey.swift */; };
+		D884A53426BD877F00767B96 /* Surveys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D884A53326BD877F00767B96 /* Surveys.swift */; };
+		D8880FBD26C0C2D000DD8506 /* CareKitFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = D8880FBC26C0C2D000DD8506 /* CareKitFHIR */; };
+		D8880FBF26C0C2D000DD8506 /* CareKit in Frameworks */ = {isa = PBXBuildFile; productRef = D8880FBE26C0C2D000DD8506 /* CareKit */; };
+		D8880FC126C0C2D000DD8506 /* CareKitStore in Frameworks */ = {isa = PBXBuildFile; productRef = D8880FC026C0C2D000DD8506 /* CareKitStore */; };
+		D8880FC326C0C2D000DD8506 /* CareKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = D8880FC226C0C2D000DD8506 /* CareKitUI */; };
 		D8F08AC526BF3FC200E512FC /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08ABC26BF3FC200E512FC /* DashBoardViewController.swift */; };
 		D8F08AC626BF3FC200E512FC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08ABE26BF3FC200E512FC /* SignUpViewController.swift */; };
 		D8F08AC726BF3FC200E512FC /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08ABF26BF3FC200E512FC /* ConsentViewController.swift */; };
@@ -33,6 +37,8 @@
 		D8F08AC926BF3FC200E512FC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC126BF3FC200E512FC /* FirstViewController.swift */; };
 		D8F08ACA26BF3FC200E512FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC226BF3FC200E512FC /* LoginViewController.swift */; };
 		D8F08ACB26BF3FC200E512FC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F08AC426BF3FC200E512FC /* ProfileViewController.swift */; };
+		D8F38A2B26C208AE0074D95E /* CareFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F38A2A26C208AE0074D95E /* CareFeedViewController.swift */; };
+		D8F38A2E26C20E0F0074D95E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F38A2D26C20E0F0074D95E /* Logger.swift */; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -55,6 +61,19 @@
 			remoteInfo = UHmeditates;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D8880FB826C0BD0500DD8506 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		02955D69263E4DBA00CA93D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -85,7 +104,7 @@
 		D827C99C26BA104E00BBFF72 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D827C99F26BA151500BBFF72 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		D884A53126BCE27200767B96 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
-		D884A53326BD877F00767B96 /* PrePostSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePostSurvey.swift; sourceTree = "<group>"; };
+		D884A53326BD877F00767B96 /* Surveys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surveys.swift; sourceTree = "<group>"; };
 		D8F08ABC26BF3FC200E512FC /* DashBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		D8F08ABE26BF3FC200E512FC /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D8F08ABF26BF3FC200E512FC /* ConsentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +112,8 @@
 		D8F08AC126BF3FC200E512FC /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D8F08AC226BF3FC200E512FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D8F08AC426BF3FC200E512FC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D8F38A2A26C208AE0074D95E /* CareFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareFeedViewController.swift; sourceTree = "<group>"; };
+		D8F38A2D26C20E0F0074D95E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
 		F5754A1F261263C40047A510 /* Week1Med2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med2Controller.swift; sourceTree = "<group>"; };
 		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
@@ -104,7 +125,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8880FC126C0C2D000DD8506 /* CareKitStore in Frameworks */,
+				D8880FBF26C0C2D000DD8506 /* CareKit in Frameworks */,
+				D8880FC326C0C2D000DD8506 /* CareKitUI in Frameworks */,
 				FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */,
+				D8880FBD26C0C2D000DD8506 /* CareKitFHIR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,9 +243,10 @@
 				D827C99F26BA151500BBFF72 /* ConsentTask.swift */,
 				F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */,
 				D884A53126BCE27200767B96 /* SurveyTask.swift */,
-				D884A53326BD877F00767B96 /* PrePostSurvey.swift */,
+				D884A53326BD877F00767B96 /* Surveys.swift */,
 				D8009AD92687593300EA99FD /* Question.swift */,
 				D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */,
+				D8F38A2D26C20E0F0074D95E /* Logger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +307,7 @@
 				D827C99C26BA104E00BBFF72 /* TestViewController.swift */,
 				F5897C5F25E57877006511AF /* Week1Med1Controller.swift */,
 				F5754A1F261263C40047A510 /* Week1Med2Controller.swift */,
+				D8F38A2A26C208AE0074D95E /* CareFeedViewController.swift */,
 			);
 			path = HomeControllers;
 			sourceTree = "<group>";
@@ -297,12 +324,19 @@
 				4961D9EB25BFD57A001DE248 /* Frameworks */,
 				4961D9EC25BFD57A001DE248 /* Resources */,
 				E136A88DE6BD3E1B067F0119 /* [CP] Embed Pods Frameworks */,
+				D8880FB826C0BD0500DD8506 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = UHmeditates;
+			packageProductDependencies = (
+				D8880FBC26C0C2D000DD8506 /* CareKitFHIR */,
+				D8880FBE26C0C2D000DD8506 /* CareKit */,
+				D8880FC026C0C2D000DD8506 /* CareKitStore */,
+				D8880FC226C0C2D000DD8506 /* CareKitUI */,
+			);
 			productName = UHmeditates;
 			productReference = 4961D9EE25BFD57A001DE248 /* UHmeditates.app */;
 			productType = "com.apple.product-type.application";
@@ -377,6 +411,9 @@
 				Base,
 			);
 			mainGroup = 4961D9E525BFD57A001DE248;
+			packageReferences = (
+				D8880FBB26C0C2D000DD8506 /* XCRemoteSwiftPackageReference "CareKit" */,
+			);
 			productRefGroup = 4961D9EF25BFD57A001DE248 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -530,7 +567,9 @@
 				D827C99D26BA104E00BBFF72 /* TestViewController.swift in Sources */,
 				4961D9F225BFD57A001DE248 /* AppDelegate.swift in Sources */,
 				4961D9F425BFD57A001DE248 /* SceneDelegate.swift in Sources */,
+				D8F38A2E26C20E0F0074D95E /* Logger.swift in Sources */,
 				D8009ADA2687593300EA99FD /* Question.swift in Sources */,
+				D8F38A2B26C208AE0074D95E /* CareFeedViewController.swift in Sources */,
 				D8F08AC526BF3FC200E512FC /* DashBoardViewController.swift in Sources */,
 				D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */,
 				D827C9A026BA151500BBFF72 /* ConsentTask.swift in Sources */,
@@ -544,7 +583,7 @@
 				F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */,
 				4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */,
 				F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */,
-				D884A53426BD877F00767B96 /* PrePostSurvey.swift in Sources */,
+				D884A53426BD877F00767B96 /* Surveys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +747,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -887,6 +927,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D8880FBB26C0C2D000DD8506 /* XCRemoteSwiftPackageReference "CareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carekit-apple/CareKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D8880FBC26C0C2D000DD8506 /* CareKitFHIR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8880FBB26C0C2D000DD8506 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitFHIR;
+		};
+		D8880FBE26C0C2D000DD8506 /* CareKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8880FBB26C0C2D000DD8506 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKit;
+		};
+		D8880FC026C0C2D000DD8506 /* CareKitStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8880FBB26C0C2D000DD8506 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitStore;
+		};
+		D8880FC226C0C2D000DD8506 /* CareKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8880FBB26C0C2D000DD8506 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4961D9E625BFD57A001DE248 /* Project object */;
 }

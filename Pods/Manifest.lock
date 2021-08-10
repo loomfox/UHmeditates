@@ -489,7 +489,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - ResearchKit (from `https://github.com/ResearchKit/ResearchKit.git`, branch `master`)
+  - ResearchKit (from `https://github.com/ResearchKit/ResearchKit.git`, branch `main`)
 
 SPEC REPOS:
   trunk:
@@ -515,12 +515,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   ResearchKit:
-    :branch: master
+    :branch: main
     :git: https://github.com/ResearchKit/ResearchKit.git
 
 CHECKOUT OPTIONS:
   ResearchKit:
-    :commit: 68f9d29b669dd3ac27b548f7c9c28342218cf72e
+    :commit: 0e68cdf744a135e80e1065965ee056fe05513d58
     :git: https://github.com/ResearchKit/ResearchKit.git
 
 SPEC CHECKSUMS:
@@ -543,8 +543,8 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  ResearchKit: 449f96824c4e71c70a9278953c3b279f0fe10805
+  ResearchKit: 9d6981b42c8633aa64097f4490be65abf39c350a
 
-PODFILE CHECKSUM: 524fecb8580f2f3e12e869c1f99828cee3920dd8
+PODFILE CHECKSUM: 104720abaaef4a11c2d650d57d65326c9bd1da90
 
 COCOAPODS: 1.10.2

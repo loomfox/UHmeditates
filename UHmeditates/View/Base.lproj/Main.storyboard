@@ -480,6 +480,14 @@
                                     <action selector="consentClicked:" destination="Lce-6s-DAH" eventType="touchUpInside" id="Aq1-zP-hdl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HW0-jt-OXn">
+                                <rect key="frame" x="144" y="240" width="127" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="show the carefeed"/>
+                                <connections>
+                                    <action selector="careFeedClicked:" destination="Lce-6s-DAH" eventType="touchUpInside" id="2cL-xO-8iM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lpn-h7-Tmq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -493,6 +501,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CD-R1-Wih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3161" y="2746"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="28k-E0-l6o">
+            <objects>
+                <viewController id="q4F-w1-DAc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HhQ-98-Hy4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fe0-j6-Crk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V8R-HR-nyQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2223" y="2746"/>
         </scene>
         <!--Week1 Med1 Controller-->
         <scene sceneID="hbr-E3-0Z7">
