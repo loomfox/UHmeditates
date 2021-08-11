@@ -174,10 +174,7 @@
                                         </constraints>
                                         <state key="normal" title="Next"/>
                                         <connections>
-<<<<<<< HEAD
-=======
                                             <action selector="nextButtonTapped:" destination="Vjn-oL-3mK" eventType="touchUpInside" id="dHQ-64-eXE"/>
->>>>>>> loginsystem
                                             <segue destination="FMg-06-zyX" kind="show" id="wbg-1F-jri"/>
                                         </connections>
                                     </button>
@@ -372,7 +369,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="checkin:" destination="neq-xO-Phv" eventType="touchUpInside" id="V4H-ac-hnL"/>
-                                            <segue destination="ogG-id-Cqf" kind="show" id="R2p-uw-dwX"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wme-2j-akD">
@@ -382,6 +378,15 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOK-nW-CuC">
+                                        <rect key="frame" x="30" y="185" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="move:" destination="pEx-2Y-Fn5" eventType="touchUpInside" id="2Dr-5S-Kv9"/>
+                                            <segue destination="xUf-sb-4yL" kind="show" id="NbF-g8-psD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -398,35 +403,6 @@
             </objects>
             <point key="canvasLocation" x="-3755.0724637681164" y="253.79464285714283"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Vji-30-iDy">
-            <objects>
-                <viewController id="ogG-id-Cqf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="scl-Ge-7AT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="exb-Me-N0P">
-                                <rect key="frame" x="26" y="288" width="363" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How familiar are you with mindfulness?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk0-Xo-cgq">
-                                <rect key="frame" x="59" y="135" width="296" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ZTh-0r-ZQw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="K8c-iB-dGg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QHN-Cq-boM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4220" y="982"/>
-        </scene>
         <!--Week1 Med1 Controller-->
         <scene sceneID="hbr-E3-0Z7">
             <objects>
@@ -434,13 +410,24 @@
                     <view key="view" contentMode="scaleToFill" id="RZe-Qr-ehi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfW-Rh-7FP">
+                                <rect key="frame" x="207" y="524" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="abutton:" destination="xUf-sb-4yL" eventType="touchUpInside" id="ldQ-DP-SU0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qMd-3M-24j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rYc-Js-UBR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3u9-wy-xM2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4616" y="1675"/>
+            <point key="canvasLocation" x="-3786" y="1017"/>
         </scene>
         <!--Profile-->
         <scene sceneID="f9h-sY-XBa">

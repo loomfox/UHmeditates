@@ -508,6 +508,8 @@ class HomeViewController: UIViewController {
     
     
     
+    @IBAction func move(_ sender: UIButton) {
+    }
     
     
     
