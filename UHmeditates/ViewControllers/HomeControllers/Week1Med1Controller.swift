@@ -6,17 +6,18 @@
 //
 
 import UIKit
+
 import FirebaseAuth
 import Firebase
 import FirebaseCore
-
+import AVKit
 
 class Week1Med1Controller: UIViewController {
-    
+
+    var audioPlayer:AVAudioPlayer = AVAudioPlayer()
     
     @IBOutlet weak var EmailTextField: UITextField!
     //let db = Firestore.firestore()
-
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
@@ -33,8 +34,13 @@ class Week1Med1Controller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+       
+        
+        
+        
         // Do any additional setup after loading the view.
+        
     }
     
 
@@ -93,4 +99,29 @@ class Week1Med1Controller: UIViewController {
     }
     
 
+
+  
+    @IBAction func abutton(_ sender: UIButton) { audioPlayer.play()
+        
+        func preparePlayer() {
+        guard let url = URL(string: "gs://uhmed-318b3.appspot.com/Meliza_one minute centering meditation.m4a") else {
+            print("Invalid URL")
+            return
+        }
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSession.Category.playback)
+            let soundData = try Data(contentsOf: url)
+            audioPlayer = try AVAudioPlayer(data: soundData)
+            audioPlayer.volume = 1
+            let minuteString = String(format: "%02d", (Int(audioPlayer.duration) / 60))
+            let secondString = String(format: "%02d", (Int(audioPlayer.duration) % 60))
+            print("TOTAL TIMER: \(minuteString):\(secondString)")
+        } catch {
+            print(error)
+        }
+    }
+    }
 }
+    
+
