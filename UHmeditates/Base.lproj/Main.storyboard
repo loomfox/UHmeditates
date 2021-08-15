@@ -369,7 +369,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="checkin:" destination="neq-xO-Phv" eventType="touchUpInside" id="V4H-ac-hnL"/>
-                                            <segue destination="ogG-id-Cqf" kind="show" id="R2p-uw-dwX"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wme-2j-akD">
@@ -379,6 +378,15 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOK-nW-CuC">
+                                        <rect key="frame" x="30" y="185" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="move:" destination="pEx-2Y-Fn5" eventType="touchUpInside" id="2Dr-5S-Kv9"/>
+                                            <segue destination="xUf-sb-4yL" kind="show" id="NbF-g8-psD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -395,35 +403,6 @@
             </objects>
             <point key="canvasLocation" x="-3755.0724637681164" y="253.79464285714283"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Vji-30-iDy">
-            <objects>
-                <viewController id="ogG-id-Cqf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="scl-Ge-7AT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="exb-Me-N0P">
-                                <rect key="frame" x="26" y="288" width="363" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How familiar are you with mindfulness?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk0-Xo-cgq">
-                                <rect key="frame" x="59" y="135" width="296" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ZTh-0r-ZQw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="K8c-iB-dGg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QHN-Cq-boM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4220" y="982"/>
-        </scene>
         <!--Week1 Med1 Controller-->
         <scene sceneID="hbr-E3-0Z7">
             <objects>
@@ -432,103 +411,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbV-39-f14">
-                                <rect key="frame" x="62" y="289" width="276" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfW-Rh-7FP">
+                                <rect key="frame" x="207" y="524" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQC-hO-xqV">
-                                <rect key="frame" x="62" y="496" width="276" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES" adjustable="YES"/>
-                                </accessibility>
-                                <state key="normal" title="Button1">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="answerPressed:" destination="xUf-sb-4yL" eventType="touchUpInside" id="4d4-eQ-eBz"/>
+                                    <action selector="abutton:" destination="xUf-sb-4yL" eventType="touchUpInside" id="ldQ-DP-SU0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jy-cS-SxP">
-                                <rect key="frame" x="62" y="594" width="276" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button3">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="answerPressed:" destination="xUf-sb-4yL" eventType="touchUpInside" id="bIz-La-GSy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xv-fh-hT5">
-                                <rect key="frame" x="62" y="646" width="276" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button4">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="answerPressed:" destination="xUf-sb-4yL" eventType="touchUpInside" id="S5E-NH-gOU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLt-tA-IgK">
-                                <rect key="frame" x="62" y="698" width="276" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button5">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="answerPressed:" destination="xUf-sb-4yL" eventType="touchUpInside" id="mkS-gZ-0uR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELP-fB-PuZ">
-                                <rect key="frame" x="290" y="761" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="nextButton"/>
-                                <connections>
-                                    <action selector="nextQuestion:" destination="xUf-sb-4yL" eventType="touchUpInside" id="jaw-Kx-v4p"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKC-1q-h4a">
-                                <rect key="frame" x="49" y="761" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="backButton"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZk-i2-Q6j">
-                                <rect key="frame" x="62" y="541" width="276" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button2">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="answerPressed:" destination="xUf-sb-4yL" eventType="touchUpInside" id="bGh-vt-s3f"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cy-bI-D5g">
-                                <rect key="frame" x="49" y="51" width="317" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qMd-3M-24j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="backButton" destination="XKC-1q-h4a" id="nae-FK-aYm"/>
-                        <outlet property="buttonFive" destination="WLt-tA-IgK" id="7tC-Fz-Rpa"/>
-                        <outlet property="buttonFour" destination="4xv-fh-hT5" id="GG5-QR-XLI"/>
-                        <outlet property="buttonOne" destination="eQC-hO-xqV" id="lir-oQ-KMn"/>
-                        <outlet property="buttonThree" destination="1jy-cS-SxP" id="kat-ek-LIU"/>
-                        <outlet property="buttonTwo" destination="SZk-i2-Q6j" id="j2I-8l-QwV"/>
-                        <outlet property="nextButton" destination="ELP-fB-PuZ" id="6xO-8g-yMX"/>
-                        <outlet property="progressBar" destination="5cy-bI-D5g" id="pIp-OZ-UJn"/>
-                        <outlet property="questionLabel" destination="qbV-39-f14" id="b2O-Vh-YGH"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="rYc-Js-UBR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3u9-wy-xM2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4855" y="1637"/>
+            <point key="canvasLocation" x="-3786" y="1017"/>
         </scene>
         <!--Profile-->
         <scene sceneID="f9h-sY-XBa">
@@ -594,9 +493,6 @@
         <image name="checkmark.shield" catalog="system" width="128" height="118"/>
         <image name="face.smiling" catalog="system" width="128" height="121"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
