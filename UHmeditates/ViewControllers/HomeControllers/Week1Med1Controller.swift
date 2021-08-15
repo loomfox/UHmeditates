@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import FirebaseAuth
 import Firebase
 import FirebaseCore
@@ -13,7 +14,7 @@ import FirebaseCore
 import AVKit
 
 class Week1Med1Controller: UIViewController {
-  
+
     var audioPlayer:AVAudioPlayer = AVAudioPlayer()
     
     
@@ -100,6 +101,7 @@ class Week1Med1Controller: UIViewController {
     
     }
     
+
 
   
     @IBAction func abutton(_ sender: UIButton) { audioPlayer.play()
