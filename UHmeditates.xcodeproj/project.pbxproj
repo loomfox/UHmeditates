@@ -197,7 +197,6 @@
 				D8F08AA526BF15C200E512FC /* Model */,
 				D8F08AA626BF15CB00E512FC /* View */,
 				D8F08AA726BF15DD00E512FC /* Controller */,
-				4961DA6725BFDC4E001DE248 /* consent */,
 			);
 			path = UHmeditates;
 			sourceTree = "<group>";
@@ -228,13 +227,6 @@
 				355BFA635E6F9D0ECAE52167 /* Pods_UHmeditatesTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4961DA6725BFDC4E001DE248 /* consent */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = consent;
 			sourceTree = "<group>";
 		};
 		D8F08AA526BF15C200E512FC /* Model */ = {
