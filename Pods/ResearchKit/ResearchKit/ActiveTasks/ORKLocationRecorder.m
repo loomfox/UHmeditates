@@ -144,7 +144,7 @@
     }
     if (!success) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self->_recordingError = error;
+            _recordingError = error;
             [self stop];
         });
     }

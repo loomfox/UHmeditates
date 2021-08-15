@@ -59,7 +59,7 @@
     [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {
         switch (status) {
             case SFSpeechRecognizerAuthorizationStatusAuthorized:
-                ORK_Log_Debug(@"Speech recognition request was authorized");
+                ORK_Log_Debug("Speech recognition request was authorized");
                 break;
             default:
                 // User did not authorize speech recognition
@@ -110,13 +110,13 @@
 
 - (void)addAudio:(AVAudioPCMBuffer *)audioBuffer {
     dispatch_async(_requestQueue, ^{
-        [self->request appendAudioPCMBuffer:audioBuffer];
+        [request appendAudioPCMBuffer:audioBuffer];
     });
 }
 
 - (void)endAudio {
     dispatch_async(_requestQueue, ^{
-        [self->request endAudio];
+        [request endAudio];
     });
 }
 
@@ -124,8 +124,8 @@
 
 - (void)speechRecognizer:(SFSpeechRecognizer *)speechRecognizer availabilityDidChange:(BOOL)available {
     dispatch_async(_responseQueue, ^{
-        ORK_Log_Debug(@"Availability did change = %d", available);
-        [self->_responseDelegate availabilityDidChange:available];
+        ORK_Log_Debug("Availability did change = %d", available);
+        [_responseDelegate availabilityDidChange:available];
     });
 }
 
@@ -133,32 +133,32 @@
 
 - (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishRecognition:(SFSpeechRecognitionResult *)recognitionResult {
     dispatch_async(_responseQueue, ^{
-        ORK_Log_Debug(@"did produce final result %@", [[recognitionResult bestTranscription] formattedString]);
-        [self->_responseDelegate didHypothesizeTranscription:[recognitionResult bestTranscription]];
+        ORK_Log_Debug("did produce final result %@", [[recognitionResult bestTranscription] formattedString]);
+        [_responseDelegate didHypothesizeTranscription:[recognitionResult bestTranscription]];
     });
 }
 - (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didHypothesizeTranscription:(SFTranscription *)transcription {
     dispatch_async(_responseQueue, ^{
         // Produces transcription if shouldReportPartialResults is true
-        ORK_Log_Debug(@"did produce partial results %@", [transcription formattedString]);
-        [self->_responseDelegate didHypothesizeTranscription:transcription];
+        ORK_Log_Debug("did produce partial results %@", [transcription formattedString]);
+        [_responseDelegate didHypothesizeTranscription:transcription];
     });
 }
 
 - (void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishSuccessfully:(BOOL)successfully {
     dispatch_async(_responseQueue, ^{
         if (!successfully) {
-            [self->_responseDelegate didFinishRecognitionWithError:task.error];
+            [_responseDelegate didFinishRecognitionWithError:task.error];
         } else {
-            [self->_responseDelegate didFinishRecognitionWithError:nil];
+            [_responseDelegate didFinishRecognitionWithError:nil];
         }
     });
 }
 
 - (void)speechRecognitionTaskWasCancelled:(SFSpeechRecognitionTask *)task {
     dispatch_async(_responseQueue, ^{
-        ORK_Log_Debug(@"Request cancelled");
-        [self->_responseDelegate didFinishRecognitionWithError:nil];
+        ORK_Log_Debug("Request cancelled");
+        [_responseDelegate didFinishRecognitionWithError:nil];
     });
 }
 

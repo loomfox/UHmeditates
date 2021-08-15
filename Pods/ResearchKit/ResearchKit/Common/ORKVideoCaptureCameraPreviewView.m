@@ -133,9 +133,9 @@
     
     [UIView animateWithDuration:0.15
                      animations:^{
-        self->_templateImageView.alpha = templateImageHidden ? 0 : 1;
+                         _templateImageView.alpha = templateImageHidden ? 0 : 1;
                      } completion:^(BOOL finished) {
-                         self->_templateImageView.hidden = templateImageHidden;
+                         _templateImageView.hidden = templateImageHidden;
                      }];
     
 }

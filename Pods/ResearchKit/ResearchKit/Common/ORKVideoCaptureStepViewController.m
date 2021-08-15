@@ -174,8 +174,10 @@
     // If we don't already have a captured image, then start running the capture session.
     if (!_fileURL) {
         dispatch_async(_sessionQueue, ^{
-            [self->_captureSession startRunning];
+            [_captureSession startRunning];
         });
+    } else {
+        [self setFileURL:_fileURL];
     }
 }
 
@@ -183,7 +185,7 @@
     // If the capture session is running, stop it
     if (_captureSession.isRunning) {
         dispatch_async(_sessionQueue, ^{
-            [self->_captureSession stopRunning];
+            [_captureSession stopRunning];
         });
     }
     
@@ -207,13 +209,13 @@
     }
     
     if (device) {
-        // Check if the device has flash.
-        if ([device isFlashModeSupported:_videoCaptureStep.flashMode]) {
+        // Check if the device has the requested torchMode
+        if([device isTorchModeSupported:_videoCaptureStep.torchMode]){
             [device lockForConfiguration:nil];
-            device.flashMode = _videoCaptureStep.flashMode;
+            device.torchMode = _videoCaptureStep.torchMode;
             [device unlockForConfiguration];
         }
-
+        
         // Configure the input and output
         AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
         
@@ -303,7 +305,7 @@
 
 - (void)retakePressed:(void (^)(void))handler {
     dispatch_async(_sessionQueue, ^{
-        [self->_captureSession startRunning];
+        [_captureSession startRunning];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.fileURL = nil;
             if (handler) {
@@ -316,15 +318,15 @@
 - (void)capturePressed:(void (^)(void))handler {
     // Capture the video via the output
     dispatch_async(_sessionQueue, ^{
-        self->_fileURL = [self.outputDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",self.step.identifier]];
+        _fileURL = [self.outputDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",self.step.identifier]];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        if ([fileManager fileExistsAtPath:self->_fileURL.path]) {
-            [fileManager removeItemAtURL:self->_fileURL error:nil];
+        if ([fileManager fileExistsAtPath:_fileURL.path]) {
+            [fileManager removeItemAtURL:_fileURL error:nil];
         }
-        AVCaptureConnection *connection = [self->_movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+        AVCaptureConnection *connection = [_movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
         if (connection.isActive) {
-            [self->_movieFileOutput startRecordingToOutputFileURL:_fileURL
+            [_movieFileOutput startRecordingToOutputFileURL:_fileURL
                                           recordingDelegate:self];
             
             // Use the main queue, as UI components may need to be updated
@@ -335,7 +337,7 @@
             });
         }
         else {
-            NSLog(@"Connection not ready");
+            ORK_Log_Info("Connection not ready");
             // Use the main queue, as UI components may need to be updated
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (handler) {
@@ -351,7 +353,7 @@
 - (void)stopCapturePressed:(void (^)(void))handler {
     if (_movieFileOutput.recording) {
     dispatch_async(_sessionQueue, ^{
-        [self->_movieFileOutput stopRecording];
+        [_movieFileOutput stopRecording];
         
         // Use the main queue, as UI components may need to be updated
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -116,7 +116,7 @@
 
 - (void)queue_sessionRunning {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self->_previewView.templateImageHidden = NO;
+        _previewView.templateImageHidden = NO;
     });
 }
 
@@ -141,7 +141,7 @@
                 return;
         }
         
-        [self->_previewView setVideoOrientation:orientation];
+        [_previewView setVideoOrientation:orientation];
         [self.delegate videoOrientationDidChange:orientation];
         [self setNeedsUpdateConstraints];
     });
@@ -217,7 +217,6 @@
         _navigationFooterView.skipButtonItem = _skipButtonItem;
         _navigationFooterView.skipEnabled = YES;
     }
-    _navigationFooterView.cancelButtonItem = _cancelButtonItem;
 }
 
 - (void)setVideoFileURL:(NSURL *)videoFileURL {
@@ -406,7 +405,7 @@
     // Capture the video via the delegate
     [self.delegate capturePressed:^ {
         // Stop ignoring presses
-        self->_capturePressesIgnored = NO;
+        _capturePressesIgnored = NO;
     }];
 }
 
@@ -424,7 +423,7 @@
     // Stop the video capture via the delegate
     [self.delegate stopCapturePressed:^ {
         // Stop ignoring presses
-        self->_stopCapturePressesIgnored = NO;
+        _stopCapturePressesIgnored = NO;
     }];
 
 }
@@ -440,7 +439,7 @@
     // Tell the delegate to start capturing again
     [self.delegate retakePressed:^{
         // Stop ignoring presses
-        self->_retakePressesIgnored = NO;
+        _retakePressesIgnored = NO;
     }];
 }
 

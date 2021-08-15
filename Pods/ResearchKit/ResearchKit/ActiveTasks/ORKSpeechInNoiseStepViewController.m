@@ -34,12 +34,14 @@
 #import "ORKActiveStepView.h"
 #import "ORKActiveStepViewController_Internal.h"
 #import "ORKStepViewController_Internal.h"
+#import "ORKStepContainerView_Private.h"
 #import "ORKSpeechInNoiseContentView.h"
 #import "ORKSpeechInNoiseStep.h"
 
 #import "ORKCollectionResult_Private.h"
 #import "ORKHelpers_Internal.h"
 #import "ORKRoundTappingButton.h"
+#import "ORKPlaybackButton.h"
 #import "ORKSkin.h"
 
 #import <AVFoundation/AVFoundation.h>
@@ -74,9 +76,10 @@
     _installedTap = NO;
     self.speechInNoiseContentView = [[ORKSpeechInNoiseContentView alloc] init];
     self.activeStepView.activeCustomView = self.speechInNoiseContentView;
+    self.activeStepView.customContentFillsAvailableSpace = YES;
     _speechInNoiseContentView.alertColor = [UIColor blueColor];
     [self.speechInNoiseContentView.playButton addTarget:self action:@selector(tapButtonPressed) forControlEvents:UIControlEventTouchDown];
-    
+    [_speechInNoiseContentView setGraphViewHidden:[self speechInNoiseStep].hideGraphView];
     _audioEngine = [[AVAudioEngine alloc] init];
     _playerNode = [[AVAudioPlayerNode alloc] init];
     [_audioEngine attachNode:_playerNode];
@@ -156,11 +159,11 @@
             
             vDSP_maxmgv(channelData[0], 1 , &avgValue, nFrames);
             float lvlLowPassTrig = 0.3;
-            self->_peakPower = lvlLowPassTrig * ((avgValue == 0)? -100 : 20* log10(avgValue)) + (1 - lvlLowPassTrig) * _peakPower;
-            float clampedValue = MAX(self->self->_peakPower / 60.0, -1) + 1;
+            _peakPower = lvlLowPassTrig * ((avgValue == 0)? -100 : 20* log10(avgValue)) + (1 - lvlLowPassTrig) * _peakPower;
+            float clampedValue = MAX(_peakPower / 60.0, -1) + 1;
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self->_speechInNoiseContentView addSample:@(clampedValue)];
+                [_speechInNoiseContentView addSample:@(clampedValue)];
             });
         }
     }];
@@ -178,14 +181,14 @@
         if ([self speechInNoiseStep].willAudioLoop) {
             [_speechInNoiseContentView.playButton setTitle:ORKLocalizedString(@"SPEECH_IN_NOISE_STOP_AUDIO_LABEL", nil)
                              forState:UIControlStateNormal];
-            [_speechInNoiseContentView.playButton setNormalTintColor:[UIColor ork_redColor]];
+            [_speechInNoiseContentView.playButton setTintColor:[UIColor ork_redColor]];
         } else {
             ORKWeakTypeOf(self) weakSelf = self;
             [_speechInNoiseContentView.playButton setEnabled:NO];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_toneDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 ORKStrongTypeOf(weakSelf) strongSelf = weakSelf;
-                [self->_playerNode stop];
-                [self->_mixerNode removeTapOnBus:0];
+                [_playerNode stop];
+                [_mixerNode removeTapOnBus:0];
                 [strongSelf finish];
             });
         }

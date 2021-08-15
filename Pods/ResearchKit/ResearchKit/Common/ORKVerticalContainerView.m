@@ -265,14 +265,14 @@
         CGFloat visibleHeight = bounds.size.height - intersectionSize.height;
         
         // Keep track of the keyboard overlap, so we can adjust the constraint properly.
-        self->_keyboardOverlap = intersectionSize.height;
+        _keyboardOverlap = intersectionSize.height;
         
         // Trigger layout inside the animation block to get the constraint change to animate.
         [self layoutIfNeeded];
         
-        if (self->_keyboardIsUp) {
+        if (_keyboardIsUp) {
             
-            CGFloat contentMaxY = CGRectGetMaxY([self convertRect:self->_container.bounds fromView:_container]);
+            CGFloat contentMaxY = CGRectGetMaxY([self convertRect:_container.bounds fromView:_container]);
             
             // First compute the contentOffset.y that would make the continue and skip buttons visible
             CGFloat yOffset = MAX(contentMaxY - visibleHeight, 0);
@@ -280,7 +280,7 @@
             
             // If that yOffset would not make the stepView visible, override to align with the top of the stepView.
             CGRect potentialVisibleRect = (CGRect){{0,yOffset},{bounds.size.width,visibleHeight}};
-            CGRect targetBounds = [self convertRect:self->_stepView.bounds fromView:_stepView];
+            CGRect targetBounds = [self convertRect:_stepView.bounds fromView:_stepView];
             if (!CGRectContainsRect(potentialVisibleRect, targetBounds)) {
                 yOffset = targetBounds.origin.y;
             }
@@ -345,10 +345,7 @@
     _container.layoutMargins = layoutMargins;
 }
 
-- (void)updateConstraintConstantsForWindow:(UIWindow *)window {
-    const CGFloat StepViewBottomToContinueTop = ORKGetMetricForWindow(ORKScreenMetricContinueButtonTopMargin, window);
-    const CGFloat StepViewBottomToContinueTopForIntroStep = ORKGetMetricForWindow(ORKScreenMetricContinueButtonTopMarginForIntroStep, window);
-    
+- (void)updateConstraintConstantsForWindow:(UIWindow *)window {    
     {
         BOOL hasIllustration = (_imageView.image != nil);
         _headerView.hasContentAbove = hasIllustration;
@@ -358,18 +355,6 @@
         
         _illustrationHeightConstraint.constant = (_imageView.image ? IllustrationHeight : 0);
         _topToIllustrationConstraint.constant = (_imageView.image ?IllustrationTopMargin : 0);
-    }
-    
-    {
-        BOOL hasStepView = (_stepView != nil);
-
-        CGFloat continueSpacing = StepViewBottomToContinueTop;
-        if (self.continueHugsContent && !hasStepView) {
-            continueSpacing = 0;
-        }
-        if (self.stepViewFillsAvailableSpace) {
-            continueSpacing = StepViewBottomToContinueTopForIntroStep;
-        }
     }
     
     {

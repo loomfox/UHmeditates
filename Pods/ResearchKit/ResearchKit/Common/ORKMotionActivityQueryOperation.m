@@ -85,16 +85,16 @@
         BOOL changed = NO;
         
         // _currentAnchor will be NSNotFound on the first pass of the operation
-        if (self->_currentDate != nil) {
+        if (_currentDate != nil) {
             changed = YES;
             
             // Update the anchor if we have one
-            self->_collector.lastDate = _currentDate;
+            _collector.lastDate = _currentDate;
         }
         
-        lastDate = self->_collector.lastDate;
-        startDate = self->_collector.startDate;
-        itemIdentifier = self->_collector.identifier;
+        lastDate = _collector.lastDate;
+        startDate = _collector.startDate;
+        itemIdentifier = _collector.identifier;
         
         return changed;
     }];
@@ -111,12 +111,12 @@
         queryBeginDate = [NSDate distantPast];
     }
     
-    ORK_Log_Debug(@"\nMotion Query: %@\n", @{@"from": queryBeginDate, @"to":queryEndDate});
+    ORK_Log_Debug("\nMotion Query: %@\n", @{@"from": queryBeginDate, @"to":queryEndDate});
     
     // Run a single query up to current date
     [_manager.activityManager queryActivityStartingFromDate:queryBeginDate toDate:queryEndDate toQueue:_queue withHandler:^(NSArray<CMMotionActivity *> *activities, NSError *error) {
         ORKMotionActivityQueryOperation *op = weakSelf;
-        ORK_Log_Debug(@"\nMotion Query: %@\n", @{@"from": queryBeginDate, @"to":queryEndDate, @"returned count": @(activities.count)});
+        ORK_Log_Debug("\nMotion Query: %@\n", @{@"from": queryBeginDate, @"to":queryEndDate, @"returned count": @(activities.count)});
         [op handleResults:activities queryBegin:queryBeginDate queryEnd:queryEndDate error:error itemIdentifier:itemIdentifier];
     }];
     
@@ -165,10 +165,10 @@
         
         // Dispatch the results back to the data handler, if any
         [_manager onWorkQueueAsync:^BOOL(ORKDataCollectionManager *manager) {
-            id<ORKDataCollectionManagerDelegate> delegate = self->_manager.delegate;
+            id<ORKDataCollectionManagerDelegate> delegate = _manager.delegate;
             
             if (delegate && [delegate respondsToSelector:@selector(motionActivityCollector:didCollectMotionActivities:)]) {
-                handoutSuccess = [delegate motionActivityCollector:self->_collector didCollectMotionActivities:results];
+                handoutSuccess = [delegate motionActivityCollector:_collector didCollectMotionActivities:results];
             }
             
             dispatch_semaphore_signal(sem);
@@ -192,7 +192,7 @@
             
             // Store it on the collector
             [_manager onWorkQueueAsync:^BOOL(ORKDataCollectionManager *manager) {
-                self->_collector.lastDate = nextStartDate;
+                _collector.lastDate = nextStartDate;
                 return YES;
             }];
             
