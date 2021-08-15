@@ -169,6 +169,7 @@
 		4961D9E525BFD57A001DE248 = {
 			isa = PBXGroup;
 			children = (
+				4961D9F025BFD57A001DE248 /* UHmeditates */,
 				4961DA0725BFD57B001DE248 /* UHmeditatesTests */,
 				4961DA1225BFD57B001DE248 /* UHmeditatesUITests */,
 				4961D9EF25BFD57A001DE248 /* Products */,
@@ -222,7 +223,6 @@
 		4961DA3425BFD5AD001DE248 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4961D9F025BFD57A001DE248 /* UHmeditates */,
 				4D1A6F51A52C3025D26AE7F1 /* Pods_UHmeditates.framework */,
 				6DB3AB9F5F6F85A2C0955E70 /* Pods_UHmeditates_UHmeditatesUITests.framework */,
 				355BFA635E6F9D0ECAE52167 /* Pods_UHmeditatesTests.framework */,
