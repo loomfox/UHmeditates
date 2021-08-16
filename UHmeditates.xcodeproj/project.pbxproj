@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,15 +29,15 @@
 		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
 		D8009ADA2687593300EA99FD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009AD92687593300EA99FD /* Question.swift */; };
 		D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */; };
+		D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = D842755426C9ECB4006E6F99 /* CareKitFHIR */; };
+		D842755726C9ECB4006E6F99 /* CareKit in Frameworks */ = {isa = PBXBuildFile; productRef = D842755626C9ECB4006E6F99 /* CareKit */; };
+		D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */ = {isa = PBXBuildFile; productRef = D842755826C9ECB4006E6F99 /* CareKitStore */; };
+		D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = D842755A26C9ECB4006E6F99 /* CareKitUI */; };
 		D8AB8D6126C9DB1800D131F3 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6026C9DB1800D131F3 /* ConsentTask.swift */; };
 		D8AB8D6326C9DB3500D131F3 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6226C9DB3500D131F3 /* SurveyTask.swift */; };
 		D8AB8D6526C9DB4C00D131F3 /* Surveys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6426C9DB4C00D131F3 /* Surveys.swift */; };
 		D8AB8D6926C9DBAD00D131F3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6826C9DBAD00D131F3 /* Logger.swift */; };
 		D8AB8D6B26C9DC2E00D131F3 /* ParticipantFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6A26C9DC2E00D131F3 /* ParticipantFeedController.swift */; };
-		D8E092AE26C9DF0F00ABE192 /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E092AC26C9DF0F00ABE192 /* CareKit.framework */; };
-		D8E092AF26C9DF0F00ABE192 /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8E092AC26C9DF0F00ABE192 /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D8E092B026C9DF0F00ABE192 /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E092AD26C9DF0F00ABE192 /* CareKit.framework */; };
-		D8E092B126C9DF0F00ABE192 /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8E092AD26C9DF0F00ABE192 /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -60,21 +60,6 @@
 			remoteInfo = UHmeditates;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D8E092AB26C9DCCC00ABE192 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D8E092B126C9DF0F00ABE192 /* CareKit.framework in Embed Frameworks */,
-				D8E092AF26C9DF0F00ABE192 /* CareKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		02955D69263E4DBA00CA93D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -128,9 +113,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8E092B026C9DF0F00ABE192 /* CareKit.framework in Frameworks */,
-				D8E092AE26C9DF0F00ABE192 /* CareKit.framework in Frameworks */,
+				D842755726C9ECB4006E6F99 /* CareKit in Frameworks */,
+				D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */,
 				FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */,
+				D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */,
+				D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,13 +306,18 @@
 				4961D9EB25BFD57A001DE248 /* Frameworks */,
 				4961D9EC25BFD57A001DE248 /* Resources */,
 				E136A88DE6BD3E1B067F0119 /* [CP] Embed Pods Frameworks */,
-				D8E092AB26C9DCCC00ABE192 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = UHmeditates;
+			packageProductDependencies = (
+				D842755426C9ECB4006E6F99 /* CareKitFHIR */,
+				D842755626C9ECB4006E6F99 /* CareKit */,
+				D842755826C9ECB4006E6F99 /* CareKitStore */,
+				D842755A26C9ECB4006E6F99 /* CareKitUI */,
+			);
 			productName = UHmeditates;
 			productReference = 4961D9EE25BFD57A001DE248 /* UHmeditates.app */;
 			productType = "com.apple.product-type.application";
@@ -400,6 +392,9 @@
 				Base,
 			);
 			mainGroup = 4961D9E525BFD57A001DE248;
+			packageReferences = (
+				D842755326C9ECB4006E6F99 /* XCRemoteSwiftPackageReference "CareKit" */,
+			);
 			productRefGroup = 4961D9EF25BFD57A001DE248 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -909,6 +904,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D842755326C9ECB4006E6F99 /* XCRemoteSwiftPackageReference "CareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carekit-apple/CareKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D842755426C9ECB4006E6F99 /* CareKitFHIR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D842755326C9ECB4006E6F99 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitFHIR;
+		};
+		D842755626C9ECB4006E6F99 /* CareKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D842755326C9ECB4006E6F99 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKit;
+		};
+		D842755826C9ECB4006E6F99 /* CareKitStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D842755326C9ECB4006E6F99 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitStore;
+		};
+		D842755A26C9ECB4006E6F99 /* CareKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D842755326C9ECB4006E6F99 /* XCRemoteSwiftPackageReference "CareKit" */;
+			productName = CareKitUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4961D9E625BFD57A001DE248 /* Project object */;
 }
