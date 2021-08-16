@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Downloads/CareKit-main/CareKitUI/CareKitUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Downloads/CareKit-main/CareKitFHIR/CareKitFHIR.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Downloads/CareKit-main/CareKitStore/CareKitStore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Downloads/CareKit-main/CareKit/CareKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:UHmeditates.xcodeproj">
    </FileRef>
    <FileRef

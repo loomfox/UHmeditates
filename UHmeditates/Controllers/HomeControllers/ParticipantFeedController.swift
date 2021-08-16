@@ -12,7 +12,7 @@ import CareKitStore
 import ResearchKit
 import os.log
 
-class ParticipantTaskFeed: OCKDailyTasksPageViewController {
+class ParticipantTaskFeed: OCKDailyPageViewController {
     // OCKDailyTasksPageViewController shows the calendar and feed
     override func dailyPageViewController(_ dailyPageViewController: OCKDailyPageViewController,
                                           
