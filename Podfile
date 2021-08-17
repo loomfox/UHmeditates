@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.1'
 
+project '/Users/tylerboston/Documents/Xcode/Real Projects/UHmeditates/UHmeditates.xcworkspace' 
+
 target 'UHmeditates' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -11,7 +13,6 @@ target 'UHmeditates' do
    pod 'Firebase/Firestore'
    pod 'Firebase/Storage'
    pod 'Firebase/Core'
-   pod 'ResearchKit', :git => 'https://github.com/ResearchKit/ResearchKit.git', :branch => 'main'
    
   target 'UHmeditatesTests' do
     inherit! :search_paths

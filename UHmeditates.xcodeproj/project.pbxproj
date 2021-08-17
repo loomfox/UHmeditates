@@ -29,6 +29,8 @@
 		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
 		D8009ADA2687593300EA99FD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009AD92687593300EA99FD /* Question.swift */; };
 		D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */; };
+		D814F85726CA0A51007D744B /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D814F85426CA0A32007D744B /* ResearchKit.framework */; };
+		D814F85826CA0A51007D744B /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D814F85426CA0A32007D744B /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = D842755426C9ECB4006E6F99 /* CareKitFHIR */; };
 		D842755726C9ECB4006E6F99 /* CareKit in Frameworks */ = {isa = PBXBuildFile; productRef = D842755626C9ECB4006E6F99 /* CareKit */; };
 		D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */ = {isa = PBXBuildFile; productRef = D842755826C9ECB4006E6F99 /* CareKitStore */; };
@@ -59,7 +61,35 @@
 			remoteGlobalIDString = 4961D9ED25BFD57A001DE248;
 			remoteInfo = UHmeditates;
 		};
+		D814F85326CA0A32007D744B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		D814F85526CA0A32007D744B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D814F85926CA0A51007D744B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D814F85826CA0A51007D744B /* ResearchKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		02955D69263E4DBA00CA93D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -94,6 +124,7 @@
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8009AD92687593300EA99FD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationQuiz.swift; sourceTree = "<group>"; };
+		D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		D8AB8D6026C9DB1800D131F3 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		D8AB8D6226C9DB3500D131F3 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		D8AB8D6426C9DB4C00D131F3 /* Surveys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surveys.swift; sourceTree = "<group>"; };
@@ -115,6 +146,7 @@
 			files = (
 				D842755726C9ECB4006E6F99 /* CareKit in Frameworks */,
 				D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */,
+				D814F85726CA0A51007D744B /* ResearchKit.framework in Frameworks */,
 				FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */,
 				D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */,
 				D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */,
@@ -157,6 +189,7 @@
 		4961D9E525BFD57A001DE248 = {
 			isa = PBXGroup;
 			children = (
+				D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */,
 				4961D9F025BFD57A001DE248 /* UHmeditates */,
 				4961DA0725BFD57B001DE248 /* UHmeditatesTests */,
 				4961DA1225BFD57B001DE248 /* UHmeditatesUITests */,
@@ -229,6 +262,15 @@
 				F54C7B2B263E31CE0060582B /* ProfileControllers */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D814F84E26CA0A32007D744B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D814F85426CA0A32007D744B /* ResearchKit.framework */,
+				D814F85626CA0A32007D744B /* ResearchKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D8AB8D5E26C9D97600D131F3 /* Model */ = {
@@ -305,7 +347,8 @@
 				4961D9EA25BFD57A001DE248 /* Sources */,
 				4961D9EB25BFD57A001DE248 /* Frameworks */,
 				4961D9EC25BFD57A001DE248 /* Resources */,
-				E136A88DE6BD3E1B067F0119 /* [CP] Embed Pods Frameworks */,
+				0203AFFB11E292DE9D108457 /* [CP] Embed Pods Frameworks */,
+				D814F85926CA0A51007D744B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,7 +392,7 @@
 				4961DA0B25BFD57B001DE248 /* Sources */,
 				4961DA0C25BFD57B001DE248 /* Frameworks */,
 				4961DA0D25BFD57B001DE248 /* Resources */,
-				CB86845640A3B49EFA8D0B51 /* [CP] Embed Pods Frameworks */,
+				A31BD9FF4D24E3AB0B6576BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -397,6 +440,12 @@
 			);
 			productRefGroup = 4961D9EF25BFD57A001DE248 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D814F84E26CA0A32007D744B /* Products */;
+					ProjectRef = D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4961D9ED25BFD57A001DE248 /* UHmeditates */,
@@ -405,6 +454,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D814F85426CA0A32007D744B /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = D814F85326CA0A32007D744B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D814F85626CA0A32007D744B /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = D814F85526CA0A32007D744B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4961D9EC25BFD57A001DE248 /* Resources */ = {
@@ -437,6 +503,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0203AFFB11E292DE9D108457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates/Pods-UHmeditates-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates/Pods-UHmeditates-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UHmeditates/Pods-UHmeditates-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0927EB7D45FE46B9964E35CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,6 +564,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A31BD9FF4D24E3AB0B6576BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B7FD329D9E877592DD1B7F7F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,40 +601,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB86845640A3B49EFA8D0B51 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E136A88DE6BD3E1B067F0119 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates/Pods-UHmeditates-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UHmeditates/Pods-UHmeditates-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UHmeditates/Pods-UHmeditates-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
