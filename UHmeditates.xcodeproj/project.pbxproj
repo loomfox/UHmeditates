@@ -38,6 +38,8 @@
 		D8AB8D6526C9DB4C00D131F3 /* Surveys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6426C9DB4C00D131F3 /* Surveys.swift */; };
 		D8AB8D6926C9DBAD00D131F3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6826C9DBAD00D131F3 /* Logger.swift */; };
 		D8AB8D6B26C9DC2E00D131F3 /* ParticipantFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6A26C9DC2E00D131F3 /* ParticipantFeedController.swift */; };
+		D8E8A2C626CC51AE00D00178 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */; };
+		D8E8A2C726CC51AE00D00178 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -68,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D8E8A2C726CC51AE00D00178 /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +117,7 @@
 		D8AB8D6A26C9DC2E00D131F3 /* ParticipantFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantFeedController.swift; sourceTree = "<group>"; };
 		D8E092AC26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E092AD26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ResearchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
 		F5754A1F261263C40047A510 /* Week1Med2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med2Controller.swift; sourceTree = "<group>"; };
 		F5897C5F25E57877006511AF /* Week1Med1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1Med1Controller.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			files = (
 				D842755726C9ECB4006E6F99 /* CareKit in Frameworks */,
 				D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */,
+				D8E8A2C626CC51AE00D00178 /* ResearchKit.framework in Frameworks */,
 				FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */,
 				D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */,
 				D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */,
@@ -222,6 +227,7 @@
 		4961DA3425BFD5AD001DE248 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */,
 				D8E092AC26C9DF0F00ABE192 /* CareKit.framework */,
 				D8E092AD26C9DF0F00ABE192 /* CareKit.framework */,
 				4D1A6F51A52C3025D26AE7F1 /* Pods_UHmeditates.framework */,
@@ -402,6 +408,55 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				he,
+				en_AU,
+				ar,
+				el,
+				ja,
+				uk,
+				es_419,
+				zh_CN,
+				es,
+				pt_BR,
+				da,
+				it,
+				sk,
+				pt_PT,
+				ms,
+				sv,
+				cs,
+				ko,
+				no,
+				nb,
+				hu,
+				zh_HK,
+				tr,
+				pl,
+				zh_TW,
+				en_GB,
+				vi,
+				ru,
+				fr_CA,
+				fr,
+				fi,
+				id,
+				nl,
+				th,
+				ro,
+				hr,
+				hi,
+				ca,
+				"zh-Hant-HK",
+				pt,
+				"zh-Hans",
+				"zh-HK",
+				"en-GB",
+				"fr-CA",
+				"zh-Hant",
+				"en-AU",
+				"es-MX",
+				"pt-PT",
 			);
 			mainGroup = 4961D9E525BFD57A001DE248;
 			packageReferences = (
