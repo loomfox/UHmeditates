@@ -29,8 +29,6 @@
 		4961DA8725BFE3D5001DE248 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8625BFE3D5001DE248 /* ConsentViewController.swift */; };
 		D8009ADA2687593300EA99FD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009AD92687593300EA99FD /* Question.swift */; };
 		D8009ADC2687593D00EA99FD /* MeditationQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */; };
-		D814F85726CA0A51007D744B /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D814F85426CA0A32007D744B /* ResearchKit.framework */; };
-		D814F85826CA0A51007D744B /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D814F85426CA0A32007D744B /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = D842755426C9ECB4006E6F99 /* CareKitFHIR */; };
 		D842755726C9ECB4006E6F99 /* CareKit in Frameworks */ = {isa = PBXBuildFile; productRef = D842755626C9ECB4006E6F99 /* CareKit */; };
 		D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */ = {isa = PBXBuildFile; productRef = D842755826C9ECB4006E6F99 /* CareKitStore */; };
@@ -61,20 +59,6 @@
 			remoteGlobalIDString = 4961D9ED25BFD57A001DE248;
 			remoteInfo = UHmeditates;
 		};
-		D814F85326CA0A32007D744B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		D814F85526CA0A32007D744B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,7 +68,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D814F85826CA0A51007D744B /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,13 +107,11 @@
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8009AD92687593300EA99FD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationQuiz.swift; sourceTree = "<group>"; };
-		D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		D8AB8D6026C9DB1800D131F3 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		D8AB8D6226C9DB3500D131F3 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		D8AB8D6426C9DB4C00D131F3 /* Surveys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surveys.swift; sourceTree = "<group>"; };
 		D8AB8D6826C9DBAD00D131F3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D8AB8D6A26C9DC2E00D131F3 /* ParticipantFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantFeedController.swift; sourceTree = "<group>"; };
-		D8E092A826C9DCCC00ABE192 /* ResearchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ResearchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E092AC26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E092AD26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DC1A6579C898FE29484DF8 /* Pods-UHmeditates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates/Pods-UHmeditates.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,7 +127,6 @@
 			files = (
 				D842755726C9ECB4006E6F99 /* CareKit in Frameworks */,
 				D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */,
-				D814F85726CA0A51007D744B /* ResearchKit.framework in Frameworks */,
 				FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */,
 				D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */,
 				D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */,
@@ -189,7 +169,6 @@
 		4961D9E525BFD57A001DE248 = {
 			isa = PBXGroup;
 			children = (
-				D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */,
 				4961D9F025BFD57A001DE248 /* UHmeditates */,
 				4961DA0725BFD57B001DE248 /* UHmeditatesTests */,
 				4961DA1225BFD57B001DE248 /* UHmeditatesUITests */,
@@ -245,7 +224,6 @@
 			children = (
 				D8E092AC26C9DF0F00ABE192 /* CareKit.framework */,
 				D8E092AD26C9DF0F00ABE192 /* CareKit.framework */,
-				D8E092A826C9DCCC00ABE192 /* ResearchKit.framework */,
 				4D1A6F51A52C3025D26AE7F1 /* Pods_UHmeditates.framework */,
 				6DB3AB9F5F6F85A2C0955E70 /* Pods_UHmeditates_UHmeditatesUITests.framework */,
 				355BFA635E6F9D0ECAE52167 /* Pods_UHmeditatesTests.framework */,
@@ -262,15 +240,6 @@
 				F54C7B2B263E31CE0060582B /* ProfileControllers */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		D814F84E26CA0A32007D744B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D814F85426CA0A32007D744B /* ResearchKit.framework */,
-				D814F85626CA0A32007D744B /* ResearchKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D8AB8D5E26C9D97600D131F3 /* Model */ = {
@@ -440,12 +409,6 @@
 			);
 			productRefGroup = 4961D9EF25BFD57A001DE248 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D814F84E26CA0A32007D744B /* Products */;
-					ProjectRef = D814F84D26CA0A32007D744B /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4961D9ED25BFD57A001DE248 /* UHmeditates */,
@@ -454,23 +417,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D814F85426CA0A32007D744B /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = D814F85326CA0A32007D744B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D814F85626CA0A32007D744B /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = D814F85526CA0A32007D744B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4961D9EC25BFD57A001DE248 /* Resources */ = {
@@ -808,7 +754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = JK9LT4R4A2;
+				DEVELOPMENT_TEAM = QVD3TP56PF;
 				INFOPLIST_FILE = UHmeditates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -829,7 +775,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = JK9LT4R4A2;
+				DEVELOPMENT_TEAM = QVD3TP56PF;
 				INFOPLIST_FILE = UHmeditates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
