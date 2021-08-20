@@ -33,13 +33,12 @@
 		D842755726C9ECB4006E6F99 /* CareKit in Frameworks */ = {isa = PBXBuildFile; productRef = D842755626C9ECB4006E6F99 /* CareKit */; };
 		D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */ = {isa = PBXBuildFile; productRef = D842755826C9ECB4006E6F99 /* CareKitStore */; };
 		D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = D842755A26C9ECB4006E6F99 /* CareKitUI */; };
+		D8AB1E4E26D0173C00B05722 /* ParticipantHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB1E4D26D0173C00B05722 /* ParticipantHomeVC.swift */; };
 		D8AB8D6126C9DB1800D131F3 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6026C9DB1800D131F3 /* ConsentTask.swift */; };
 		D8AB8D6326C9DB3500D131F3 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6226C9DB3500D131F3 /* SurveyTask.swift */; };
 		D8AB8D6526C9DB4C00D131F3 /* Surveys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6426C9DB4C00D131F3 /* Surveys.swift */; };
 		D8AB8D6926C9DBAD00D131F3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6826C9DBAD00D131F3 /* Logger.swift */; };
 		D8AB8D6B26C9DC2E00D131F3 /* ParticipantFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6A26C9DC2E00D131F3 /* ParticipantFeedController.swift */; };
-		D8E8A2C626CC51AE00D00178 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */; };
-		D8E8A2C726CC51AE00D00178 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5754A1F261263C40047A510 /* Week1Med2Controller.swift */; };
 		F5897C6025E57877006511AF /* Week1Med1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* Week1Med1Controller.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
@@ -62,20 +61,6 @@
 			remoteInfo = UHmeditates;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D814F85926CA0A51007D744B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D8E8A2C726CC51AE00D00178 /* ResearchKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		02955D69263E4DBA00CA93D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -110,6 +95,7 @@
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8009AD92687593300EA99FD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D8009ADB2687593D00EA99FD /* MeditationQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationQuiz.swift; sourceTree = "<group>"; };
+		D8AB1E4D26D0173C00B05722 /* ParticipantHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantHomeVC.swift; sourceTree = "<group>"; };
 		D8AB8D6026C9DB1800D131F3 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		D8AB8D6226C9DB3500D131F3 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		D8AB8D6426C9DB4C00D131F3 /* Surveys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surveys.swift; sourceTree = "<group>"; };
@@ -131,7 +117,6 @@
 			files = (
 				D842755726C9ECB4006E6F99 /* CareKit in Frameworks */,
 				D842755926C9ECB4006E6F99 /* CareKitStore in Frameworks */,
-				D8E8A2C626CC51AE00D00178 /* ResearchKit.framework in Frameworks */,
 				FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */,
 				D842755B26C9ECB4006E6F99 /* CareKitUI in Frameworks */,
 				D842755526C9ECB4006E6F99 /* CareKitFHIR in Frameworks */,
@@ -291,6 +276,7 @@
 				F5897C5F25E57877006511AF /* Week1Med1Controller.swift */,
 				F5754A1F261263C40047A510 /* Week1Med2Controller.swift */,
 				D8AB8D6A26C9DC2E00D131F3 /* ParticipantFeedController.swift */,
+				D8AB1E4D26D0173C00B05722 /* ParticipantHomeVC.swift */,
 			);
 			path = HomeControllers;
 			sourceTree = "<group>";
@@ -323,7 +309,6 @@
 				4961D9EB25BFD57A001DE248 /* Frameworks */,
 				4961D9EC25BFD57A001DE248 /* Resources */,
 				0203AFFB11E292DE9D108457 /* [CP] Embed Pods Frameworks */,
-				D814F85926CA0A51007D744B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -627,6 +612,7 @@
 				D8AB8D6126C9DB1800D131F3 /* ConsentTask.swift in Sources */,
 				4961DA4C25BFD668001DE248 /* ProfileViewController.swift in Sources */,
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
+				D8AB1E4E26D0173C00B05722 /* ParticipantHomeVC.swift in Sources */,
 				4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */,
 				F5754A20261263C50047A510 /* Week1Med2Controller.swift in Sources */,
 				4961DA3925BFD5FF001DE248 /* HomeViewController.swift in Sources */,
@@ -818,7 +804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = UHYML.UHmeditates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -839,7 +825,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = UHYML.UHmeditates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
