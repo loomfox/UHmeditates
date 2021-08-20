@@ -1,7 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '14.1'
-
-project '/Users/tylerboston/Documents/Xcode/Real Projects/UHmeditates/UHmeditates.xcworkspace' 
+# platform :ios, '14.1'
 
 target 'UHmeditates' do
   # Comment the next line if you don't want to use dynamic frameworks
