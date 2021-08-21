@@ -7,8 +7,6 @@
 
 import UIKit
 import CareKit
-import CareKitStore
-import CareKitUI
 
 class ParticipantHomeVC: UIViewController {
     
@@ -16,10 +14,11 @@ class ParticipantHomeVC: UIViewController {
         super.viewDidLoad()
         
         let viewController = OCKDailyTasksPageViewController(storeManager: AppDelegate().storeManager)
-    
+        navigationController?.pushViewController(viewController, animated: false)
         
-        self.present(viewController, animated: true, completion: nil)
     }
+    
+    
     
     
 }
