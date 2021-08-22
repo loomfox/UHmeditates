@@ -131,7 +131,7 @@ struct Surveys {
         completionStep.title = "Congratulations!"
         completionStep.detailText = "You have just completed 1 of 3 daily tasks."
         
-        let surveyTask = ORKOrderedTask(identifier: "MeditationTask", steps: [instructionStep, formQuestionStep, completionStep])
+        let surveyTask = ORKOrderedTask(identifier: "PreSurvey", steps: [instructionStep, formQuestionStep, completionStep])
         
         return surveyTask
     }
@@ -151,7 +151,7 @@ struct Surveys {
                 .results?.compactMap({ $0 as? ORKTextQuestionResult }),
             
             //Searches the FornItems for the specific id of an item: ""
-            let painAnswer = textResults
+            let presurveyQ1Answer = textResults
                 .first(where: { $0.identifier == "PreSurvey.form.Q1" })?.textAnswer
                 
         else {
@@ -160,12 +160,11 @@ struct Surveys {
             return nil
         }
 
-        var painValue = OCKOutcomeValue(String(painAnswer))
+        var painValue = OCKOutcomeValue(String(presurveyQ1Answer))
         painValue.kind = "PreSurvey.form.Q1"
 
         print(painValue)
 
         return [painValue]
-            
     }
 }

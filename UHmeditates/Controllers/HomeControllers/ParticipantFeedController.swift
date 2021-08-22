@@ -122,12 +122,11 @@ class SurveyViewController: OCKInstructionsTaskViewController, ORKTaskViewContro
         
         let surveyViewController = ORKTaskViewController(task: Surveys.showMeditationSurvey(), taskRun: nil)
         surveyViewController.delegate = self
-        
-
+        // 3a
         present(surveyViewController, animated: true, completion: nil)
     }
     
-    // 3. This method will be called when the user completes the survey.
+    // 3b. This method will be called when the user completes the survey.
     // Extract the result and save it to CareKit's store!
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         taskViewController.dismiss(animated: true, completion: nil)

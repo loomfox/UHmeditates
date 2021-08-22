@@ -44,7 +44,7 @@ struct MeditationQuiz {
         Question(q: "Active", a: K.KMeditationQuiz().answerArray),
         Question(q: "Afraid", a: K.KMeditationQuiz().answerArray)]
     
-    var questionNumber = 0 // starting point for quiz
+    var questionNumber = 0 // starting point for quiz 
     static  var weekTitle = ""
     
     //MARK: Functions
