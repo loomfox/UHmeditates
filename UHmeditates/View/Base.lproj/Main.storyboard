@@ -411,16 +411,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cy-bI-D5g">
-                                <rect key="frame" x="49" y="51" width="317" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfW-Rh-7FP">
-                                <rect key="frame" x="207" y="524" width="46" height="30"/>
+                                <rect key="frame" x="184" y="635" width="46" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="abutton:" destination="xUf-sb-4yL" eventType="touchUpInside" id="ldQ-DP-SU0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Puv-d3-DPg">
+                                <rect key="frame" x="128" y="291" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Onboarding Task"/>
+                                <connections>
+                                    <action selector="onboardingTaskTapped:" destination="xUf-sb-4yL" eventType="touchUpInside" id="Cub-lb-vT9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3X-3h-dWC">
+                                <rect key="frame" x="128" y="410" width="150" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Meditation Task"/>
+                                <connections>
+                                    <action selector="meditationTaskTapped:" destination="xUf-sb-4yL" eventType="touchUpInside" id="bbc-cx-mzp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -428,13 +440,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="rYc-Js-UBR"/>
-                    <connections>
-                        <outlet property="progressBar" destination="5cy-bI-D5g" id="pIp-OZ-UJn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3u9-wy-xM2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3828" y="-182"/>
+            <point key="canvasLocation" x="-3797.1014492753625" y="-179.46428571428569"/>
         </scene>
         <!--Profile-->
         <scene sceneID="f9h-sY-XBa">
@@ -457,7 +466,7 @@
         <scene sceneID="dwK-4i-2mE">
             <objects>
                 <navigationController title="Participant Task Veed" id="tF8-Vp-WBd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="upG-Fb-1Eh"/>
+                    <tabBarItem key="tabBarItem" title="Daily Tasks" image="book.circle" catalog="system" id="upG-Fb-1Eh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3lg-6o-cqM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -505,7 +514,7 @@
         <!--Participant Task Feed-->
         <scene sceneID="Obg-tj-pyH">
             <objects>
-                <viewController id="usN-q2-tVI" customClass="ParticipantHomeVC" customModule="UHmeditates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParticipantFeedVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="usN-q2-tVI" customClass="ParticipantFeedController" customModule="UHmeditates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5NB-BN-DqZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -520,6 +529,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book.circle" catalog="system" width="128" height="121"/>
         <image name="checkmark.shield" catalog="system" width="128" height="118"/>
         <image name="face.smiling" catalog="system" width="128" height="121"/>
         <image name="homekit" catalog="system" width="128" height="106"/>

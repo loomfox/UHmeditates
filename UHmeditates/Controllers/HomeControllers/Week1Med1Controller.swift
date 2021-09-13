@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseCore
+import ResearchKit
 
 import AVKit
 
@@ -37,6 +38,16 @@ class Week1Med1Controller: UIViewController {
      }
      */
     
+    @IBAction func onboardingTaskTapped(_ sender: UIButton) {
+        let taskViewController = ORKTaskViewController(task: TaskComponents.showOnboardingSurvey(), taskRun: nil)
+        present(taskViewController, animated: true, completion: nil)
+        
+    }
+    @IBAction func meditationTaskTapped(_ sender: UIButton) {
+        let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)
+        present(taskViewController, animated: true, completion: nil)
+        
+    }
     
     @IBAction func abutton(_ sender: UIButton) { audioPlayer.play()
         

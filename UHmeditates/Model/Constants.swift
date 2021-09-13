@@ -12,19 +12,20 @@ struct K {
     
     //MARK: Storyboard Constants
     struct Storyboard{
+        
         static let homeViewController = "HomeVC"
         static let checkInController = "checkin"
     }
     
-    //MARK: MeditationQuiz Constants
-    struct KMeditationQuiz {
+    //MARK: Check In Survey Task Constants
+    struct CheckInSurveyTask {
         
         let answerArray: [String] = ["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely"]
     }
     
     struct TaskIDs {
-        static let onboarding = "onboarding"
-        static let checkIn = "checkin"
+        static let onboardingTaskID = "Onboarding"
+        static let checkInTaskID = "CheckInSurvey"
         
         private init() {}
     }
