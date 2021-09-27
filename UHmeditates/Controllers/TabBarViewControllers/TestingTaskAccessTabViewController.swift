@@ -1,5 +1,5 @@
 //
-//  Week1Med1Controller.swift
+//  TestingTaskAccessTabViewController.swift
 //  UHmeditates
 //
 //  Created by Piya Malhan on 2/23/21.
@@ -10,10 +10,11 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseCore
+import ResearchKit
 
 import AVKit
 
-class Week1Med1Controller: UIViewController {
+class TestingTaskAccessTabViewController: UIViewController {
     
     var audioPlayer:AVAudioPlayer = AVAudioPlayer()
     
@@ -37,6 +38,16 @@ class Week1Med1Controller: UIViewController {
      }
      */
     
+    @IBAction func onboardingTaskTapped(_ sender: UIButton) {
+        let taskViewController = ORKTaskViewController(task: TaskComponents.showOnboardingSurvey(), taskRun: nil)
+        present(taskViewController, animated: true, completion: nil)
+        
+    }
+    @IBAction func meditationTaskTapped(_ sender: UIButton) {
+        let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)
+        present(taskViewController, animated: true, completion: nil)
+        
+    }
     
     @IBAction func abutton(_ sender: UIButton) { audioPlayer.play()
         

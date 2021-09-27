@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  CommunicationsTabViewController.swift
 //  UHmeditates
 //
 //  Created by Chase Philip on 1/25/21.
@@ -7,7 +7,8 @@
 
 import UIKit
 import MessageUI
-class ProfileViewController: UIViewController {
+
+class CommunicationsTabViewController: UIViewController {
 
     let mailButton = UIButton()
         
@@ -43,7 +44,7 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    extension ProfileViewController: MFMailComposeViewControllerDelegate {
+    extension CommunicationsTabViewController: MFMailComposeViewControllerDelegate {
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
             if let _ = error {
                 controller.dismiss(animated: true, completion: nil)
