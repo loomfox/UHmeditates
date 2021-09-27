@@ -1,5 +1,5 @@
 //
-//  Week1Med1Controller.swift
+//  TestingTaskAccessTabViewController.swift
 //  UHmeditates
 //
 //  Created by Piya Malhan on 2/23/21.
@@ -14,7 +14,7 @@ import ResearchKit
 
 import AVKit
 
-class Week1Med1Controller: UIViewController {
+class TestingTaskAccessTabViewController: UIViewController {
     
     var audioPlayer:AVAudioPlayer = AVAudioPlayer()
     

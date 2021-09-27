@@ -7,21 +7,11 @@
 
 import UIKit
 import Firebase
-import CareKit
-import CareKitStore
+
 import os.log
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    
-    // MARK: 1.1: Create CareKit StoreManager & store
-    // Create storeManager to handle synchonization (instantiates all synchronized VCs) that wraps a store that holds data
-    let storeManager = OCKSynchronizedStoreManager(
-        wrapping: OCKStore(
-            name: "my-store",
-            type: .onDisk(protection: .none)))
-    
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -8,6 +8,7 @@
 
 import Foundation
 import ResearchKit
+
 struct K {
     
     //MARK: Storyboard Constants
@@ -22,7 +23,7 @@ struct K {
         
         let answerArray: [String] = ["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely"]
     }
-    
+    // MARK: Task Identifiers to prevent string related errors
     struct TaskIDs {
         static let onboardingTaskID = "Onboarding"
         static let checkInTaskID = "CheckInSurvey"

@@ -1,5 +1,5 @@
 //
-//  ConsentViewController.swift
+//  WeeklyTasksTabViewController.swift
 //  UHmeditates
 //
 //  Created by Chase Philip on 1/25/21.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-
-class ConsentViewController: UIViewController {
+class WeeklyTasksTabViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

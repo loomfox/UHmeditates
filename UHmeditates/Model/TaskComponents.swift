@@ -9,7 +9,7 @@
 // ❌ == Part Incomplete
 
 import ResearchKit
-import CareKitStore
+
 
 struct TaskComponents {
     
@@ -153,6 +153,7 @@ struct TaskComponents {
         var allPostQuestionItem = [ORKFormItem]()
         
         
+        // MARK: ✅ ORKStep 2 of 5: ORKFormStep for Pre Survey
         
         // Q#Item == Single question being added to the form
         let preQ1Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q1", text: QTC[0].text, answerFormat: QAF)
@@ -179,7 +180,7 @@ struct TaskComponents {
         // allPreQuestionItem == [ORKFormItem] that will be put into an ORKFormStep for the preSurvey
         allPreQuestionItem += [preQ1Item, preQ2Item, preQ3Item, preQ4Item, preQ5Item, preQ6Item, preQ7Item, preQ8Item, preQ9Item, preQ10Item, preQ11Item, preQ12Item, preQ13Item, preQ14Item, preQ15Item, preQ16Item, preQ17Item, preQ18Item, preQ191Item, preQ20Item]
         
-        // MARK: ✅ ORKStep 2 of 5: ORKFormStep for Pre Survey
+        
         let preFormStep = ORKFormStep(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form", title: "preSurvey Step", text: "This is the preSurvey ORKFormStep")
         preFormStep.isOptional = true
         preFormStep.formItems = allPreQuestionItem
@@ -188,10 +189,10 @@ struct TaskComponents {
         let url = "Replace with object that will change based on how many meditations left for the week"
         
         switch url {
-        case "Meditation Task 1/3" : "Then Load this Specific URL"
-        case "Meditation Task 2/3" : "Then Load this Specific URL"
-        case "Meditation Task 3/3" : "Then Load this Specific URL"
-        default: "Video obviously didn't load"
+        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
+        case "Meditation Task 2/3" : "Then Load this Specific Video File / URL"
+        case "Meditation Task 3/3" : "Then Load this Specific Video File / URL"
+        default: "Error Message: Video obviously didn't load"
         }
         
         let audioStep = ORKVideoInstructionStep(identifier: "\(K.TaskIDs.checkInTaskID).meditationAudio")
@@ -200,7 +201,8 @@ struct TaskComponents {
         audioStep.isOptional = true
         audioStep.videoURL = URL(string: url) // This isn't correct, needs to be pointing to a locally stored file.
         audioStep.thumbnailTime = 15 // Time in seconds at which the thumbnail image should be created
-        
+  
+        // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
         // Q#Item == Single question being added to the post survey form
         let postQ1Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q1", text: QTC[0].text, answerFormat: QAF)
         let postQ2Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q2", text: QTC[1].text, answerFormat: QAF)
@@ -226,7 +228,7 @@ struct TaskComponents {
         // allPostQuestionItem == [ORKFormItem] that will be put into an ORKFormStep for the PostSurvey
         allPostQuestionItem += [postQ1Item, postQ2Item, postQ3Item, postQ4Item, postQ5Item, postQ6Item, postQ7Item, postQ8Item, postQ9Item, postQ10Item, postQ11Item, postQ12Item, postQ13Item, postQ14Item, postQ15Item, postQ16Item, postQ17Item, postQ18Item, postQ191Item, postQ20Item]
         
-        // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
+        
         let postFormStep = ORKFormStep(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form", title: "postSurvey Step", text: "This is the PostSurvey ORKFormStep")
         postFormStep.isOptional = true
         postFormStep.formItems = allPostQuestionItem
@@ -249,37 +251,4 @@ struct TaskComponents {
     }
     
     
-    static func extractAnswersFromCheckInSurvey(
-        _ result: ORKTaskResult) -> [OCKOutcomeValue]? {
-        // MARK: STATUS: 🔴 - Not Working; unable to get answers
-            /// Not sure how to do to pull all the results from the pre and post survey form step
-            /// Code was copied from an example and tried to manipulate it to conform to our use case
-        
-        guard
-            //Taps into the ORKStepResult of ORKFormStep: id: "preSurvey.form"
-            let response = result.results?
-                .compactMap({ $0 as? ORKStepResult })
-                .first(where: { $0.identifier == "preSurvey.form" }),
-            
-            //Taps into the ORKStepResult and accesses all FormItems with ORKTextQuestion.Type
-            let textResults = response
-                .results?.compactMap({ $0 as? ORKTextQuestionResult }),
-    
-            //Searches the FornItems for the specific id of an item: ""
-            let preSurveyQ1Answer = textResults
-                .first(where: { $0.identifier == "preSurvey.form.Q1" })?.textAnswer
-                
-        else {
-            //If triggered, potential mispelling in string
-            assertionFailure("Failed to extract answers from check in survey!")
-            return nil
-        }
-
-        var painValue = OCKOutcomeValue(String(preSurveyQ1Answer))
-        painValue.kind = "preSurvey.form.Q1"
-
-        print(painValue)
-
-        return [painValue]
-    }
 }
