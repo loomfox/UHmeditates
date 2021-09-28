@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageUI
+import ResearchKit
 
 class CommunicationsTabViewController: UIViewController {
 
@@ -42,7 +43,13 @@ class CommunicationsTabViewController: UIViewController {
             composer.setMessageBody("Hi, I'd like to know ", isHTML: false)
             self.present(composer, animated: true, completion: nil)
         }
+    
+    @IBAction func withdrawFromStudy(_ sender: UIButton) {
+        
+        let taskViewController = ORKTaskViewController(task: TaskComponents.withdraw(), taskRun: nil)
+        present(taskViewController, animated: true, completion: nil)
     }
+}
 
     extension CommunicationsTabViewController: MFMailComposeViewControllerDelegate {
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

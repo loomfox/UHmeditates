@@ -59,14 +59,14 @@ struct TaskComponents {
         //MARK: STATUS: 🟢
         var onboardingSteps = [ORKStep]()
         
-        // MARK: ORKStep 1 of 4: ORKInstructionStep
+        // MARK: ✅ ORKStep 1 of 4: ORKInstructionStep
         let welcomeStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).welcome")
         welcomeStep.title = "Welcome to UHMeditates!"
         welcomeStep.detailText = "Thanks for joining the study, tap next to learn more about your role in the app"
         welcomeStep.image = UIImage(named: "Happy") // ommit if no need to for image
         onboardingSteps += [welcomeStep]
         
-        // MARK: ORKStep 2 of 4: ORKInstructionStep with ORKBodyItems
+        // MARK: ✅ ORKStep 2 of 4: ORKInstructionStep with ORKBodyItems
         let studyOverViewInstructionStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).overview")
         studyOverViewInstructionStep.title = "Overview"
         studyOverViewInstructionStep.image = UIImage(named: "Happy")
@@ -105,14 +105,12 @@ struct TaskComponents {
         
         studyOverViewInstructionStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour, pointFive]
         
-        // MARK: Notification Permissions to be Requested for Reminder Alerts
+        // MARK: ✅ ORKStep 3 of 4: ORKRequestPermissionsStep
         let notificationPermisisonType = ORKNotificationPermissionType(authorizationOptions: [.alert, .badge, .sound])
-        
-        // MARK: ORKStep 3 of 4: ORKRequestPermissionsStep
         let requestPermissionStep = ORKRequestPermissionsStep(identifier: "\(K.TaskIDs.onboardingTaskID).permissionRequestStep", permissionTypes: [notificationPermisisonType])
         onboardingSteps += [requestPermissionStep]
         
-        // MARK: ORKStep 4 of 4: ORKCompletionStep
+        // MARK: ✅ ORKStep 4 of 4: ORKCompletionStep
         let completionStep = ORKCompletionStep(identifier: "\(K.TaskIDs.onboardingTaskID).completion")
         completionStep.title = "Thanks for joining the study!"
         completionStep.detailText = "You are now ready to access the rest of the app!"
@@ -128,11 +126,10 @@ struct TaskComponents {
         // MARK: STATUS: 🟡 - Need to implement meditation audio step
         
         // MARK: ✅ Basic Components for both Pre and Post SurveyFormStep
-       
-        // QTC == Question Title Choices or basically the questions that require a response
+            // QTC == Question Title Choices or basically the questions that require a response
         let QTC = MeditationQuiz().form
         
-        // QAC == Question Answer Choice, it pulls text from a specific position in the K.KmeditationQuiz().answerArray
+            // QAC == Question Answer Choice, it pulls text from a specific position in the K.KmeditationQuiz().answerArray
         let QAC = [
             ORKTextChoice(text: K.CheckInSurveyTask().answerArray[0], value: 0 as NSNumber),
             ORKTextChoice(text: K.CheckInSurveyTask().answerArray[1], value: 1 as NSNumber),
@@ -250,5 +247,74 @@ struct TaskComponents {
         return surveyTask
     }
     
-    
+    static func withdraw() -> ORKTask {
+        //MARK: STATUS: 🟡
+        var withdrawalSteps = [ORKStep]()
+        
+        // MARK: 🔶 Question: How can we implement the firebase doc modification after the completion of the withdrawal task? 
+        
+        // MARK: ✅ ORKStep 1 of 4: ORKInstructionStep
+        let informativeStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).welcome")
+        informativeStep.title = "Template Title"
+        informativeStep.detailText = "Template Detail"
+        informativeStep.image = UIImage(named: "Sad") // ommit if no need to for image
+        withdrawalSteps += [informativeStep]
+        
+        // MARK: ✅ ORKStep 2 of 4: ORKInstructionStep with ORKBodyItems
+        let secondInformativeStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).overview")
+        secondInformativeStep.title = "Overview"
+        secondInformativeStep.image = UIImage(named: "Sad")
+        withdrawalSteps += [secondInformativeStep]
+        
+        // pointOne-Five are in useable state and will be populated with the right content later.
+        let pointOne = ORKBodyItem(
+            text: "1. Details about the withdrawal protocol", detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .image)
+        
+        let pointTwo = ORKBodyItem(
+            text: "2. Details about the withdrawal protocol", detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .image, useCardStyle: true)
+        
+        let pointThree = ORKBodyItem(
+            text: "3. Details about the withdrawal protocol", detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .horizontalRule)
+        
+        let pointFour = ORKBodyItem(
+            text: "4. Details about the withdrawal protocol", detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .text, useCardStyle: true)
+        
+        let pointFive = ORKBodyItem(
+            text: "5. Details about the withdrawal protocol", detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .tag)
+        
+        // MARK: ✅ ORKStep 3 of 4: ORK
+        secondInformativeStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour, pointFive]
+        let QAF = ORKTextAnswerFormat()
+        QAF.multipleLines = true
+        
+        // MARK: ✅ ORKStep 4 of 5: ORKCompletionStep
+        let feedbackStep = ORKQuestionStep(identifier: "feedback", title: "Optional Feedback to Help the Study Team", question: "Please provide any feedback or reasoning as to why you are withdrawing from the study. This will help the study team aims to collect and address and feedback provided to help shape future versions of the project. ", answer: QAF)
+       withdrawalSteps += [feedbackStep]
+        
+        // MARK: ✅ ORKStep 5 of 5: ORKCompletionStep
+        let completionStep = ORKCompletionStep(identifier: "\(K.TaskIDs.onboardingTaskID).completion")
+        completionStep.title = "Thanks for participating in the study!"
+        completionStep.detailText = "You may now delete the application and proceed with returning the Fitbit Device to the study team"
+        withdrawalSteps += [completionStep]
+        
+        // MARK: ✅ Last Step for Completion of Withdrawal Process
+        let surveyTask = ORKOrderedTask(identifier: K.TaskIDs.onboardingTaskID, steps: withdrawalSteps)
+        return surveyTask
+    }
+
 }

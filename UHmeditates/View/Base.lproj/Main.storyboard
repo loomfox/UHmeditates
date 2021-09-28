@@ -320,7 +320,6 @@
         <!--Test for Task Access-->
         <scene sceneID="hQy-2R-Gi9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="41m-Tt-jER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="3Za-eQ-fxz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Test for Task Access" image="homekit" catalog="system" selectedImage="homekit" id="eL6-Sp-Jlw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G7I-vr-DNh">
@@ -331,6 +330,7 @@
                         <segue destination="xUf-sb-4yL" kind="relationship" relationship="rootViewController" id="fO0-H0-v4r"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41m-Tt-jER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3796" y="-1651"/>
         </scene>
@@ -433,6 +433,19 @@
                     <view key="view" contentMode="scaleToFill" id="tDK-Av-hpW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VsT-P7-9Ot">
+                                <rect key="frame" x="111" y="512" width="194" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Withdraw From the Study">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="withdrawFromStudy:" destination="AAK-a2-kex" eventType="touchUpInside" id="V8R-Mf-VEQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="oRb-nm-Jjg"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </view>
