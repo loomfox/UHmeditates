@@ -26,7 +26,9 @@ struct K {
     // MARK: Task Identifiers to prevent string related errors
     struct TaskIDs {
         static let onboardingTaskID = "Onboarding"
+        static let offboardingTaskID = "Offboarding"
         static let checkInTaskID = "CheckInSurvey"
+        static let withdrawalTaskID = "Withdrawal"
         
         private init() {}
     }
