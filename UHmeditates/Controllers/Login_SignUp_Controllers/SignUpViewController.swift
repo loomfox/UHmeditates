@@ -21,7 +21,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var PasswordTextField: UITextField!
     
     
-
+    @IBOutlet weak var nextButton: UIButton!
+    
     
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -29,8 +30,15 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setUpElements()
     }
     
+    func setUpElements() {
+        
+        // Hide error label
+        errorLabel.alpha = 0
+    }
 
     /*
     // MARK: - Navigation
@@ -46,6 +54,7 @@ class SignUpViewController: UIViewController {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
     }
+    
     func validateFields() -> String? {
         
         // Check that all fields are filled in

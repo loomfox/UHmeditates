@@ -202,6 +202,7 @@
                         <outlet property="LastNameTextField" destination="WkZ-E0-2X6" id="k97-Aq-mDD"/>
                         <outlet property="PasswordTextField" destination="M7e-5K-iWh" id="nPG-A7-LGZ"/>
                         <outlet property="errorLabel" destination="RVA-TZ-oNs" id="r2H-o2-zMS"/>
+                        <outlet property="nextButton" destination="S2X-42-fFv" id="58j-kG-L6d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BZ-7E-Gdi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -223,7 +224,7 @@
                                 <rect key="frame" x="40" y="128" width="334" height="30"/>
                                 <state key="normal" title="join study"/>
                                 <connections>
-                                    <segue destination="iIK-Me-rRA" kind="show" id="Sp4-eS-w9i"/>
+                                    <action selector="joinStudyTapped:" destination="FMg-06-zyX" eventType="touchUpInside" id="d6b-wy-EjA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -244,22 +245,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqd-BO-eue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1971" y="-4153"/>
-        </scene>
-        <!--Consent View Controller-->
-        <scene sceneID="OVH-We-jIQ">
-            <objects>
-                <viewController id="iIK-Me-rRA" customClass="ConsentViewController" customModule="UHmeditates" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mjK-Rk-aa7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="m9R-bg-DkW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="74i-9t-Cae"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FGG-g2-g9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1204" y="-4153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c8e-hY-L9Y">

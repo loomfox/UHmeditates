@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setUpElements()
     }
     
 
@@ -37,9 +37,15 @@ class LoginViewController: UIViewController {
     }
     */
     
+    func setUpElements() {
+        
+        // Hide error label
+        errorLabel.alpha = 0
+    }
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
-        func transitionToApp() {
+         func transitionToApp() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)

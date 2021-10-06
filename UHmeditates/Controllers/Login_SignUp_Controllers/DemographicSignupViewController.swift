@@ -25,5 +25,18 @@ class DemographicSignupViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func joinStudyTapped(_ sender: UIButton) {
+        
+        func transitionToApp() {
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+           (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+           
+       
+       }
 
+
+       transitionToApp()
+    }
+    
 }
