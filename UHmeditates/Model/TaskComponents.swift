@@ -182,22 +182,29 @@ struct TaskComponents {
         preFormStep.isOptional = true
         preFormStep.formItems = allPreQuestionItem
         
-        // MARK: ❌ ORKStep 3 of 5: ORKVideoInstructionStep (Implemented but not correctly fetching video URL)
-        let url = "Replace with object that will change based on how many meditations left for the week"
+        // MARK: ❌ ORKStep 3 of 5: ORKVideoInstructionStep
         
-        switch url {
-        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
-        case "Meditation Task 2/3" : "Then Load this Specific Video File / URL"
-        case "Meditation Task 3/3" : "Then Load this Specific Video File / URL"
-        default: "Error Message: Video obviously didn't load"
-        }
+        /// The function works for presenting a video, now we just need to load in all the meditations and manage the rules for using the commented out switch case for determining which url video will be passed in depending on the check-in survey # or however we can figure out distinguishing it; maybe by the variables associated with the progress bar will work.
         
-        let audioStep = ORKVideoInstructionStep(identifier: "\(K.TaskIDs.checkInTaskID).meditationAudio")
-        audioStep.title = "This is an Audio Step"
-        audioStep.detailText = "This hasn't been implemented fully yet, but should feature a preloaded meditation audio based on the week / task"
-        audioStep.isOptional = true
-        audioStep.videoURL = URL(string: url) // This isn't correct, needs to be pointing to a locally stored file.
-        audioStep.thumbnailTime = 15 // Time in seconds at which the thumbnail image should be created
+        // create bundle path pointing to the file
+        let bundlePath = Bundle.main.path(forResource: "videoname", ofType: "videoFileType")
+        
+        // creating the url
+        let url = URL(fileURLWithPath: bundlePath!)
+        
+        //        switch url {
+        //        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
+        //        case "Meditation Task 2/3" : "Then Load this Specific Video File / URL"
+        //        case "Meditation Task 3/3" : "Then Load this Specific Video File / URL"
+        //        default: "Error Message: Video obviously didn't load"
+        //        }
+        
+        let meditationVideoStep = ORKVideoInstructionStep(identifier: "\(K.TaskIDs.checkInTaskID).meditationAudio")
+        meditationVideoStep.title = "This is an Audio Step"
+        meditationVideoStep.detailText = "This hasn't been implemented fully yet, but should feature a preloaded meditation audio based on the week / task"
+        meditationVideoStep.isOptional = true
+        meditationVideoStep.videoURL = url
+        meditationVideoStep.thumbnailTime = 15
         
         // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
         // Q#Item == Single question being added to the post survey form
@@ -240,7 +247,7 @@ struct TaskComponents {
         let surveyTask = ORKOrderedTask(identifier: K.TaskIDs.checkInTaskID,
                                         steps: [instructionStep,
                                                 preFormStep,
-                                                audioStep,
+                                                meditationVideoStep,
                                                 postFormStep,
                                                 completionStep])
         

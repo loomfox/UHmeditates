@@ -91,7 +91,7 @@
                                             <action selector="loginButtonTapped:" destination="ay3-28-HEs" eventType="touchUpInside" id="Cho-Jp-ylo"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Pass or Email incorrect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-ef-EhY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Pass or Email incorrect" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-ef-EhY">
                                         <rect key="frame" x="0.0" y="164" width="334" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
@@ -175,10 +175,9 @@
                                         <state key="normal" title="Next"/>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="Vjn-oL-3mK" eventType="touchUpInside" id="s4q-kE-DTy"/>
-                                            <segue destination="FMg-06-zyX" kind="show" id="wbg-1F-jri"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVA-TZ-oNs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVA-TZ-oNs">
                                         <rect key="frame" x="0.0" y="300" width="334" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
@@ -212,16 +211,16 @@
         <!--Demographic Signup View Controller-->
         <scene sceneID="zwP-lf-Wyk">
             <objects>
-                <viewController id="FMg-06-zyX" customClass="DemographicSignupViewController" customModule="UHmeditates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="joinStudyVC" id="FMg-06-zyX" customClass="DemographicSignupViewController" customModule="UHmeditates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="df9-Mc-aDo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QxX-5e-z9K">
-                                <rect key="frame" x="40" y="128" width="334" height="30"/>
+                                <rect key="frame" x="40" y="84" width="334" height="30"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEi-Pc-CRC">
-                                <rect key="frame" x="40" y="128" width="334" height="30"/>
+                                <rect key="frame" x="40" y="84" width="334" height="30"/>
                                 <state key="normal" title="join study"/>
                                 <connections>
                                     <action selector="joinStudyTapped:" destination="FMg-06-zyX" eventType="touchUpInside" id="d6b-wy-EjA"/>

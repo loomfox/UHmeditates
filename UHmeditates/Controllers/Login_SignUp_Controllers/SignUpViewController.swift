@@ -11,7 +11,7 @@ import Firebase
 import FirebaseCore
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var FirstNameTextField: UITextField!
     
     @IBOutlet weak var LastNameTextField: UITextField!
@@ -20,18 +20,15 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var PasswordTextField: UITextField!
     
-    
     @IBOutlet weak var nextButton: UIButton!
-    
     
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         setUpElements()
+        
     }
     
     func setUpElements() {
@@ -39,16 +36,7 @@ class SignUpViewController: UIViewController {
         // Hide error label
         errorLabel.alpha = 0
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     static func isPasswordValid(_ password : String) -> Bool {
         
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
@@ -107,8 +95,6 @@ class SignUpViewController: UIViewController {
                     let db = Firestore.firestore()
                     
                     db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
-                        
-                        
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
@@ -116,21 +102,24 @@ class SignUpViewController: UIViewController {
                     }
                     
                     // Transition to the home screen
-                //    self.transitionToHome()
+                    self.transitionToJoinStudyPage()
                 }
-                
             }
-            
-            
-            
         }
     }
     
+    func transitionToJoinStudyPage() {
+        
+        let homeViewController = storyboard?.instantiateViewController(identifier: "joinStudyVC") as? DemographicSignupViewController
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+        
+    }
     func showError(_ message:String) {
         
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    }
-    
+}
+
 

@@ -155,6 +155,7 @@
 		4961D9F025BFD57A001DE248 /* UHmeditates */ = {
 			isa = PBXGroup;
 			children = (
+				D8056E42270F3E5B00E5D896 /* Meditation Media */,
 				D8AB8D5E26C9D97600D131F3 /* Model */,
 				D8AB8D5F26C9D97F00D131F3 /* View */,
 				4961DA3C25BFD606001DE248 /* Controllers */,
@@ -203,6 +204,13 @@
 				F54C7B1C263E2FF40060582B /* Login_SignUp_Controllers */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D8056E42270F3E5B00E5D896 /* Meditation Media */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Meditation Media";
 			sourceTree = "<group>";
 		};
 		D8AB8D5E26C9D97600D131F3 /* Model */ = {
