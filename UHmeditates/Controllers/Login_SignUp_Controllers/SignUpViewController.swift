@@ -94,10 +94,20 @@ class SignUpViewController: UIViewController {
                     // User was created successfully, now store the first name and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
+                    // Within the users collection, create a firebase doc titled after the new users uniqueID
+                    db.collection("users").document("\(result!.user.uid)").setData([
+                                                                            "firstname":firstName,
+                                                                            "lastname":lastName,
+                                                                            "uid": result!.user.uid ])
+                    { (error) in
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
+                            // old code for generating a firebase document with randomized ID
+                            //                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
+                            //                        if error != nil {
+                            //                            // Show error message
+                            //                            self.showError("Error saving user data")
                         }
                     }
                     

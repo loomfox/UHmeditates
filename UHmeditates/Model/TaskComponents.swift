@@ -9,12 +9,13 @@
 // ❌ == Part Incomplete
 
 import ResearchKit
+import Firebase
+
 
 
 struct TaskComponents {
     
     private init () {}
-    
     
     // MARK: 🔶 QUESTION: Should I create a separate structure for the survey elements (pre, medAudio, and post) so it's easier to duplicate?
     struct MeditationQuiz {
@@ -253,7 +254,21 @@ struct TaskComponents {
         
         return surveyTask
     }
-    
+    static func  storeCheckInSurveyResults() {
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        let db = Firestore.firestore()
+        let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        // tempStorageDestination.setData([String : Any])
+        
+        // In final product, this is ideally how storing the results should be
+        let idealStorageDestination = db
+            .collection("users").document("usersUniqueIDObject")
+            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+        
+    }
     static func offboardingTask() -> ORKTask {
         //MARK: STATUS: 🟡
         var offboardingSteps = [ORKStep]()
@@ -344,6 +359,22 @@ struct TaskComponents {
         return surveyTask
     }
     
+    static func  storeOffboardingTaskResults() {
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        let db = Firestore.firestore()
+        let tempStorageDestination = db.collection("users").document("TestFeedbackStorage")
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        // tempStorageDestination.setData([String : Any])
+        
+        // In final product, this is ideally how storing the results should be
+        let idealStorageDestination = db
+            .collection("users").document("usersUniqueIDObject")
+            .collection("OffboardingSurveyFeedbackResults").document("FeedbackResults") // in the form of [FeedbackQuestion:usersText]
+        
+    }
+    
     static func withdraw() -> ORKTask {
         //MARK: STATUS: 🟡
         var withdrawalSteps = [ORKStep]()
@@ -414,4 +445,19 @@ struct TaskComponents {
         return surveyTask
     }
     
+    static func  storeWithdrawTaskResults() {
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        let db = Firestore.firestore()
+        let tempStorageDestination = db.collection("users").document("TestWithdrawFeedbackStorage")
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        // tempStorageDestination.setData([String : Any])
+        
+        // In final product, this is ideally how storing the results should be
+        let idealStorageDestination = db
+            .collection("users").document("usersUniqueIDObject")
+            .collection("WithdrawFeedbackResults").document("WithdrawFeedbackResults") // in the form of [WithdrawFeedbackQuestion:usersText]
+        
+    }
 }
