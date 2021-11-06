@@ -24,6 +24,9 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    public var currentUser = ""
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +39,7 @@ class SignUpViewController: UIViewController {
         // Hide error label
         errorLabel.alpha = 0
     }
+
     
     static func isPasswordValid(_ password : String) -> Bool {
         
@@ -64,6 +68,7 @@ class SignUpViewController: UIViewController {
         
         return nil
     }
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
         let error = validateFields()
         
@@ -92,6 +97,8 @@ class SignUpViewController: UIViewController {
                 else {
                     
                     // User was created successfully, now store the first name and last name
+                    self.currentUser = "\(email)"
+                    
                     let db = Firestore.firestore()
                     
                     // Within the users collection, create a firebase doc titled after the new users uniqueID

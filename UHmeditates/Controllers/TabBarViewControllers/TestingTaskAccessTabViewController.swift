@@ -14,7 +14,17 @@ import ResearchKit
 
 import AVKit
 
-class TestingTaskAccessTabViewController: UIViewController {
+
+class TestingTaskAccessTabViewController: UIViewController, ORKTaskViewControllerDelegate {
+    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        print("HERE")
+        let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
+        for result in preResults {
+            print("\(result.identifier) - \(result.answer ?? "null")")
+        }
+        taskViewController.dismiss(animated: true, completion: nil)
+    }
+    
     
     var audioPlayer:AVAudioPlayer = AVAudioPlayer()
     
@@ -39,14 +49,27 @@ class TestingTaskAccessTabViewController: UIViewController {
      */
     
     @IBAction func onboardingTaskTapped(_ sender: UIButton) {
+        
+    
+        
         let taskViewController = ORKTaskViewController(task: TaskComponents.showOnboardingSurvey(), taskRun: nil)
+        
+        taskViewController.delegate = self
         present(taskViewController, animated: true, completion: nil)
+        
+    
         
     }
+    
+    
+    
     @IBAction func meditationTaskTapped(_ sender: UIButton) {
         let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)
+        
+        taskViewController.delegate = self
         present(taskViewController, animated: true, completion: nil)
         
+    
     }
     
     @IBAction func abutton(_ sender: UIButton) { audioPlayer.play()

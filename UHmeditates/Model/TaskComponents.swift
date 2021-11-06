@@ -10,7 +10,7 @@
 
 import ResearchKit
 import Firebase
-
+import FirebaseAuth
 
 
 struct TaskComponents {
@@ -55,6 +55,7 @@ struct TaskComponents {
         ]
     }
     
+    let db = Firestore.firestore()
     
     static func showOnboardingSurvey() -> ORKTask {
         //MARK: STATUS: 🟢
@@ -191,7 +192,7 @@ struct TaskComponents {
         let bundlePath = Bundle.main.path(forResource: "videoname", ofType: "videoFileType")
         
         // creating the url
-        let url = URL(fileURLWithPath: bundlePath!)
+       // let url = URL(fileURLWithPath: bundlePath!)
         
         //        switch url {
         //        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
@@ -204,7 +205,7 @@ struct TaskComponents {
         meditationVideoStep.title = "This is an Audio Step"
         meditationVideoStep.detailText = "This hasn't been implemented fully yet, but should feature a preloaded meditation audio based on the week / task"
         meditationVideoStep.isOptional = true
-        meditationVideoStep.videoURL = url
+        // meditationVideoStep.videoURL = url
         meditationVideoStep.thumbnailTime = 15
         
         // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
@@ -254,6 +255,7 @@ struct TaskComponents {
         
         return surveyTask
     }
+    
     static func  storeCheckInSurveyResults() {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
@@ -261,14 +263,18 @@ struct TaskComponents {
         let db = Firestore.firestore()
         let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
         // Uncomment below code once the data can be captured in the required format of [String:Any]
-        // tempStorageDestination.setData([String : Any])
+        // tempStorageDestination.setData([:])
+        // db.child("users").child(User.uid).setValue(["username": username])
         
         // In final product, this is ideally how storing the results should be
         let idealStorageDestination = db
             .collection("users").document("usersUniqueIDObject")
             .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
         
+
     }
+    
+
     static func offboardingTask() -> ORKTask {
         //MARK: STATUS: 🟡
         var offboardingSteps = [ORKStep]()

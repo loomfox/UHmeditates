@@ -27,6 +27,7 @@
 		4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */; };
 		D8AB8D6526C9DB4C00D131F3 /* TaskComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6426C9DB4C00D131F3 /* TaskComponents.swift */; };
 		D8AB8D6B26C9DC2E00D131F3 /* DashboardTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6A26C9DC2E00D131F3 /* DashboardTabViewController.swift */; };
+		D8C0DDC32734B75200D82956 /* CheckInResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C0DDC22734B75200D82956 /* CheckInResult.swift */; };
 		F5897C6025E57877006511AF /* TestingTaskAccessTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5897C5F25E57877006511AF /* TestingTaskAccessTabViewController.swift */; };
 		F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */; };
 		FA4C4691B747B33573C06025 /* Pods_UHmeditates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A6F51A52C3025D26AE7F1 /* Pods_UHmeditates.framework */; };
@@ -80,6 +81,7 @@
 		6EF0EFE961926A9A90D3D818 /* Pods-UHmeditatesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditatesTests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditatesTests/Pods-UHmeditatesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8AB8D6426C9DB4C00D131F3 /* TaskComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskComponents.swift; sourceTree = "<group>"; };
 		D8AB8D6A26C9DC2E00D131F3 /* DashboardTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabViewController.swift; sourceTree = "<group>"; };
+		D8C0DDC22734B75200D82956 /* CheckInResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInResult.swift; sourceTree = "<group>"; };
 		D8E092AC26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E092AD26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E8A2C526CC51AE00D00178 /* ResearchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ResearchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +220,7 @@
 			children = (
 				F5DD5E5825E37A4E00C0A0A2 /* Constants.swift */,
 				D8AB8D6426C9DB4C00D131F3 /* TaskComponents.swift */,
+				D8C0DDC22734B75200D82956 /* CheckInResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				4961DA4C25BFD668001DE248 /* CommunicationsTabViewController.swift in Sources */,
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
 				4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */,
+				D8C0DDC32734B75200D82956 /* CheckInResult.swift in Sources */,
 				F5897C6025E57877006511AF /* TestingTaskAccessTabViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

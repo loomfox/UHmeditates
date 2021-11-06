@@ -34,8 +34,8 @@ class LoginViewController: UIViewController {
         
         func transitionToApp() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+                   let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                   (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
         }
         
         // TODO: Validate Text Fields
@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
             }
             else {
                 transitionToApp()
+                
                 
             }
         }

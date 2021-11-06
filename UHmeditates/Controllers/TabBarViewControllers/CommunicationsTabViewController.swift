@@ -8,17 +8,43 @@
 import UIKit
 import MessageUI
 import ResearchKit
+import Firebase
 
 class CommunicationsTabViewController: UIViewController {
 
+    func transitionToScreenAfterLaunch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               let mainTabBarController = storyboard.instantiateViewController(identifier: "ScreenAfterLaunch")
+               (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+    }
     let mailButton = UIButton()
         
         override func viewDidLoad() {
             super.viewDidLoad()
             setupButton()
+            
+            userLoggedIn.text = SignUpViewController().currentUser
         }
         
-        func setupButton() {
+    @IBAction func userTappedSignOut(_ sender: UIBarButtonItem) {
+        
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            
+          try firebaseAuth.signOut()
+            transitionToScreenAfterLaunch()
+        
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    @IBOutlet weak var userLoggedIn: UILabel!
+    
+    
+    
+    func setupButton() {
             view.addSubview(mailButton)
             mailButton.backgroundColor = .systemBlue
             mailButton.addTarget(self, action: #selector(showMailComposer), for: .touchUpInside)
