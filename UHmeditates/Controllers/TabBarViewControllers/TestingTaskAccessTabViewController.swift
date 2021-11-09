@@ -20,7 +20,8 @@ class TestingTaskAccessTabViewController: UIViewController, ORKTaskViewControlle
         print("HERE")
         let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
         for result in preResults {
-            print("\(result.identifier) - \(result.answer ?? "null")")
+            var resultIdentifier = "\(result.identifier) - \(result.answer ?? "null")"
+            TaskComponents.storeCheckInSurveyResults(item: resultIdentifier)
         }
         taskViewController.dismiss(animated: true, completion: nil)
     }
