@@ -17,11 +17,14 @@ import AVKit
 
 class TestingTaskAccessTabViewController: UIViewController, ORKTaskViewControllerDelegate {
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        print("HERE")
+       
+        
         let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
         for result in preResults {
-            var resultIdentifier = "\(result.identifier) - \(result.answer ?? "null")"
-            TaskComponents.storeCheckInSurveyResults(item: resultIdentifier)
+            var resultIdentifier = "\(result.identifier)"
+            var resultValue = "\(result.answer ?? "null")"
+           
+            TaskComponents.storeCheckInSurveyResults(resultID: resultIdentifier, resultValue: resultValue)
         }
         taskViewController.dismiss(animated: true, completion: nil)
     }

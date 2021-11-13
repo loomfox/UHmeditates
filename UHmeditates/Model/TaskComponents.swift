@@ -11,6 +11,7 @@
 import ResearchKit
 import Firebase
 import FirebaseAuth
+import FirebaseCore
 
 
 struct TaskComponents {
@@ -256,15 +257,16 @@ struct TaskComponents {
         return surveyTask
     }
     
-    static func  storeCheckInSurveyResults(item: String) {
+    static func  storeCheckInSurveyResults(resultID: String, resultValue: String) {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
         let db = Firestore.firestore()
         let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
         // Uncomment below code once the data can be captured in the required format of [String:Any]
-         tempStorageDestination.setData(["Test" : item])
-        print(item)
+        tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
+        
+        print("\(resultID) - \(resultValue)")
         // db.child("users").child(User.uid).setValue(["username": username])
         
         // In final product, this is ideally how storing the results should be
