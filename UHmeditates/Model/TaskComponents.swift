@@ -211,26 +211,26 @@ struct TaskComponents {
         
         // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
         // Q#Item == Single question being added to the post survey form
-        let postQ1Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q1", text: QTC[0].text, answerFormat: QAF)
-        let postQ2Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q2", text: QTC[1].text, answerFormat: QAF)
-        let postQ3Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q3", text: QTC[2].text, answerFormat: QAF)
-        let postQ4Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q4", text: QTC[3].text, answerFormat: QAF)
-        let postQ5Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q5", text: QTC[4].text, answerFormat: QAF)
-        let postQ6Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q6", text: QTC[5].text, answerFormat: QAF)
-        let postQ7Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q7", text: QTC[6].text, answerFormat: QAF)
-        let postQ8Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q8", text: QTC[7].text, answerFormat: QAF)
-        let postQ9Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q9", text: QTC[8].text, answerFormat: QAF)
-        let postQ10Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q10", text: QTC[9].text, answerFormat: QAF)
-        let postQ11Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q11", text: QTC[10].text, answerFormat: QAF)
-        let postQ12Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q12", text: QTC[11].text, answerFormat: QAF)
-        let postQ13Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q13", text: QTC[12].text, answerFormat: QAF)
-        let postQ14Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q14", text: QTC[13].text, answerFormat: QAF)
-        let postQ15Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q15", text: QTC[14].text, answerFormat: QAF)
-        let postQ16Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q16", text: QTC[15].text, answerFormat: QAF)
-        let postQ17Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q17", text: QTC[16].text, answerFormat: QAF)
-        let postQ18Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q18", text: QTC[17].text, answerFormat: QAF)
-        let postQ191Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q19", text: QTC[18].text, answerFormat: QAF)
-        let postQ20Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q20", text: QTC[19].text, answerFormat: QAF)
+        let postQ1Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q1", text: QTC[0].text, answerFormat: QAF)
+        let postQ2Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q2", text: QTC[1].text, answerFormat: QAF)
+        let postQ3Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q3", text: QTC[2].text, answerFormat: QAF)
+        let postQ4Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q4", text: QTC[3].text, answerFormat: QAF)
+        let postQ5Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q5", text: QTC[4].text, answerFormat: QAF)
+        let postQ6Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q6", text: QTC[5].text, answerFormat: QAF)
+        let postQ7Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q7", text: QTC[6].text, answerFormat: QAF)
+        let postQ8Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q8", text: QTC[7].text, answerFormat: QAF)
+        let postQ9Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q9", text: QTC[8].text, answerFormat: QAF)
+        let postQ10Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q10", text: QTC[9].text, answerFormat: QAF)
+        let postQ11Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q11", text: QTC[10].text, answerFormat: QAF)
+        let postQ12Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q12", text: QTC[11].text, answerFormat: QAF)
+        let postQ13Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q13", text: QTC[12].text, answerFormat: QAF)
+        let postQ14Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q14", text: QTC[13].text, answerFormat: QAF)
+        let postQ15Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q15", text: QTC[14].text, answerFormat: QAF)
+        let postQ16Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q16", text: QTC[15].text, answerFormat: QAF)
+        let postQ17Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q17", text: QTC[16].text, answerFormat: QAF)
+        let postQ18Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q18", text: QTC[17].text, answerFormat: QAF)
+        let postQ191Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q19", text: QTC[18].text, answerFormat: QAF)
+        let postQ20Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).postSurvey.form.Q20", text: QTC[19].text, answerFormat: QAF)
         
         // allPostQuestionItem == [ORKFormItem] that will be put into an ORKFormStep for the PostSurvey
         allPostQuestionItem += [postQ1Item, postQ2Item, postQ3Item, postQ4Item, postQ5Item, postQ6Item, postQ7Item, postQ8Item, postQ9Item, postQ10Item, postQ11Item, postQ12Item, postQ13Item, postQ14Item, postQ15Item, postQ16Item, postQ17Item, postQ18Item, postQ191Item, postQ20Item]
@@ -248,19 +248,20 @@ struct TaskComponents {
         
         // surveyTask == a subclass of ORKTask required to be returned by func
         let surveyTask = ORKOrderedTask(identifier: K.TaskIDs.checkInTaskID,
-                                        steps: [instructionStep,
-                                                preFormStep,
-                                                meditationVideoStep,
-                                                postFormStep,
-                                                completionStep])
+                                        steps: [instructionStep, //0
+                                                preFormStep, //1
+                                                meditationVideoStep, //2
+                                                postFormStep, //3
+                                                completionStep]) //4
         
         return surveyTask
     }
     
-    static func  storeCheckInSurveyResults(resultID: String, resultValue: String) {
+    static func  storeCheckInPreSurveyResults(resultID: String, resultValue: String) {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
+        // Here is the logic for storing the preSurvey, will need to expand the input parameters
         let db = Firestore.firestore()
         let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
         // Uncomment below code once the data can be captured in the required format of [String:Any]
@@ -276,7 +277,28 @@ struct TaskComponents {
         
 
     }
-    
+    static func  storeCheckInPostSurveyResults(resultID: String, resultValue: String, user: String) {
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        // Here is the logic for storing the preSurvey, will need to expand the input parameters
+        let db = Firestore.firestore()
+        let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        tempStorageDestination.updateData(["User Logged In:" : user,
+                                           "\(resultID)" : "\(resultValue)"])
+        
+        print("\(resultID) - \(resultValue)")
+        // db.child("users").child(User.uid).setValue(["username": username])
+        
+        // In final product, this is ideally how storing the results should be
+//        let idealStorageDestination = db
+//            .collection("users").document("usersUniqueIDObject")
+//            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+        
+
+    }
+
 
     static func offboardingTask() -> ORKTask {
         //MARK: STATUS: 🟡

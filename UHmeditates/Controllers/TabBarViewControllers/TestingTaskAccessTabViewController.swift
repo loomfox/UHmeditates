@@ -19,12 +19,36 @@ class TestingTaskAccessTabViewController: UIViewController, ORKTaskViewControlle
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
        
         
+//        if Auth.auth().currentUser != nil {
+//            // user is logged in
+//            var UserLoggedIn = Auth.auth().currentUser?.uid
+//        } else {
+//            // user is not logged in
+//            var UserLoggedIn = "No one is logged in: \(Auth.auth().currentUser?.uid)"
+//        }
+        let userID = Auth.auth().currentUser?.uid
+        
+        print("Here")
+        // once here, then I can navigate the heirarchy in console
+            // po taskViewController.result.startDate (time when the task started)
+            // po taskViewController.result.endDate (time when the task ends)
+        // for checking the postSurvey, I think I can do po taskViewController.result.results! and see whats in this array 
+        
+        
         let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
         for result in preResults {
             var resultIdentifier = "\(result.identifier)"
             var resultValue = "\(result.answer ?? "null")"
            
-            TaskComponents.storeCheckInSurveyResults(resultID: resultIdentifier, resultValue: resultValue)
+            TaskComponents.storeCheckInPreSurveyResults(resultID: resultIdentifier, resultValue: resultValue)
+        }
+        
+        let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
+        for result in postResults {
+            var resultIdentifier = "\(result.identifier)"
+            var resultValue = "\(result.answer ?? "null")"
+           
+            TaskComponents.storeCheckInPostSurveyResults(resultID: resultIdentifier, resultValue: resultValue, user: userID!)
         }
         taskViewController.dismiss(animated: true, completion: nil)
     }
