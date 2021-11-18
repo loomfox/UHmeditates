@@ -75,7 +75,9 @@ struct TaskComponents {
         studyOverViewInstructionStep.image = UIImage(named: "Happy")
         onboardingSteps += [studyOverViewInstructionStep]
         
-        // pointOne-Five are in useable state and will be populated with the right content later.
+        // MARK: 🔶 QUESTION 🔶: How can we implement a temporary break in the survey after ORKStep 2 of 4, to transition the user to the ETG game and once they complete the ETG, return them to ORKStep 3 of 4 so they can continue to completion of the OnBoardingSurvey? 
+        
+        // pointOne-Five are in useable state and will be populated with the right content late for ORKStep 2 of 4
         let pointOne = ORKBodyItem(
             text: "Probably should remind them of how their heart rate is collected and if need be, create another instruction step for rules/reminders}", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
@@ -107,6 +109,8 @@ struct TaskComponents {
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
         studyOverViewInstructionStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour, pointFive]
+        
+        
         
         // MARK: ✅ ORKStep 3 of 4: ORKRequestPermissionsStep
         let notificationPermisisonType = ORKNotificationPermissionType(authorizationOptions: [.alert, .badge, .sound])
@@ -268,7 +272,6 @@ struct TaskComponents {
         tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
         
         print("\(resultID) - \(resultValue)")
-        // db.child("users").child(User.uid).setValue(["username": username])
         
         // In final product, this is ideally how storing the results should be
 //        let idealStorageDestination = db
@@ -277,7 +280,7 @@ struct TaskComponents {
         
 
     }
-    static func  storeCheckInPostSurveyResults(resultID: String, resultValue: String, user: String) {
+    static func  storeCheckInPostSurveyResults(resultID: String, resultValue: String, user: String, start: String, end: String) {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
@@ -285,7 +288,9 @@ struct TaskComponents {
         let db = Firestore.firestore()
         let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
         // Uncomment below code once the data can be captured in the required format of [String:Any]
-        tempStorageDestination.updateData(["User Logged In:" : user,
+        tempStorageDestination.updateData(["Task Start:" : start,
+                                           "Task End:" : end,
+                                           "User Logged In:" : user,
                                            "\(resultID)" : "\(resultValue)"])
         
         print("\(resultID) - \(resultValue)")

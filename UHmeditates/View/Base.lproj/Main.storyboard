@@ -402,12 +402,48 @@
                     <view key="view" contentMode="scaleToFill" id="Js3-CG-Sam">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zy6-k1-beH">
+                                <rect key="frame" x="136" y="141" width="142" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="1st Survey Button "/>
+                                <connections>
+                                    <action selector="firstButton:" destination="n05-NJ-DL9" eventType="touchUpInside" id="2nQ-jF-5Ha"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifh-DA-bGo">
+                                <rect key="frame" x="136" y="239" width="144" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="2nd Survey Button"/>
+                                <connections>
+                                    <action selector="secondButton:" destination="n05-NJ-DL9" eventType="touchUpInside" id="WiZ-wM-GBr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epy-nZ-Olg">
+                                <rect key="frame" x="174" y="629" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djR-tT-7fH">
+                                <rect key="frame" x="137" y="348" width="141" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="3rd Survey Button"/>
+                                <connections>
+                                    <action selector="thirdButton:" destination="n05-NJ-DL9" eventType="touchUpInside" id="2EX-LL-u4A"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vdd-bd-pkM"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Weekly Tasks" id="O4Z-LP-QY2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cV3-7s-s6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="n05-NJ-DL9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2759" y="-964"/>
         </scene>
@@ -430,8 +466,22 @@
                                     <action selector="withdrawFromStudy:" destination="AAK-a2-kex" eventType="touchUpInside" id="V8R-Mf-VEQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UID " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQr-am-ThU">
+                                <rect key="frame" x="94" y="189" width="211" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD2-lD-p9M">
+                                <rect key="frame" x="94" y="246" width="211" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User: Logged In" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0S-rW-e09">
-                                <rect key="frame" x="175" y="286" width="121" height="21"/>
+                                <rect key="frame" x="94" y="121" width="211" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -442,6 +492,14 @@
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </view>
                     <navigationItem key="navigationItem" title="Communications" id="vwg-Hl-AAd">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="0gN-81-MDw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="L57-nT-sPe">
+                                <rect key="frame" x="20" y="5" width="75" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="6f4-fO-qrz">
                             <connections>
                                 <action selector="userTappedSignOut:" destination="AAK-a2-kex" id="R8F-ND-cBg"/>
@@ -449,12 +507,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="userLoggedIn" destination="X0S-rW-e09" id="kaX-Lf-fxc"/>
+                        <outlet property="userEmail" destination="uD2-lD-p9M" id="u9v-dy-wvm"/>
+                        <outlet property="userLabel" destination="X0S-rW-e09" id="l5J-Vg-lmx"/>
+                        <outlet property="userUID" destination="AQr-am-ThU" id="ufH-qr-otJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqs-N7-M4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-903" y="-964"/>
+            <point key="canvasLocation" x="-904.34782608695662" y="-964.28571428571422"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="Obg-tj-pyH">
