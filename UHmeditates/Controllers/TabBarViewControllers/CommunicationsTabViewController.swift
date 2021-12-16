@@ -26,12 +26,20 @@ class CommunicationsTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userLabel.layer.borderWidth = 1
+        userUID.layer.borderWidth = 1
+        userEmail.layer.borderWidth = 1
+        userEmail.layer.borderColor = UIColor.black.cgColor
+        
         
         
         setupButton()
-        userLabel.text = Auth.auth().currentUser?.displayName
-        userUID.text = Auth.auth().currentUser?.uid
-        userEmail.text = Auth.auth().currentUser?.email
+        if let user = Auth.auth().currentUser {
+            userLabel.text = "Current User: \(user.uid)"
+//            userUID.text = "User ID: \(user.uid)"
+            userEmail.text = "User Email: \(user.email ?? "None")"
+        }
+        
         
     }
     

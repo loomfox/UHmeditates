@@ -75,7 +75,7 @@ struct TaskComponents {
         studyOverViewInstructionStep.image = UIImage(named: "Happy")
         onboardingSteps += [studyOverViewInstructionStep]
         
-        // MARK: 🔶 QUESTION 🔶: How can we implement a temporary break in the survey after ORKStep 2 of 4, to transition the user to the ETG game and once they complete the ETG, return them to ORKStep 3 of 4 so they can continue to completion of the OnBoardingSurvey? 
+        // MARK: 🔶 QUESTION 🔶: How can we implement a temporary break in the survey after ORKStep 2 of 4, to transition the user to the ETG game and once they complete the ETG, return them to ORKStep 3 of 4 so they can continue to completion of the OnBoardingSurvey?
         
         // pointOne-Five are in useable state and will be populated with the right content late for ORKStep 2 of 4
         let pointOne = ORKBodyItem(
@@ -197,7 +197,7 @@ struct TaskComponents {
         let bundlePath = Bundle.main.path(forResource: "videoname", ofType: "videoFileType")
         
         // creating the url
-       // let url = URL(fileURLWithPath: bundlePath!)
+        // let url = URL(fileURLWithPath: bundlePath!)
         
         //        switch url {
         //        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
@@ -261,32 +261,55 @@ struct TaskComponents {
         return surveyTask
     }
     
-    static func  storeCheckInPreSurveyResults(resultID: String, resultValue: String) {
+    
+    static func verifyDocExist(docTitle: String, completion: @escaping (Bool) -> Void) {
+        
+        let docRef = Firestore.firestore().collection("users").document(docTitle)
+        
+        docRef.getDocument { (doc, error) in
+            if let doc = doc, doc.exists {
+                completion(true)
+            } else {
+                completion(false)
+            }
+            
+        }
+        
+    }
+    
+    static func createDoc(docTitle: String) {
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(docTitle).setData(["survey" : docTitle])
+        
+    }
+    static func storeCheckInPreSurveyResults(docTitle: String, resultID: String, resultValue: String) {
+        
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
         // Here is the logic for storing the preSurvey, will need to expand the input parameters
         let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
+        let tempStorageDestination = db.collection("users").document(docTitle)
         // Uncomment below code once the data can be captured in the required format of [String:Any]
-        tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
-        
-        print("\(resultID) - \(resultValue)")
+        tempStorageDestination.updateData([resultID : resultValue])
+//        tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
+        print(resultID + "& \(resultValue)")
         
         // In final product, this is ideally how storing the results should be
-//        let idealStorageDestination = db
-//            .collection("users").document("usersUniqueIDObject")
-//            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+        //        let idealStorageDestination = db
+        //            .collection("users").document("usersUniqueIDObject")
+        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
         
-
+        
     }
-    static func  storeCheckInPostSurveyResults(resultID: String, resultValue: String, user: String, start: String, end: String) {
+    static func  storeCheckInPostSurveyResults(docTitle: String, resultID: String, resultValue: String, user: String, start: String, end: String) {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
         // Here is the logic for storing the preSurvey, will need to expand the input parameters
         let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document("TestCheckinSurveyStorage")
+        let tempStorageDestination = db.collection("users").document(docTitle)
         // Uncomment below code once the data can be captured in the required format of [String:Any]
         tempStorageDestination.updateData(["Task Start:" : start,
                                            "Task End:" : end,
@@ -297,14 +320,14 @@ struct TaskComponents {
         // db.child("users").child(User.uid).setValue(["username": username])
         
         // In final product, this is ideally how storing the results should be
-//        let idealStorageDestination = db
-//            .collection("users").document("usersUniqueIDObject")
-//            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+        //        let idealStorageDestination = db
+        //            .collection("users").document("usersUniqueIDObject")
+        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
         
-
+        
     }
-
-
+    
+    
     static func offboardingTask() -> ORKTask {
         //MARK: STATUS: 🟡
         var offboardingSteps = [ORKStep]()

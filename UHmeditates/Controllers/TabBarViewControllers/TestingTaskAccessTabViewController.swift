@@ -28,7 +28,7 @@ class TestingTaskAccessTabViewController: UIViewController, ORKTaskViewControlle
             var resultIdentifier = "\(result.identifier)"
             var resultValue = "\(result.answer ?? "null")"
            
-            TaskComponents.storeCheckInPreSurveyResults(resultID: resultIdentifier, resultValue: resultValue)
+            TaskComponents.storeCheckInPreSurveyResults(docTitle: "test", resultID: resultIdentifier, resultValue: resultValue)
         }
         
         let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
@@ -37,7 +37,7 @@ class TestingTaskAccessTabViewController: UIViewController, ORKTaskViewControlle
             var resultIdentifier = "\(result.identifier)"
             var resultValue = "\(result.answer ?? "null")"
            
-            TaskComponents.storeCheckInPostSurveyResults(resultID: resultIdentifier, resultValue: resultValue, user: userID!, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
+            TaskComponents.storeCheckInPostSurveyResults(docTitle: "test", resultID: resultIdentifier, resultValue: resultValue, user: userID!, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
         }
         taskViewController.dismiss(animated: true, completion: nil)
     }
