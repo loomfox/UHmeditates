@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let storyboard = UIStoryboard(name:"Main",bundle: nil)
+        let storyboard = UIStoryboard(name:"Main", bundle: nil)
         
         if UserDefaults.standard.string(forKey: "username") != nil {
                 // instantiate the main tab bar controller and set it as root view controller

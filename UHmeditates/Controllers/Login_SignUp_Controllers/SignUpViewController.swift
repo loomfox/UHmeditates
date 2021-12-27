@@ -9,8 +9,19 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseCore
+import ResearchKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
+    
+    func transitionToApp() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+               (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+    }
+    
+    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        transitionToApp()
+    }
     
     @IBOutlet weak var FirstNameTextField: UITextField!
     
@@ -100,12 +111,15 @@ class SignUpViewController: UIViewController {
                     self.currentUser = "\(email)"
                     
                     let db = Firestore.firestore()
-                    
+                
                     // Within the users collection, create a firebase doc titled after the new users uniqueID
                     db.collection("users").document("\(result!.user.uid)").setData([
                                                                             "firstname":firstName,
                                                                             "lastname":lastName,
-                                                                            "uid": result!.user.uid ])
+                                                                            "uid": result!.user.uid,
+                                                                            "Email": result!.user.email,
+                                                                            "Surveys Complete": 0,
+                                                                            "Surveys Complete This Week": 0])
                     { (error) in
                         if error != nil {
                             // Show error message
@@ -127,9 +141,16 @@ class SignUpViewController: UIViewController {
     
     func transitionToJoinStudyPage() {
         
-        let homeViewController = storyboard?.instantiateViewController(identifier: "joinStudyVC") as? DemographicSignupViewController
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
+//        let homeViewController = storyboard?.instantiateViewController(identifier: "joinStudyVC") as? DemographicSignupViewController
+//        view.window?.rootViewController = homeViewController
+//        view.window?.makeKeyAndVisible()
+        
+        let taskViewController = ORKTaskViewController(task: TaskComponents.showOnboardingSurvey(), taskRun: nil)
+        
+        taskViewController.delegate = self
+        taskViewController.modalPresentationStyle = .fullScreen
+        present(taskViewController, animated: true, completion: nil)
+        
         
     }
     func showError(_ message:String) {

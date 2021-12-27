@@ -15,24 +15,51 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import ResearchKit
+import FirebaseFirestore
 
-class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDelegate {
+class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORKTaskViewControllerDelegate {
+  
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+        return surveysCompleteToDate
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellID = "ReusableCellId"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) else {
+            return UITableViewCell()
+        }
+        let survey = surveys[indexPath.row]
+        cell.textLabel?.text = survey["title"]
+        cell.detailTextLabel?.text = survey["date"]
+        return cell
+    }
+    
     
     // MARK: Variables that'll potentially be stored as UserDefaults
     var isOnboardingComplete = false
-    var surveysCompleteToDate = 4
-    
+    var surveysCompleteToDate = 2 // MARK: Implement listener from firebase here, & have this variable created at signup
+    var surveysCompleteThisWeek = 0
+    let totalStudySurveys = 24
+
+    var surveys = [
+        ["title": "1", "date": "12/15"],
+        ["title": "2", "date": "12/16"]
+    ]
+    let arrayTitle = ["Survey Uno", "Survey Dos", "Survey Tres"]
+    let arrayDetailText = ["Date uno", "Date Dos", "Date tres"]
     
     // MARK: Button outlets
     @IBOutlet weak var buttonOneO: UIButton!
-    @IBOutlet weak var buttonTwoO: UIButton!
-    @IBOutlet weak var buttonThreeO: UIButton!
+    @IBOutlet var progressBarOutlet: UIView!
+    
+    @IBOutlet weak var theTableView: UITableView!
     
     // MARK: ORKTaskVC Dismiss
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         
         let userID = Auth.auth().currentUser?.uid
-        var docTitle = "SurveyNum" + "\(surveysCompleteToDate)"
+        let docTitle = "SurveyNum" + "\(surveysCompleteToDate)"
         
         TaskComponents.verifyDocExist(docTitle: docTitle) { doesExist in
             if doesExist == false {
@@ -44,8 +71,8 @@ class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDeleg
                 
                 // Loop of assigning pre results ID and answer values
                 for result in preResults {
-                    var resultIdentifier = "\(result.identifier)"
-                    var resultValue = "\(result.answer ?? "null")"
+                    let resultIdentifier = "\(result.identifier)"
+                    let resultValue = "\(result.answer ?? "null")"
                     
                     // Storing the answers in a looped process
                     TaskComponents.storeCheckInPreSurveyResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
@@ -54,8 +81,8 @@ class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDeleg
                 let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
                 for result in postResults {
                     
-                    var resultIdentifier = "\(result.identifier)"
-                    var resultValue = "\(result.answer ?? "null")"
+                    let resultIdentifier = "\(result.identifier)"
+                    let resultValue = "\(result.answer ?? "null")"
                     
                     TaskComponents.storeCheckInPostSurveyResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, user: userID!, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
                 }
@@ -63,36 +90,7 @@ class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDeleg
                 print("Does exist, no write made to db")
             }
         }
-//       if TaskComponents.verifyDocExist(docTitle: docTitle, completion: (Bool) -> Void) {
-//
-//            print(docTitle)
-//
-//            let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
-//            // Loop of assigning pre results ID and answer values
-//            for result in preResults {
-//                var resultIdentifier = "\(result.identifier)"
-//                var resultValue = "\(result.answer ?? "null")"
-//
-//                // Storing the answers in a looped process
-//                TaskComponents.storeCheckInPreSurveyResults(docTitle: "SurveyNum" + "\(surveysCompleteToDate + 1)", resultID: resultIdentifier, resultValue: resultValue)
-//            }
-//
-//            let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
-//            for result in postResults {
-//
-//                var resultIdentifier = "\(result.identifier)"
-//                var resultValue = "\(result.answer ?? "null")"
-//
-//                TaskComponents.storeCheckInPostSurveyResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, user: userID!, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
-//            }
-//
-//        } else if TaskComponents.verifyDocExist(docTitle: docTitle, completion: (Bool) -> Void) {
-//            print("Document already exists, results will not be saved")
-//
-//        } else {
-//            print("Verify doc didn't return an actual string ")
-//        }
-       
+        
         
         if taskViewController.result.results != nil {
             //surveysCompleteToDate += 1
@@ -112,7 +110,55 @@ class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDeleg
         // MARK: Insert Fxn here for checking document
         
         // MARK: Insert Fxn here for modifying button visibility
+        
+        theTableView.layer.borderWidth = 1.0
+        theTableView.layer.cornerRadius = 5.0
+        
+        
+        
+        setupHomeScreen()
+        
+        
+        
     }
+    
+//    func getSurveysComplete () -> String {
+//
+//
+//        //var keysValue: String
+//
+////        let postsRef = db.collection("posts")
+////                let query = postsRef.whereField("UID", isEqualTo: Auth.auth().currentUser?.uid)
+////                query.getDocuments(){ (querySnapshot, err) in
+////                    if let err = err {
+////                        print("Error getting documents: \(err)")
+////                    } else {
+////                        self.numberOfPosts = querySnapshot!.count
+////                        print("number of posts: \(self.numberOfPosts)")
+////                        for document in querySnapshot!.documents {
+////                            let dataDescription = document.data().map(String.init(describing:)).sorted(by: >)
+////
+////                            print(dataDescription["postScore"])
+////                        }
+////                    }
+////                }
+//
+//        //MARK: Firestore Ops
+//
+////        let db = Firestore.firestore()
+////
+////        let docRef = db.collection("users").document("SurveyNum4")
+////
+////        docRef.getDocument { (document, error) in
+////            if let document = document, document.exists {
+////                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+////                print("Document data: \(dataDescription)")
+////            } else {
+////                print("Document does not exist")
+////            }
+////        }
+//        return keysValue
+//    }
     
     // MARK: Button Actions
     @IBAction func buttonOneAction(_ sender: UIButton) {
@@ -120,16 +166,9 @@ class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDeleg
         let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)
         
         taskViewController.delegate = self
+        taskViewController.modalPresentationStyle = .fullScreen
         present(taskViewController, animated: true, completion: nil)
         
-        
-    }
-    
-    @IBAction func buttonTwoAction(_ sender: UIButton) {
-    
-    }
-    
-    @IBAction func buttonThreeAction(_ sender: UIButton) {
         
     }
     
@@ -161,7 +200,10 @@ class WeeklyTasksTabViewController: UIViewController, ORKTaskViewControllerDeleg
         
         // ⚠️ : Hide all user instructions and onboarding button
         
-        // ⚠️ : Show all survey button elements
+        // ⚠️ : Show all survey button element
+        
+        
+        buttonOneO.setTitle("Check In Survey #\(surveysCompleteToDate + 1)", for: .normal)
     }
     
 }

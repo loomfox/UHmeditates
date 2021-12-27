@@ -75,8 +75,6 @@ struct TaskComponents {
         studyOverViewInstructionStep.image = UIImage(named: "Happy")
         onboardingSteps += [studyOverViewInstructionStep]
         
-        // MARK: 🔶 QUESTION 🔶: How can we implement a temporary break in the survey after ORKStep 2 of 4, to transition the user to the ETG game and once they complete the ETG, return them to ORKStep 3 of 4 so they can continue to completion of the OnBoardingSurvey?
-        
         // pointOne-Five are in useable state and will be populated with the right content late for ORKStep 2 of 4
         let pointOne = ORKBodyItem(
             text: "Probably should remind them of how their heart rate is collected and if need be, create another instruction step for rules/reminders}", detailText: nil,
@@ -161,8 +159,11 @@ struct TaskComponents {
         
         // Q#Item == Single question being added to the form
         let preQ1Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q1", text: QTC[0].text, answerFormat: QAF)
+        preQ1Item.showsProgress = true
         let preQ2Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q2", text: QTC[1].text, answerFormat: QAF)
+        preQ2Item.showsProgress = true
         let preQ3Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q3", text: QTC[2].text, answerFormat: QAF)
+        preQ3Item.showsProgress = false
         let preQ4Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q4", text: QTC[3].text, answerFormat: QAF)
         let preQ5Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q5", text: QTC[4].text, answerFormat: QAF)
         let preQ6Item = ORKFormItem(identifier: "\(K.TaskIDs.checkInTaskID).preSurvey.form.Q6", text: QTC[5].text, answerFormat: QAF)
@@ -194,10 +195,10 @@ struct TaskComponents {
         /// The function works for presenting a video, now we just need to load in all the meditations and manage the rules for using the commented out switch case for determining which url video will be passed in depending on the check-in survey # or however we can figure out distinguishing it; maybe by the variables associated with the progress bar will work.
         
         // create bundle path pointing to the file
-        let bundlePath = Bundle.main.path(forResource: "videoname", ofType: "videoFileType")
+        let bundlePath = Bundle.main.path(forResource: "SyedMeditation", ofType: "mp4")
         
         // creating the url
-        // let url = URL(fileURLWithPath: bundlePath!)
+         let url = URL(fileURLWithPath: bundlePath!)
         
         //        switch url {
         //        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
@@ -210,8 +211,8 @@ struct TaskComponents {
         meditationVideoStep.title = "This is an Audio Step"
         meditationVideoStep.detailText = "This hasn't been implemented fully yet, but should feature a preloaded meditation audio based on the week / task"
         meditationVideoStep.isOptional = true
-        // meditationVideoStep.videoURL = url
-        meditationVideoStep.thumbnailTime = 15
+         meditationVideoStep.videoURL = url
+        meditationVideoStep.thumbnailTime = 0
         
         // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
         // Q#Item == Single question being added to the post survey form
@@ -257,7 +258,7 @@ struct TaskComponents {
                                                 meditationVideoStep, //2
                                                 postFormStep, //3
                                                 completionStep]) //4
-        
+        surveyTask.progressLabelColor = .red
         return surveyTask
     }
     
@@ -504,19 +505,19 @@ struct TaskComponents {
         return surveyTask
     }
     
-    static func  storeWithdrawTaskResults() {
+    static func  storeWithdrawTaskResults(docTitle: String, resultID: String, resultValue: String) {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
         let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document("TestWithdrawFeedbackStorage")
+        let tempStorageDestination = db.collection("users").document(docTitle)
         // Uncomment below code once the data can be captured in the required format of [String:Any]
-        // tempStorageDestination.setData([String : Any])
+        tempStorageDestination.setData([resultID : resultValue])
         
         // In final product, this is ideally how storing the results should be
-        let idealStorageDestination = db
-            .collection("users").document("usersUniqueIDObject")
-            .collection("WithdrawFeedbackResults").document("WithdrawFeedbackResults") // in the form of [WithdrawFeedbackQuestion:usersText]
+//        let idealStorageDestination = db
+//            .collection("users").document("usersUniqueIDObject")
+//            .collection("WithdrawFeedbackResults").document("WithdrawFeedbackResults") // in the form of [WithdrawFeedbackQuestion:usersText]
         
     }
 }
