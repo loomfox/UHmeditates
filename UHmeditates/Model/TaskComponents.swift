@@ -13,6 +13,14 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 
+struct CompletedSurveyItem: Identifiable {
+
+    var id: String
+    var endDate: String
+    var surveyName: String
+    
+    
+}
 
 struct TaskComponents {
     

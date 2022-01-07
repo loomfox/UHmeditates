@@ -18,10 +18,38 @@ import ResearchKit
 import FirebaseFirestore
 
 class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORKTaskViewControllerDelegate {
-  
+    
+    // MARK: Button outlets
+    @IBOutlet weak var buttonOneO: UIButton!
+    @IBOutlet var progressBarOutlet: UIView!
+    
+    @IBOutlet weak var progresBarHeader: UILabel!
+    @IBOutlet weak var theTableView: UITableView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var testSurveys = [CompletedSurveyItem]()
+    let dfParser: DateFormatter = {
+        //let s = "2021-12-18 15:30:57 +0000"
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+//        df.date(from: s)
+        return df
+    }()
+    
+    let dfOutputter: DateFormatter = {
+        //let s = "2021-12-18 15:30:57 +0000"
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .short
+//        df.date(from: s)
+        return df
+    }()
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-        return surveysCompleteToDate
+//        return surveysCompleteToDate
+        return self.testSurveys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,9 +57,15 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) else {
             return UITableViewCell()
         }
-        let survey = surveys[indexPath.row]
-        cell.textLabel?.text = survey["title"]
-        cell.detailTextLabel?.text = survey["date"]
+
+        let survey = self.testSurveys[indexPath.row]
+        cell.textLabel?.text = survey.surveyName
+
+        var date = survey.endDate
+        if let parsed = dfParser.date(from:survey.endDate) {
+            date = dfOutputter.string(from:parsed)
+        }
+        cell.detailTextLabel?.text = date
         return cell
     }
     
@@ -42,18 +76,59 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
     var surveysCompleteThisWeek = 0
     let totalStudySurveys = 24
 
-    var surveys = [
+  var surveys = [
+          //  CompletedSurveyItem
         ["title": "1", "date": "12/15"],
         ["title": "2", "date": "12/16"]
-    ]
-    let arrayTitle = ["Survey Uno", "Survey Dos", "Survey Tres"]
-    let arrayDetailText = ["Date uno", "Date Dos", "Date tres"]
+    ] // Here I need to place the new objects from the listener
     
-    // MARK: Button outlets
-    @IBOutlet weak var buttonOneO: UIButton!
-    @IBOutlet var progressBarOutlet: UIView!
     
-    @IBOutlet weak var theTableView: UITableView!
+    // MARK: Testing getData func
+
+//    var testSurveys = [CompletedSurveyItem]()
+    
+    func getData() {
+        
+        // reference to database
+        let db = Firestore.firestore()
+        
+        // read doc at specific path
+        db.collection("users").getDocuments { snapshot, error in //documents will be stored in the snapshot parameter in object called document or "d"
+            if error == nil {
+                
+                //no errors
+                if let snapshot = snapshot {
+                    
+                    // get all the documents and create an instance of the completedsurveyitem struct
+                    DispatchQueue.main.async {
+                        
+                        self.testSurveys = snapshot.documents.map { d in // map function iterates through array and performs code on each item and returns a collection
+                            
+                            // return a completedsurveyitem since that's the type of object we want to create
+                            print("ID: \(d.documentID)")
+                            return CompletedSurveyItem(id: d.documentID,
+                                                       endDate: d["Task End:"] as? String ?? "",
+                                                       surveyName: d["survey"] as? String ?? "")
+                            // 🔴 Problem: Can't figure out how to get the information from the CompletedSurveyItem to be printed into a table, or as a simple string into a label.
+                            
+                        }
+                        print("Num testSurveys: \(self.testSurveys.count)")
+                        self.tableView.reloadData()
+                    }
+                    
+                    
+                    
+                } else{
+                    //handle the error
+                    print("Error Message: \(error)")
+                }
+            }
+        }
+        
+    }
+    
+
+    
     
     // MARK: ORKTaskVC Dismiss
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
@@ -118,10 +193,15 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         
         setupHomeScreen()
         
+    
         
-        
+    
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+    }
 //    func getSurveysComplete () -> String {
 //
 //
@@ -142,25 +222,11 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
 ////                        }
 ////                    }
 ////                }
-//
-//        //MARK: Firestore Ops
-//
-////        let db = Firestore.firestore()
-////
-////        let docRef = db.collection("users").document("SurveyNum4")
-////
-////        docRef.getDocument { (document, error) in
-////            if let document = document, document.exists {
-////                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-////                print("Document data: \(dataDescription)")
-////            } else {
-////                print("Document does not exist")
-////            }
-////        }
-//        return keysValue
-//    }
-    
     // MARK: Button Actions
+    @IBAction func testButton(_ sender: UIButton) {
+        
+        getData()
+    }
     @IBAction func buttonOneAction(_ sender: UIButton) {
         
         let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)

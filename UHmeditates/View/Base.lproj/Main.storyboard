@@ -479,7 +479,7 @@
                                     <action selector="buttonOneAction:" destination="gn1-AF-32E" eventType="touchUpInside" id="DEI-ud-oPY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Greeting and Study Progres Update " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBg-UU-p2i">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Greeting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBg-UU-p2i">
                                 <rect key="frame" x="69" y="262" width="276" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -524,6 +524,15 @@
                                     <outlet property="dataSource" destination="gn1-AF-32E" id="AUn-x5-9JI"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qo-h2-rVW">
+                                <rect key="frame" x="36" y="88" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="testButton:" destination="gn1-AF-32E" eventType="touchUpInside" id="v5t-Wr-313"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S3q-Q5-azM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -531,7 +540,9 @@
                     <navigationItem key="navigationItem" title="WeeklyTasksTabVC" id="kaD-cH-9aa"/>
                     <connections>
                         <outlet property="buttonOneO" destination="8Y6-r9-Qrj" id="lol-yY-Iqp"/>
+                        <outlet property="progresBarHeader" destination="pBg-UU-p2i" id="Kd7-QP-HLw"/>
                         <outlet property="progressBarOutlet" destination="HEh-Zg-Wi7" id="mIX-Eq-eFj"/>
+                        <outlet property="tableView" destination="HEh-Zg-Wi7" id="9Zn-es-ibr"/>
                         <outlet property="theTableView" destination="HEh-Zg-Wi7" id="wtl-xS-VI5"/>
                     </connections>
                 </viewController>
