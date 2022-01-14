@@ -29,11 +29,12 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
     @IBOutlet weak var tableView: UITableView!
     
     var testSurveys = [CompletedSurveyItem]()
+    var surveysCompleteToDate = 0
     let dfParser: DateFormatter = {
         //let s = "2021-12-18 15:30:57 +0000"
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-//        df.date(from: s)
+        //        df.date(from: s)
         return df
     }()
     
@@ -42,13 +43,13 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         let df = DateFormatter()
         df.dateStyle = .short
         df.timeStyle = .short
-//        df.date(from: s)
+        //        df.date(from: s)
         return df
     }()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-//        return surveysCompleteToDate
+        
+        //        return surveysCompleteToDate number of rows
         return self.testSurveys.count
     }
     
@@ -57,10 +58,10 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) else {
             return UITableViewCell()
         }
-
+        
         let survey = self.testSurveys[indexPath.row]
         cell.textLabel?.text = survey.surveyName
-
+        
         var date = survey.endDate
         if let parsed = dfParser.date(from:survey.endDate) {
             date = dfOutputter.string(from:parsed)
@@ -72,20 +73,20 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
     
     // MARK: Variables that'll potentially be stored as UserDefaults
     var isOnboardingComplete = false
-    var surveysCompleteToDate = 2 // MARK: Implement listener from firebase here, & have this variable created at signup
+     // MARK: Implement listener from firebase here, & have this variable created at signup
     var surveysCompleteThisWeek = 0
     let totalStudySurveys = 24
-
-  var surveys = [
-          //  CompletedSurveyItem
+    
+    var surveys = [
+        //  CompletedSurveyItem
         ["title": "1", "date": "12/15"],
         ["title": "2", "date": "12/16"]
     ] // Here I need to place the new objects from the listener
     
     
     // MARK: Testing getData func
-
-//    var testSurveys = [CompletedSurveyItem]()
+    
+    //    var testSurveys = [CompletedSurveyItem]()
     
     func getData() {
         
@@ -109,7 +110,6 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
                             return CompletedSurveyItem(id: d.documentID,
                                                        endDate: d["Task End:"] as? String ?? "",
                                                        surveyName: d["survey"] as? String ?? "")
-                            // 🔴 Problem: Can't figure out how to get the information from the CompletedSurveyItem to be printed into a table, or as a simple string into a label.
                             
                         }
                         print("Num testSurveys: \(self.testSurveys.count)")
@@ -127,7 +127,7 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         
     }
     
-
+    
     
     
     // MARK: ORKTaskVC Dismiss
@@ -189,39 +189,43 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         theTableView.layer.borderWidth = 1.0
         theTableView.layer.cornerRadius = 5.0
         
-        
-        
-        setupHomeScreen()
-        
+        getData()
+        buttonOneO.setTitle("Check In Survey #\(setupHomeScreen())", for: .normal)
     
         
-    
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()
+        
+     
+            buttonOneO.setTitle("Check In Survey #\(setupHomeScreen())", for: .normal)
+        
     }
-//    func getSurveysComplete () -> String {
-//
-//
-//        //var keysValue: String
-//
-////        let postsRef = db.collection("posts")
-////                let query = postsRef.whereField("UID", isEqualTo: Auth.auth().currentUser?.uid)
-////                query.getDocuments(){ (querySnapshot, err) in
-////                    if let err = err {
-////                        print("Error getting documents: \(err)")
-////                    } else {
-////                        self.numberOfPosts = querySnapshot!.count
-////                        print("number of posts: \(self.numberOfPosts)")
-////                        for document in querySnapshot!.documents {
-////                            let dataDescription = document.data().map(String.init(describing:)).sorted(by: >)
-////
-////                            print(dataDescription["postScore"])
-////                        }
-////                    }
-////                }
+    //    func getSurveysComplete () -> String {
+    //
+    //
+    //        //var keysValue: String
+    //
+    ////        let postsRef = db.collection("posts")
+    ////                let query = postsRef.whereField("UID", isEqualTo: Auth.auth().currentUser?.uid)
+    ////                query.getDocuments(){ (querySnapshot, err) in
+    ////                    if let err = err {
+    ////                        print("Error getting documents: \(err)")
+    ////                    } else {
+    ////                        self.numberOfPosts = querySnapshot!.count
+    ////                        print("number of posts: \(self.numberOfPosts)")
+    ////                        for document in querySnapshot!.documents {
+    ////                            let dataDescription = document.data().map(String.init(describing:)).sorted(by: >)
+    ////
+    ////                            print(dataDescription["postScore"])
+    ////                        }
+    ////                    }
+    ////                }
     // MARK: Button Actions
     @IBAction func testButton(_ sender: UIButton) {
         
@@ -261,15 +265,15 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         
     }
     
-    func setupHomeScreen () {
+    func setupHomeScreen () -> Int {
         // MARK: STATUS: 🔴
-        
+    
         // ⚠️ : Hide all user instructions and onboarding button
         
         // ⚠️ : Show all survey button element
+        var number = surveysCompleteToDate + testSurveys.count
         
-        
-        buttonOneO.setTitle("Check In Survey #\(surveysCompleteToDate + 1)", for: .normal)
+        return number
     }
     
 }

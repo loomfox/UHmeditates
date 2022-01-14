@@ -15,8 +15,8 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     func transitionToApp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-               (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
     
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     
     public var currentUser = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Hide error label
         errorLabel.alpha = 0
     }
-
+    
     
     static func isPasswordValid(_ password : String) -> Bool {
         
@@ -110,16 +110,22 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
                     // User was created successfully, now store the first name and last name
                     self.currentUser = "\(email)"
                     
+                    let userType = ["ExperimentalGroup", "ControlGroup"]
+                    let randomizedGroup = userType.randomElement()!
+                    
+                    
                     let db = Firestore.firestore()
-                
+                    
                     // Within the users collection, create a firebase doc titled after the new users uniqueID
-                    db.collection("users").document("\(result!.user.uid)").setData([
-                                                                            "firstname":firstName,
-                                                                            "lastname":lastName,
-                                                                            "uid": result!.user.uid,
-                                                                            "Email": result!.user.email,
-                                                                            "Surveys Complete": 0,
-                                                                            "Surveys Complete This Week": 0])
+                    db.collection(randomizedGroup).document("\(result!.user.uid)").setData([
+                        "Group":randomizedGroup,
+                        "EnrollmentStatus": "Enrolled",
+                        "firstname":firstName,
+                        "lastname":lastName,
+                        "uid": result!.user.uid,
+                        "Email": result!.user.email,
+                        "Surveys Complete": 0,
+                        "Surveys Complete This Week": 0])
                     { (error) in
                         if error != nil {
                             // Show error message
@@ -141,9 +147,9 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     func transitionToJoinStudyPage() {
         
-//        let homeViewController = storyboard?.instantiateViewController(identifier: "joinStudyVC") as? DemographicSignupViewController
-//        view.window?.rootViewController = homeViewController
-//        view.window?.makeKeyAndVisible()
+        //        let homeViewController = storyboard?.instantiateViewController(identifier: "joinStudyVC") as? DemographicSignupViewController
+        //        view.window?.rootViewController = homeViewController
+        //        view.window?.makeKeyAndVisible()
         
         let taskViewController = ORKTaskViewController(task: TaskComponents.showOnboardingSurvey(), taskRun: nil)
         

@@ -30,6 +30,12 @@ class LoginViewController: UIViewController {
         errorLabel.alpha = 0
     }
     
+    func verifyEnrollment () -> String {
+        
+        
+        return "hi"
+    }
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
         func transitionToApp() {
@@ -52,7 +58,28 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else {
-                transitionToApp()
+                if self.verifyEnrollment() == "Enrolled" {
+                    transitionToApp()
+                } else {
+                    // MARK: 1.4.3 - Create the alert (Separate into it's own method later)
+                    let alert = UIAlertController(title: "Warning: Withdrawal Notice", message: "You have selected to withdraw from the research study which will require you to _. By selecting 'I Understand' you are confirming that you understand proceeding will cancel your participation within the study and will thus require you to promptly return any research related devices.", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Email Us", style: UIAlertAction.Style.default, handler: {
+                        
+                        // 1.4.3.1 - Define the action of presenting the withdrawal survey to user
+                        action in
+                        CommunicationsTabViewController().showMailComposer()
+                        
+                    }))
+                    
+                        // 1.4.3.2 - Define the action of dismissing alert view controller
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.cancel, handler: {
+                        action in alert.dismiss(animated: true, completion: nil)
+                    }))
+                    
+                    // 1.4.4 - Show the alert
+                    self.present(alert, animated: true, completion: nil)
+                }
                 
                 
             }

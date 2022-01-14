@@ -130,7 +130,7 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
         composer.mailComposeDelegate = self
         composer.setToRecipients(["piyamalhan@gmail.com"])
         composer.setSubject("Hey there!")
-        composer.setMessageBody("Hi, I'd like to know ", isHTML: false)
+        composer.setMessageBody("Hi, I'm currently facing issues with logging into the application.", isHTML: false)
         self.present(composer, animated: true, completion: nil)
     }
     
