@@ -153,9 +153,8 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
         
     }
     
-    // MARK: 1.4 - IBActions
-    @IBAction func userTappedSignOut(_ sender: UIBarButtonItem) {
-        // MARK: STATUS: 🟢
+    func logUserOut() {
+        
         
         // MARK: 1.4.1 - Signing out the User
         let firebaseAuth = Auth.auth()
@@ -167,6 +166,12 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    // MARK: 1.4 - IBActions
+    @IBAction func userTappedSignOut(_ sender: UIBarButtonItem) {
+        // MARK: STATUS: 🟢
+        logUserOut()
     }
     
     @IBAction func withdrawFromStudy(_ sender: UIButton) {

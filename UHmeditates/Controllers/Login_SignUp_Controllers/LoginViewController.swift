@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import MessageUI
 
 class LoginViewController: UIViewController {
     
@@ -36,6 +37,21 @@ class LoginViewController: UIViewController {
         return "hi"
     }
     
+    @objc func showMailComposer() {
+        guard MFMailComposeViewController.canSendMail() else {
+            //show alert informing user they can't send mail
+            return
+        }
+        
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
+        composer.setToRecipients(["piyamalhan@gmail.com"])
+        composer.setSubject("Hey there!")
+        composer.setMessageBody("Hi, I'm currently facing issues with logging into the application.", isHTML: false)
+        present(composer, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
         func transitionToApp() {
@@ -61,6 +77,20 @@ class LoginViewController: UIViewController {
                 if self.verifyEnrollment() == "Enrolled" {
                     transitionToApp()
                 } else {
+                    func logUserOut() {
+                        
+                        
+                        // MARK: 1.4.1 - Signing out the User
+                        let firebaseAuth = Auth.auth()
+                        do {
+                            try firebaseAuth.signOut()
+                            
+                        } catch let signOutError as NSError {
+                            print("Error signing out: %@", signOutError)
+                        }
+                    }
+                    
+                    logUserOut() // without, user still is able to log in due to authentication code above
                     // MARK: 1.4.3 - Create the alert (Separate into it's own method later)
                     let alert = UIAlertController(title: "Warning: Withdrawal Notice", message: "You have selected to withdraw from the research study which will require you to _. By selecting 'I Understand' you are confirming that you understand proceeding will cancel your participation within the study and will thus require you to promptly return any research related devices.", preferredStyle: .alert)
                     
@@ -68,7 +98,7 @@ class LoginViewController: UIViewController {
                         
                         // 1.4.3.1 - Define the action of presenting the withdrawal survey to user
                         action in
-                        CommunicationsTabViewController().showMailComposer()
+                        self.showMailComposer()
                         
                     }))
                     
@@ -87,4 +117,30 @@ class LoginViewController: UIViewController {
         
     }
     
+}
+
+extension LoginViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        if let _ = error {
+            controller.dismiss(animated: true)
+            return
+        }
+        
+        switch result {
+        case .cancelled:
+            print("Cancelled")
+        case .failed:
+            print("failed")
+        case .saved:
+            print("Saved")
+        case .sent:
+            print("email sent")
+        @unknown default:
+            print("fatal error")
+        }
+        
+        controller.dismiss(animated: true)
+    }
 }
