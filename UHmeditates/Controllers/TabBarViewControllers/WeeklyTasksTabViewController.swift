@@ -19,17 +19,22 @@ import FirebaseFirestore
 
 class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORKTaskViewControllerDelegate {
     
-    // MARK: Button outlets
+    
+    // MARK: 💠 Button outlets 💠
     @IBOutlet weak var buttonOneO: UIButton!
     @IBOutlet var progressBarOutlet: UIView!
-    
     @IBOutlet weak var progresBarHeader: UILabel!
     @IBOutlet weak var theTableView: UITableView!
-    
     @IBOutlet weak var tableView: UITableView!
     
-    var testSurveys = [CompletedSurveyItem]()
+    // MARK: 💠 Objects With Predetermined Values 💠
+    var surveys = [CompletedSurveyItem]()
+    var userGroup = [RandomizationGroupStruct]()
+    var isOnboardingComplete = false
+    var surveysCompleteThisWeek = 0   // Implement listener from firebase here, & have this variable created at signup
+    let totalStudySurveys = 24
     var surveysCompleteToDate = 0
+    
     let dfParser: DateFormatter = {
         //let s = "2021-12-18 15:30:57 +0000"
         let df = DateFormatter()
@@ -47,10 +52,94 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         return df
     }()
     
+    // MARK: 💠 Methods 💠
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        DispatchQueue.main.async{ self.getData()
+            
+            // Do any additional setup after loading the view.
+            
+            // MARK: Insert Fxn here for checking onboarding document
+            
+            // MARK: Insert Fxn here for modifying button visibility
+            self.theTableView.layer.borderWidth = 1.0
+            self.theTableView.layer.cornerRadius = 5.0
+        }
+    }
+    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        
+        let authDB = Auth.auth().currentUser?.uid
+        let IPuserUID = "\(authDB!)"
+        
+        let docTitle = "Survey # \(surveys.count + 1) of 24"
+        
+        let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
+        let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
+        
+        // If the user makes it to the postSurvey screen, this will populate 20 NULL answers until user selects a new one. This allows the document to be uploaded to the database.
+        // Basically this code needs to be triggered if the step is completed so maybe I can drill down to the task and the completion step being reached?
+        // MARK: 🟧 I WAS FOCUSED HERE 🟧
+            /// I was trying to figure out how to trigger code based on the completion step being reached to prevent a document from being uploaded to the database.
+            /// My next problem would be figuring out how to stop the Index 3 or 1 [0...0] out of bounds error.
+        if taskViewController.currentStepViewController == taskViewController.task?.step?(withIdentifier: "\(K.TaskIDs.offboardingTaskID).completion") /* OR _currentStepViewController    ORKCompletionStepViewController?    0x000000014002ea00 */   {
+            print("We made it to the completion step")
+        }
+        
+        if postResults.isEmpty != true {
+        // Layer 2: Verify the randomization group
+        TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
+            if let userGroup = userGroup?.groupName {
+                
+                // layer 3: Randomization group verified, proceed into code that needs to run after finding group
+                TaskComponents.verifyDocExist(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle) { doesExist in
+                    if doesExist == false {
+                        print(docTitle)
+                        
+                        // Layer 4: Code dependent on layer 3
+                        TaskComponents.createDoc(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle)
+                        
+                        
+                        
+                        // Loop of assigning pre results ID and answer values
+                        for result in preResults {
+                            let resultIdentifier = "\(result.identifier)"
+                            let resultValue = "\(result.answer ?? "null")"
+                            
+                            // Storing the answers in a looped process
+                            TaskComponents.storeCheckInPreSurveyResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
+                        }
+                        
+                        
+                        for result in postResults {
+                            
+                            let resultIdentifier = "\(result.identifier)"
+                            let resultValue = "\(result.answer ?? "null")"
+                            
+                            TaskComponents.storeCheckInPostSurveyResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
+                        }
+                    } else {
+                        print("Does exist, no write made to db")
+                    }
+                }
+                
+                
+                if taskViewController.result.results != nil {
+                    //surveysCompleteToDate += 1
+                    print("Not Nil, meaning results do exist")
+                }
+                
+                taskViewController.dismiss(animated: true, completion: self.getData)
+            }
+        }
+        } else {
+            taskViewController.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //        return surveysCompleteToDate number of rows
-        return self.testSurveys.count
+        return self.surveys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +148,7 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
             return UITableViewCell()
         }
         
-        let survey = self.testSurveys[indexPath.row]
+        let survey = self.surveys[indexPath.row]
         cell.textLabel?.text = survey.surveyName
         
         var date = survey.endDate
@@ -70,185 +159,68 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         return cell
     }
     
-    
-    // MARK: Variables that'll potentially be stored as UserDefaults
-    var isOnboardingComplete = false
-     // MARK: Implement listener from firebase here, & have this variable created at signup
-    var surveysCompleteThisWeek = 0
-    let totalStudySurveys = 24
-    
-    var surveys = [
-        //  CompletedSurveyItem
-        ["title": "1", "date": "12/15"],
-        ["title": "2", "date": "12/16"]
-    ] // Here I need to place the new objects from the listener
-    
-    
-    // MARK: Testing getData func
-    
-    //    var testSurveys = [CompletedSurveyItem]()
-    
     func getData() {
         
         // reference to database
         let db = Firestore.firestore()
+        let authDB = Auth.auth().currentUser?.uid
+        let IPuserUID = "\(authDB!)"
         
-        // read doc at specific path
-        db.collection("users").getDocuments { snapshot, error in //documents will be stored in the snapshot parameter in object called document or "d"
-            if error == nil {
+        // Layer 2: Verify the randomization group
+        TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
+            if let userGroup = userGroup?.groupName {
                 
-                //no errors
-                if let snapshot = snapshot {
-                    
-                    // get all the documents and create an instance of the completedsurveyitem struct
-                    DispatchQueue.main.async {
+                // read doc at specific path db.collection("users").getDocuments
+                let docRef = db
+                    .collection(userGroup)
+                    .document(IPuserUID)
+                    .collection("Docs for \(IPuserUID)")
+                
+                docRef.getDocuments { snapshot, error in
+                    //documents will be stored in the snapshot parameter in object called document or "d"
+                    if error == nil {
                         
-                        self.testSurveys = snapshot.documents.map { d in // map function iterates through array and performs code on each item and returns a collection
+                        //no errors means this code will be executed
+                        if let snapshot = snapshot {
                             
-                            // return a completedsurveyitem since that's the type of object we want to create
-                            print("ID: \(d.documentID)")
-                            return CompletedSurveyItem(id: d.documentID,
-                                                       endDate: d["Task End:"] as? String ?? "",
-                                                       surveyName: d["survey"] as? String ?? "")
-                            
+                            // get all the documents and create an instance of the completedsurveyitem struct
+                            DispatchQueue.main.async {
+                                
+                                self.surveys = snapshot.documents.map { d in // map function iterates through array and performs code on each item and returns a collection
+                                    
+                                    // return a completedsurveyitem since that's the type of object we want to create
+                                    print("ID: \(d.documentID)")
+                                    return CompletedSurveyItem(id: d.documentID,
+                                                               endDate: d["Task End:"] as? String ?? "",
+                                                               surveyName: d["Created"] as? String ?? "")
+                                }
+                                self.buttonOneO.setTitle("Start Check-in Survey #\(self.surveys.count)", for: .normal)
+                                print("Num testSurveys: \(self.surveys.count)")
+                                self.tableView.reloadData()
+                            }
+                        } else{
+                            //handle the error
+                            print("Error Message: \(error)")
                         }
-                        print("Num testSurveys: \(self.testSurveys.count)")
-                        self.tableView.reloadData()
                     }
-                    
-                    
-                    
-                } else{
-                    //handle the error
-                    print("Error Message: \(error)")
                 }
             }
         }
-        
     }
     
-    
-    
-    
-    // MARK: ORKTaskVC Dismiss
-    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+    func codeForFindingOnboardingDoc (requestedField: String){
         
-        let userID = Auth.auth().currentUser?.uid
-        let docTitle = "SurveyNum" + "\(surveysCompleteToDate)"
-        
-        TaskComponents.verifyDocExist(docTitle: docTitle) { doesExist in
-            if doesExist == false {
-                print(docTitle)
-                
-                TaskComponents.createDoc(docTitle: docTitle)
-                
-                let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
-                
-                // Loop of assigning pre results ID and answer values
-                for result in preResults {
-                    let resultIdentifier = "\(result.identifier)"
-                    let resultValue = "\(result.answer ?? "null")"
-                    
-                    // Storing the answers in a looped process
-                    TaskComponents.storeCheckInPreSurveyResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
-                }
-                
-                let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
-                for result in postResults {
-                    
-                    let resultIdentifier = "\(result.identifier)"
-                    let resultValue = "\(result.answer ?? "null")"
-                    
-                    TaskComponents.storeCheckInPostSurveyResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, user: userID!, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
-                }
-            } else {
-                print("Does exist, no write made to db")
-            }
-        }
-        
-        
-        if taskViewController.result.results != nil {
-            //surveysCompleteToDate += 1
-            print("Not Nil, meaning results do exist")
-        }
-        
-        taskViewController.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    // MARK: Code Needing to Run when view loads
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
-        // MARK: Insert Fxn here for checking document
-        
-        // MARK: Insert Fxn here for modifying button visibility
-        
-        theTableView.layer.borderWidth = 1.0
-        theTableView.layer.cornerRadius = 5.0
-        
-        getData()
-        buttonOneO.setTitle("Check In Survey #\(setupHomeScreen())", for: .normal)
-    
-        
-        
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getData()
-        
-     
-            buttonOneO.setTitle("Check In Survey #\(setupHomeScreen())", for: .normal)
-        
-    }
-    //    func getSurveysComplete () -> String {
-    //
-    //
-    //        //var keysValue: String
-    //
-    ////        let postsRef = db.collection("posts")
-    ////                let query = postsRef.whereField("UID", isEqualTo: Auth.auth().currentUser?.uid)
-    ////                query.getDocuments(){ (querySnapshot, err) in
-    ////                    if let err = err {
-    ////                        print("Error getting documents: \(err)")
-    ////                    } else {
-    ////                        self.numberOfPosts = querySnapshot!.count
-    ////                        print("number of posts: \(self.numberOfPosts)")
-    ////                        for document in querySnapshot!.documents {
-    ////                            let dataDescription = document.data().map(String.init(describing:)).sorted(by: >)
-    ////
-    ////                            print(dataDescription["postScore"])
-    ////                        }
-    ////                    }
-    ////                }
-    // MARK: Button Actions
-    @IBAction func testButton(_ sender: UIButton) {
-        
-        getData()
-    }
-    @IBAction func buttonOneAction(_ sender: UIButton) {
-        
-        let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)
-        
-        taskViewController.delegate = self
-        taskViewController.modalPresentationStyle = .fullScreen
-        present(taskViewController, animated: true, completion: nil)
-        
-        
-    }
-    
-    // MARK: Logic for Buttons
-    
-    func codeForFindingOnboardingDoc (){
         // listener code for the document
-        
-        // if found, set isOnboardingComplete = true
-        // if not found, set isOnboardingComplete = false
+        TaskComponents.verifyUserGroup(userUID: requestedField) { userGroup in
+            if let userGroup = userGroup?.groupName {
+                print("This is the user's group \(userGroup)")
+                // create the doc from here using another function and the userGroup as an input parameter
+            } else
+            { print("Value was nil")
+            }
+            // if found, set isOnboardingComplete = true
+            // if not found, set isOnboardingComplete = false
+        }
     }
     
     func setupDashboard () {
@@ -265,15 +237,29 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
         
     }
     
-    func setupHomeScreen () -> Int {
-        // MARK: STATUS: 🔴
-    
-        // ⚠️ : Hide all user instructions and onboarding button
+    // MARK: Button Actions
+    @IBAction func testButton(_ sender: UIButton) {
+        let authDB = Auth.auth().currentUser?.uid
+        let IPuserUID = "\(authDB!)"
         
-        // ⚠️ : Show all survey button element
-        var number = surveysCompleteToDate + testSurveys.count
+        TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
+            if let userGroup = userGroup?.groupName {
+                print("This is the user's group \(userGroup)")
+                // create the doc from here using another function and the userGroup as an input parameter
+            } else
+            { print("Value was nil")
+            }
+            
+        }
         
-        return number
     }
     
+    @IBAction func buttonOneAction(_ sender: UIButton) {
+        
+        let taskViewController = ORKTaskViewController(task: TaskComponents.showCheckInSurveyTask(), taskRun: nil)
+        
+        taskViewController.delegate = self
+        taskViewController.modalPresentationStyle = .fullScreen
+        present(taskViewController, animated: true, completion: nil)
+    }
 }

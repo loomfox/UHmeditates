@@ -26,88 +26,77 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
     
     // MARK: 1.2 - Top-Level Object
     let mailButton = UIButton()
+    var userGroup = [RandomizationGroupStruct]()
+    
     // MARK: 1.3 - Top-Level Functions
     
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         // MARK: STATUS: 🟡 -
         
         // MARK: ✅ - Write code for collecting and storing feedback
-        let userID = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        let authDB = Auth.auth().currentUser?.uid
+        let IPuserUID = "\(authDB!)"
+        
         let docTitle = "Withdrawal Doc"
         
-        TaskComponents.verifyDocExist(docTitle: docTitle) { doesExist in
-            if doesExist == false {
-                print(docTitle)
+        // Layer 2: Verify the randomization group
+        TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
+            if let userGroup = userGroup?.groupName {
                 
-                TaskComponents.createDoc(docTitle: docTitle)
-                
-                let feedback: [ORKTextQuestionResult] = (taskViewController.result.results![2] as! ORKStepResult).results as! [ORKTextQuestionResult]
-                
-                // Loop of assigning pre results ID and answer values
-                for result in feedback {
-                    let resultIdentifier = "\(result.identifier)"
-                    let resultValue = "\(result.answer ?? "null")"
-                    
-                    // Storing the answers in a looped process
-                    TaskComponents.storeWithdrawTaskResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
+                // layer 3: Randomization group verified, proceed into code that needs to run after finding group
+                TaskComponents.verifyDocExist(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle) { doesExist in
+                    if doesExist == false {
+                        print(docTitle)
+                        
+                        // Layer 4: Code dependent on layer 3
+                        TaskComponents.createDoc(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle)
+                        
+                        
+                        // Could be used to condense createDoc & any store_() that uploads results for all surveys the
+                        // This code block should go inside of the createDoc() and potentially have a switch case or just a simple if the results are there, then go ahead and also upload results; otherwise simply create the doc and exit the function
+                        // Essentially this would move the creation of the doc and storage into layer 5, and an input parameter for the results would be added to the func to be handled if present
+//                        if results != nil {
+//
+//                        } else {
+//
+//                        }
+                        
+                        let feedback: [ORKTextQuestionResult] = (taskViewController.result.results![2] as! ORKStepResult).results as! [ORKTextQuestionResult]
+                        
+                        // Loop of assigning pre results ID and answer values
+                        for result in feedback {
+                            
+                            // Layer 5: Code dependent on layer 4
+                            let resultIdentifier = "\(result.identifier)"
+                            let resultValue = "\(result.answer ?? "null")"
+                            
+                            
+                            // Storing the answers in a looped process
+                            TaskComponents.storeWithdrawTaskResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
+                            print("Arrived at Layer 5 to store withdraw results ")
+                           
+                        }
+                        
+                        
+                    }
+                    else {
+                        print("Does exist, no write made to db")
+                    }
                 }
-
-//                    TaskComponents.storeCheckInPostSurveyResults(docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, user: userID!, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
-                }
-            else {
-                print("Does exist, no write made to db")
+                
             }
         }
-        
-        
+ 
         if taskViewController.result.results != nil {
             print("Not Nil, meaning results do exist")
+            
         }
         
-        taskViewController.dismiss(animated: true, completion: nil)
-        reAuthenticateAndDeleteUser()
+        taskViewController.dismiss(animated: true, completion: TaskComponents.signOutUser)
+        //signOutUser()
     }
-    
-    func transitionToScreenAfterLaunch() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainTabBarController = storyboard.instantiateViewController(identifier: "ScreenAfterLaunch")
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
-        
-    }
-    
-    func reAuthenticateAndDeleteUser() {
-        
-              let user = Auth.auth().currentUser
-//              let credential = EmailAuthProvider.credential(withEmail: use    r?.email! ?? "null", password: "Not the password")
-      
-        user?.delete { error in
-            if let error = error {
-                print(error)
-            } else {
-                print("User has been deleted")
-                self.transitionToScreenAfterLaunch()
-            }
 
-        }
-        
-//              user?.reauthenticate(with: credential, completion: { (FIRAuthDataResult, error) in
-//                  if error != nil{   print("error")
-//                  } else {
-//                      print("user reaunthenticated")
-//
-////                      user?.delete { error in
-////                          if let error = error {
-////                              print(error)
-////                          } else {
-////                              print("User has been deleted")
-////                              self.transitionToScreenAfterLaunch()
-////                          }
-////
-////                      }
-//                  }
-//              })
-    }
-    
     func setupButton() {
         view.addSubview(mailButton)
         mailButton.backgroundColor = .systemBlue
@@ -122,15 +111,16 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
     }
     
     @objc func showMailComposer() {
-        print("Hi. hello;")
+        print("Hi! I'd like to get a little more information about: ")
         guard MFMailComposeViewController.canSendMail() else {
             return
         }
+        let user = Auth.auth().currentUser
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
-        composer.setToRecipients(["piyamalhan@gmail.com"])
-        composer.setSubject("Hey there!")
-        composer.setMessageBody("Hi, I'm currently facing issues with logging into the application.", isHTML: false)
+        composer.setToRecipients(["Chase.r.philip@gmail.com"])
+        composer.setSubject("GTP: Inquiry from \(user!)") /* ❓ - Can user's uid be present in email headline? */
+        composer.setMessageBody("Hi! I'd like to get a little more information about: ", isHTML: false)
         self.present(composer, animated: true, completion: nil)
     }
     
@@ -153,25 +143,10 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
         
     }
     
-    func logUserOut() {
-        
-        
-        // MARK: 1.4.1 - Signing out the User
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            
-            // MARK: 1.4.2 - Sending User back to Home Screen
-            transitionToScreenAfterLaunch()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
-    
     // MARK: 1.4 - IBActions
     @IBAction func userTappedSignOut(_ sender: UIBarButtonItem) {
         // MARK: STATUS: 🟢
-        logUserOut()
+        TaskComponents.signOutUser()
     }
     
     @IBAction func withdrawFromStudy(_ sender: UIButton) {
@@ -185,23 +160,21 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
             
             // 1.4.3.1 - Define the action of presenting the withdrawal survey to user
             action in
-            let taskViewController = ORKTaskViewController(task: TaskComponents.withdraw(), taskRun: nil)
+            let taskViewController = ORKTaskViewController(task: TaskComponents.showWithdrawSurvey(), taskRun: nil)
             taskViewController.delegate = self
             taskViewController.modalPresentationStyle = .fullScreen
             self.present(taskViewController, animated: true, completion: nil)
         }))
         
-            // 1.4.3.2 - Define the action of dismissing alert view controller
+        // 1.4.3.2 - Define the action of dismissing alert view controller
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {
             action in alert.dismiss(animated: true, completion: nil)
         }))
         
         // 1.4.4 - Show the alert
         self.present(alert, animated: true, completion: nil)
-                
+        
     }
-    
-    
 }
 // MARK: 1.5 - Extension
 extension CommunicationsTabViewController: MFMailComposeViewControllerDelegate {
@@ -222,6 +195,4 @@ extension CommunicationsTabViewController: MFMailComposeViewControllerDelegate {
         }
         controller.dismiss(animated: true, completion: nil)
     }
-    
-    
 }

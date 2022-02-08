@@ -21,7 +21,7 @@ struct K {
     //MARK: Check In Survey Task Constants
     struct CheckInSurveyTask {
         
-        let answerArray: [String] = ["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely"]
+        let answerArray: [String] = ["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely", "I prefer not to answer"]
     }
     // MARK: Task Identifiers to prevent string related errors
     struct TaskIDs {

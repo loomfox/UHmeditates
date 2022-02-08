@@ -14,11 +14,25 @@ import FirebaseAuth
 import FirebaseCore
 
 struct CompletedSurveyItem: Identifiable {
-
+    
     var id: String
     var endDate: String
     var surveyName: String
     
+    
+}
+
+struct EnrollmentStatusStruct: Identifiable {
+    
+    var id: String
+    var enrollmentStatus: String
+    
+}
+
+struct RandomizationGroupStruct: Identifiable {
+    
+    var id: String
+    var groupName: String
     
 }
 
@@ -65,6 +79,119 @@ struct TaskComponents {
     }
     
     let db = Firestore.firestore()
+    
+    static func transitionToScreenAfterLaunch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(identifier: "ScreenAfterLaunch")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        
+    }
+    // MARK: Modifying / Creating / Deleting User Docs
+    static func signOutUser() {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            transitionToScreenAfterLaunch()
+           
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+            
+            transitionToScreenAfterLaunch()
+            // need to condense signOutUser, transitionToScreenAfterLaunch() & the IBOutlet of logOff()
+        }
+        
+        // Code may be required when determining how to proceed with user data
+//        user?.delete { error in
+//            if let error = error {
+//                print(error)
+//            } else {
+//                print("User has been deleted")
+//                self.transitionToScreenAfterLaunch()
+//            }
+//
+//        }
+        
+    }
+    static func appendUserGroup (userUID: String, RandomizationGroup: String ) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("AdministrativeDocs").document("UserGroups")
+        
+        docRef.setData([
+            userUID: RandomizationGroup
+        ], merge: true) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        
+    }
+    
+    static func verifyUserGroup(userUID: String, completion: @escaping (RandomizationGroupStruct?) ->()) {
+        //item is var groupName: String
+        // reference to database
+        let db = Firestore.firestore()
+        let docRef = db.collection("AdministrativeDocs").document("UserGroups")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let property = document.get("\(userUID)")
+                
+                completion(RandomizationGroupStruct(id: document.documentID, groupName: property as! String))
+                
+                
+                // wont work trying to get a return value from inside a closure, refer to the article open in safari then work backward from this function to where it's called to determine the next step in handling the output. After that, sign out, and create a new user to test if the append function writes to the doc instead of deleting the previous user info.
+                print(userUID)
+                print("Document data: \(property!)")
+            } else {
+                print("Document does not exist")
+            }
+            
+        }
+    }
+    
+    // MARK: 💠 Functions for Reading Database 💠
+    
+    static func verifyDocExist(randomizationGroup: String, userUID: String, docTitle: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        
+        let docRef = db
+            .collection(randomizationGroup)
+            .document(userUID)
+            .collection("Docs for \(userUID)")
+            .document(docTitle)
+        
+        docRef.getDocument { (doc, error) in
+            if let doc = doc, doc.exists {
+                completion(true)
+            } else {
+                completion(false)
+            }
+            
+        }
+        
+    }
+    
+    // MARK: 💠 Functions for Database Modifications 💠
+    
+    static func createDocCollection(docTitle: String) { // Used to create user folder for surveys during sign up
+        
+        let db = Firestore.firestore()
+        db.collection("ControlGroup/"+docTitle).document("TestingCreation")
+        
+    }
+    
+    static func createDoc(randomizationGroup: String, userUID: String, docTitle: String) {
+
+        let db = Firestore.firestore()
+        db.collection(randomizationGroup).document(userUID).collection("Docs for \(userUID)").document(docTitle).setData(["Created" : docTitle ])
+        
+        
+    }
+    
+    // MARK: 💠 Type of Tasks 💠
     
     static func showOnboardingSurvey() -> ORKTask {
         //MARK: STATUS: 🟢
@@ -134,7 +261,6 @@ struct TaskComponents {
         return surveyTask
     }
     
-    // showMeditationSurvey should have preSurvey, meditationAudio, and postSurvey
     static func showCheckInSurveyTask() -> ORKTask {
         // MARK: STATUS: 🟡 - Need to implement meditation audio step
         
@@ -148,7 +274,9 @@ struct TaskComponents {
             ORKTextChoice(text: K.CheckInSurveyTask().answerArray[1], value: 1 as NSNumber),
             ORKTextChoice(text: K.CheckInSurveyTask().answerArray[2], value: 2 as NSNumber),
             ORKTextChoice(text: K.CheckInSurveyTask().answerArray[3], value: 3 as NSNumber),
-            ORKTextChoice(text: K.CheckInSurveyTask().answerArray[4], value: 4 as NSNumber)]
+            ORKTextChoice(text: K.CheckInSurveyTask().answerArray[4], value: 4 as NSNumber),
+            ORKTextChoice(text: K.CheckInSurveyTask().answerArray[5], value: 5 as NSNumber)
+        ]
         
         // QAF = Question Answer Format to be used within ORKFormItem(answerFormat:)
         let QAF: ORKTextChoiceAnswerFormat = .choiceAnswerFormat(with: .singleChoice, textChoices: QAC)
@@ -206,7 +334,7 @@ struct TaskComponents {
         let bundlePath = Bundle.main.path(forResource: "SyedMeditation", ofType: "mp4")
         
         // creating the url
-         let url = URL(fileURLWithPath: bundlePath!)
+        let url = URL(fileURLWithPath: bundlePath!)
         
         //        switch url {
         //        case "Meditation Task 1/3" : "Then Load this Specific Video File / URL"
@@ -219,7 +347,7 @@ struct TaskComponents {
         meditationVideoStep.title = "This is an Audio Step"
         meditationVideoStep.detailText = "This hasn't been implemented fully yet, but should feature a preloaded meditation audio based on the week / task"
         meditationVideoStep.isOptional = true
-         meditationVideoStep.videoURL = url
+        meditationVideoStep.videoURL = url
         meditationVideoStep.thumbnailTime = 0
         
         // MARK: ✅ ORKStep 4 of 5: ORKFormStep for Post Survey
@@ -269,73 +397,6 @@ struct TaskComponents {
         surveyTask.progressLabelColor = .red
         return surveyTask
     }
-    
-    
-    static func verifyDocExist(docTitle: String, completion: @escaping (Bool) -> Void) {
-        
-        let docRef = Firestore.firestore().collection("users").document(docTitle)
-        
-        docRef.getDocument { (doc, error) in
-            if let doc = doc, doc.exists {
-                completion(true)
-            } else {
-                completion(false)
-            }
-            
-        }
-        
-    }
-    
-    static func createDoc(docTitle: String) {
-        
-        let db = Firestore.firestore()
-        db.collection("users").document(docTitle).setData(["survey" : docTitle])
-        
-    }
-    static func storeCheckInPreSurveyResults(docTitle: String, resultID: String, resultValue: String) {
-        
-        // MARK: STATUS 🟡
-        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
-        
-        // Here is the logic for storing the preSurvey, will need to expand the input parameters
-        let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document(docTitle)
-        // Uncomment below code once the data can be captured in the required format of [String:Any]
-        tempStorageDestination.updateData([resultID : resultValue])
-//        tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
-        print(resultID + "& \(resultValue)")
-        
-        // In final product, this is ideally how storing the results should be
-        //        let idealStorageDestination = db
-        //            .collection("users").document("usersUniqueIDObject")
-        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
-        
-        
-    }
-    static func  storeCheckInPostSurveyResults(docTitle: String, resultID: String, resultValue: String, user: String, start: String, end: String) {
-        // MARK: STATUS 🟡
-        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
-        
-        // Here is the logic for storing the preSurvey, will need to expand the input parameters
-        let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document(docTitle)
-        // Uncomment below code once the data can be captured in the required format of [String:Any]
-        tempStorageDestination.updateData(["Task Start:" : start,
-                                           "Task End:" : end,
-                                           "User Logged In:" : user,
-                                           "\(resultID)" : "\(resultValue)"])
-        
-        print("\(resultID) - \(resultValue)")
-        // db.child("users").child(User.uid).setValue(["username": username])
-        
-        // In final product, this is ideally how storing the results should be
-        //        let idealStorageDestination = db
-        //            .collection("users").document("usersUniqueIDObject")
-        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
-        
-        
-    }
-    
     
     static func offboardingTask() -> ORKTask {
         //MARK: STATUS: 🟡
@@ -427,23 +488,7 @@ struct TaskComponents {
         return surveyTask
     }
     
-    static func  storeOffboardingTaskResults() {
-        // MARK: STATUS 🟡
-        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
-        
-        let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document("TestFeedbackStorage")
-        // Uncomment below code once the data can be captured in the required format of [String:Any]
-        // tempStorageDestination.setData([String : Any])
-        
-        // In final product, this is ideally how storing the results should be
-        let idealStorageDestination = db
-            .collection("users").document("usersUniqueIDObject")
-            .collection("OffboardingSurveyFeedbackResults").document("FeedbackResults") // in the form of [FeedbackQuestion:usersText]
-        
-    }
-    
-    static func withdraw() -> ORKTask {
+    static func showWithdrawSurvey() -> ORKTask {
         //MARK: STATUS: 🟡
         var withdrawalSteps = [ORKStep]()
         
@@ -513,19 +558,107 @@ struct TaskComponents {
         return surveyTask
     }
     
-    static func  storeWithdrawTaskResults(docTitle: String, resultID: String, resultValue: String) {
+    // MARK: 💠 Storing Task Results 💠
+    
+    static func storeCheckInPreSurveyResults(randomizationGroup: String, userUID: String, docTitle: String, resultID: String, resultValue: String) {
+        
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        // Here is the logic for storing the preSurvey, will need to expand the input parameters
+        let db = Firestore.firestore()
+        let docRef = db
+            .collection(randomizationGroup)
+            .document(userUID)
+            .collection("Docs for \(userUID)")
+            .document(docTitle)
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        docRef.updateData([resultID : resultValue])
+        //        tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
+        print(resultID + "& \(resultValue)")
+        
+        // In final product, this is ideally how storing the results should be
+        //        let idealStorageDestination = db
+        //            .collection("users").document("usersUniqueIDObject")
+        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+    }
+    
+    static func  storeCheckInPostSurveyResults(randomizationGroup: String, userUID: String, docTitle: String, resultID: String, resultValue: String, start: String, end: String) {
+        
+            /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+            
+            let db = Firestore.firestore()
+            let docRef = db
+                .collection(randomizationGroup)
+                .document(userUID)
+                .collection("Docs for \(userUID)")
+                .document(docTitle)
+            
+            print("Arrived at storeWithdrawTaskResults(), shoould have data")
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        // Here is the logic for storing the preSurvey, will need to expand the input parameters
+
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+       docRef.updateData(["Task Start:" : start,
+                                           "Task End:" : end,
+                                           "User Logged In:" : userUID,
+                                           "\(resultID)" : "\(resultValue)"])
+        
+        print("\(resultID) - \(resultValue)")
+        // db.child("users").child(User.uid).setValue(["username": username])
+        
+        // In final product, this is ideally how storing the results should be
+        //        let idealStorageDestination = db
+        //            .collection("users").document("usersUniqueIDObject")
+        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+    }
+    
+    static func  storeOffboardingTaskResults() {
         // MARK: STATUS 🟡
         /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
         
         let db = Firestore.firestore()
-        let tempStorageDestination = db.collection("users").document(docTitle)
+        let tempStorageDestination = db.collection("users").document("TestFeedbackStorage")
         // Uncomment below code once the data can be captured in the required format of [String:Any]
-        tempStorageDestination.setData([resultID : resultValue])
+        // tempStorageDestination.setData([String : Any])
         
         // In final product, this is ideally how storing the results should be
-//        let idealStorageDestination = db
-//            .collection("users").document("usersUniqueIDObject")
-//            .collection("WithdrawFeedbackResults").document("WithdrawFeedbackResults") // in the form of [WithdrawFeedbackQuestion:usersText]
+        let idealStorageDestination = db
+            .collection("users").document("usersUniqueIDObject")
+            .collection("OffboardingSurveyFeedbackResults").document("FeedbackResults") // in the form of [FeedbackQuestion:usersText]
+        
+    }
+    
+    static func  storeWithdrawTaskResults(randomizationGroup: String, userUID: String, docTitle: String, resultID: String, resultValue: String) {
+        // MARK: STATUS 🟡
+        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
+        
+        let db = Firestore.firestore()
+        let docRef = db
+            .collection(randomizationGroup)
+            .document(userUID)
+            .collection("Docs for \(userUID)")
+            .document(docTitle)
+        
+        docRef.setData(["SurveyName" : docTitle,
+                      resultID : resultValue])
+        
+        let docRef2 = db
+            .collection(randomizationGroup)
+            .document(userUID)
+        
+        docRef2.updateData(["EnrollmentStatus" : "Withdrawn"])
+        
+        print("Arrived at storeWithdrawTaskResults(), shoould have data")
+        //db.collection(randomizationGroup).document(userUID).collection("Docs for \(userUID)").document(docTitle).setData(["SurveyName" : docTitle])
+        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        
+        // In final product, this is ideally how storing the results should be
+        //        let idealStorageDestination = db
+        //            .collection("users").document("usersUniqueIDObject")
+        //            .collection("WithdrawFeedbackResults").document("WithdrawFeedbackResults") // in the form of [WithdrawFeedbackQuestion:usersText]
         
     }
 }

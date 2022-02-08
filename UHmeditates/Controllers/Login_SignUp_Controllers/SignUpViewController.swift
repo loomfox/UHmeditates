@@ -110,16 +110,17 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
                     // User was created successfully, now store the first name and last name
                     self.currentUser = "\(email)"
                     
-                    let userType = ["ExperimentalGroup", "ControlGroup"]
+                    let userType = ["Experimental", "Active-Control", "Control"]
                     let randomizedGroup = userType.randomElement()!
                     
-                    
+                    TaskComponents.appendUserGroup(userUID: result!.user.uid, RandomizationGroup: randomizedGroup)
                     let db = Firestore.firestore()
                     
                     // Within the users collection, create a firebase doc titled after the new users uniqueID
                     db.collection(randomizedGroup).document("\(result!.user.uid)").setData([
                         "Group":randomizedGroup,
                         "EnrollmentStatus": "Enrolled",
+                        "OnboardingStatus": "Incomplete",
                         "firstname":firstName,
                         "lastname":lastName,
                         "uid": result!.user.uid,
@@ -130,11 +131,6 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
-                            // old code for generating a firebase document with randomized ID
-                            //                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
-                            //                        if error != nil {
-                            //                            // Show error message
-                            //                            self.showError("Error saving user data")
                         }
                     }
                     
@@ -146,17 +142,12 @@ class SignUpViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     func transitionToJoinStudyPage() {
-        
-        //        let homeViewController = storyboard?.instantiateViewController(identifier: "joinStudyVC") as? DemographicSignupViewController
-        //        view.window?.rootViewController = homeViewController
-        //        view.window?.makeKeyAndVisible()
-        
+  
         let taskViewController = ORKTaskViewController(task: TaskComponents.showOnboardingSurvey(), taskRun: nil)
         
         taskViewController.delegate = self
         taskViewController.modalPresentationStyle = .fullScreen
         present(taskViewController, animated: true, completion: nil)
-        
         
     }
     func showError(_ message:String) {
