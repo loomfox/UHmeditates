@@ -175,7 +175,7 @@ struct TaskComponents {
     }
     
     // MARK: 💠 Functions for Database Modifications 💠
-    
+    /// NOTE: I need to get the reads and writes down, maybe for writes I could create an empty dictionary array and populate it with the items in the for loop and only upload the dictionary array?
     static func createDocCollection(docTitle: String) { // Used to create user folder for surveys during sign up
         
         let db = Firestore.firestore()
@@ -187,8 +187,6 @@ struct TaskComponents {
 
         let db = Firestore.firestore()
         db.collection(randomizationGroup).document(userUID).collection("Docs for \(userUID)").document(docTitle).setData(["Created" : docTitle ])
-        
-        
     }
     
     // MARK: 💠 Type of Tasks 💠
@@ -197,60 +195,147 @@ struct TaskComponents {
         //MARK: STATUS: 🟢
         var onboardingSteps = [ORKStep]()
         
-        // MARK: ✅ ORKStep 1 of 4: ORKInstructionStep
+        // MARK: ✅ ORKStep 1 of 7: ORKInstructionStep
         let welcomeStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).welcome")
         welcomeStep.title = "Welcome to UHMeditates!"
-        welcomeStep.detailText = "Thanks for joining the study, tap next to learn more about your role in the app"
+        welcomeStep.detailText = "Welcome to the study! By now, you should have already been able to read through the Informed Consent. If you haven’t don’t worry, we’re going to review it once more."
         welcomeStep.image = UIImage(named: "Happy") // ommit if no need to for image
         onboardingSteps += [welcomeStep]
         
-        // MARK: ✅ ORKStep 2 of 4: ORKInstructionStep with ORKBodyItems
+        // MARK: ✅ ORKStep 2 of 7: ORKInstructionStep with ORKBodyItems
+        let studyPurposeInstructionStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).studyPurpose")
+        studyPurposeInstructionStep.title = "Study Purpose"
+        studyPurposeInstructionStep.image = UIImage(named: "Happy")
+        onboardingSteps += [studyPurposeInstructionStep]
+        
+        let purposePointOne = ORKBodyItem(
+            text: "This study aims to investigate the links between various meditation practices, ad social decision making. We hope that with your help, we can use games and biometric data to understand more about the biology of meditation and social decision making.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        studyPurposeInstructionStep.bodyItems = [purposePointOne]
+        
+        
+        // MARK: ✅ ORKStep 3 of 7: ORKInstructionStep with ORKBodyItems
+        let rightsAsParticipantInstructionStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).rightsAsParticipant")
+        rightsAsParticipantInstructionStep.title = "Overview of Your Rights as a Participant"
+        rightsAsParticipantInstructionStep.image = UIImage(named: "Happy")
+        onboardingSteps += [rightsAsParticipantInstructionStep]
+        
+        // pointOne-Five are in useable state and will be populated with the right content late for ORKStep 2 of 4
+        let pointOne = ORKBodyItem(
+            text: "Taking part in the research is voluntary; whether or not you decide to complete it to receive the SONA credit your choice.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let pointTwo = ORKBodyItem(
+            text: "You can agree to participate but if you decide to withdraw your participation later in the study, your decision will not be held against you and if you are a student, it will not in any way impact your grades at the University of Houston.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let pointThree = ORKBodyItem(
+            text: "If you have questions, you may visit the ‘Communications’ Tab, and email the Principal Investigators by pressing the 'Email Us!' button.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let pointFour = ORKBodyItem(
+            text: "The Principal Investigators for the study will be: Chase Philip, Guy Joseph, and Piya Malhan.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        rightsAsParticipantInstructionStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour]
+        
+        // MARK: ✅ ORKStep 3 of 6: ORKInstructionStep with ORKBodyItems
+        let roleAsParticipantInstructionStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).roleAsParticipant")
+        roleAsParticipantInstructionStep.title = "Overview of Your Role as a Participant"
+        roleAsParticipantInstructionStep.image = UIImage(named: "Happy")
+        onboardingSteps += [roleAsParticipantInstructionStep]
+        
+        // pointOne-Five are in useable state and will be populated with the right content late for ORKStep 2 of 4
+        let roleAsPointOne = ORKBodyItem(
+            text: "Playing a short video game.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let roleAsPointTwo = ORKBodyItem(
+            text: "Completing 3 meditations or 'Check-In Surveys' a week by starting a new survey on the 'Dashboard' tab.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let roleAsPointThree = ORKBodyItem(
+            text: "Completing several questionnaires that cover these concepts: personality, mindfulness, gratitude, depression/anxiety/stress, and present emotions. You have the right to skip any questions that may make you feel uncomfortable.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let roleAsPointFour = ORKBodyItem(
+            text: "For each meditation completed, you will accrue 1-point that be used as tickets for a weekly raffle for a $20 Amazon gift card.",
+            detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        let roleAsPointFive = ORKBodyItem(
+            text: "Data on your heart rate will be collected throughout. Heart rate data will either be directly collected (if the individual has a smartwatch capable) or through constant streaming of HR Data.", detailText: nil,
+            image: UIImage(systemName: "clock.badge.checkmark"),
+            learnMoreItem: nil,
+            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        
+        roleAsParticipantInstructionStep.bodyItems = [roleAsPointOne, roleAsPointTwo, roleAsPointThree, roleAsPointFour, roleAsPointFive]
+        // MARK: ✅ ORKStep 4 of 6: ORKInstructionStep with ORKBodyItems
         let studyOverViewInstructionStep = ORKInstructionStep(identifier: "\(K.TaskIDs.onboardingTaskID).overview")
         studyOverViewInstructionStep.title = "Overview"
         studyOverViewInstructionStep.image = UIImage(named: "Happy")
         onboardingSteps += [studyOverViewInstructionStep]
         
         // pointOne-Five are in useable state and will be populated with the right content late for ORKStep 2 of 4
-        let pointOne = ORKBodyItem(
-            text: "Probably should remind them of how their heart rate is collected and if need be, create another instruction step for rules/reminders}", detailText: nil,
+        let overviewPointOne = ORKBodyItem(
+            text: "Heart rate data will be collected through a compatible heart rate monitor device.", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
-        let pointTwo = ORKBodyItem(
-            text: "Point for important information or further instruction", detailText: nil,
+        let overviewPointTwo = ORKBodyItem(
+            text: "If possible, please keep the device worn throughout the day.", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
-        let pointThree = ORKBodyItem(
-            text: "Point for important information or further instruction", detailText: nil,
+        let overviewPointThree = ORKBodyItem(
+            text: "The Individual in possession of the device is responsible for any loss or damages to the device.", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
-        let pointFour = ORKBodyItem(
-            text: "Point for important information or further instruction", detailText: nil,
+        let overviewPointFour = ORKBodyItem(
+            text: "If the device is lost or damaged, the individual in possession of it is responsible for paying a 120$ fine", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
-        let pointFive = ORKBodyItem(
-            text: "Point for important information or further instruction", detailText: nil,
-            image: UIImage(systemName: "clock.badge.checkmark"),
-            learnMoreItem: nil,
-            bodyItemStyle: .bulletPoint, useCardStyle: true)
+        studyOverViewInstructionStep.bodyItems = [overviewPointOne, overviewPointTwo, overviewPointThree, overviewPointFour]
         
-        studyOverViewInstructionStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour, pointFive]
+//        // MARK: ✅ ORKStep 5 of 6: ORKRequestPermissionsStep
+//        let notificationPermisisonType = ORKNotificationPermissionType(authorizationOptions: [.alert, .badge, .sound])
+//        let requestPermissionStep = ORKRequestPermissionsStep(identifier: "\(K.TaskIDs.onboardingTaskID).permissionRequestStep", permissionTypes: [notificationPermisisonType])
+//        onboardingSteps += [requestPermissionStep]
         
-        
-        
-        // MARK: ✅ ORKStep 3 of 4: ORKRequestPermissionsStep
-        let notificationPermisisonType = ORKNotificationPermissionType(authorizationOptions: [.alert, .badge, .sound])
-        let requestPermissionStep = ORKRequestPermissionsStep(identifier: "\(K.TaskIDs.onboardingTaskID).permissionRequestStep", permissionTypes: [notificationPermisisonType])
-        onboardingSteps += [requestPermissionStep]
-        
-        // MARK: ✅ ORKStep 4 of 4: ORKCompletionStep
+        // MARK: ✅ ORKStep 6 of 6: ORKCompletionStep
         let completionStep = ORKCompletionStep(identifier: "\(K.TaskIDs.onboardingTaskID).completion")
         completionStep.title = "Thanks for joining the study!"
         completionStep.detailText = "You are now ready to access the rest of the app!"
@@ -385,7 +470,7 @@ struct TaskComponents {
         // MARK: ✅ ORKStep 5 of 5: ORKCompletionStep
         let completionStep = ORKCompletionStep(identifier: "\(K.TaskIDs.checkInTaskID).completionStep")
         completionStep.title = "Congratulations!"
-        completionStep.detailText = "You have just completed 1 of 3 daily tasks."
+        completionStep.detailText = "You have completed 1 of 3 weekly tasks."
         
         // surveyTask == a subclass of ORKTask required to be returned by func
         let surveyTask = ORKOrderedTask(identifier: K.TaskIDs.checkInTaskID,
@@ -509,25 +594,25 @@ struct TaskComponents {
         
         // pointOne-Five are in useable state and will be populated with the right content later.
         let pointOne = ORKBodyItem(
-            text: "1. Details about the withdrawal protocol", detailText: nil,
+            text: "By selecting to withdraw from the study,  you have agreed to no longer participate. Please note that withdrawing from the study will not have an effect on your grades or standing with the University of Houston. ", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
         let pointTwo = ORKBodyItem(
-            text: "2. Details about the withdrawal protocol", detailText: nil,
+            text: "You may not be entitled to the benefits of the study dependent upon the amount completed.", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
         let pointThree = ORKBodyItem(
-            text: "3. Details about the withdrawal protocol", detailText: nil,
+            text: "If you choose, all data collected from your person will be deleted. ", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
         let pointFour = ORKBodyItem(
-            text: "4. Details about the withdrawal protocol", detailText: nil,
+            text: "We would appreciate it if we were allowed to use the data collected for the sole purpose of this research study.", detailText: nil,
             image: UIImage(systemName: "clock.badge.checkmark"),
             learnMoreItem: nil,
             bodyItemStyle: .bulletPoint, useCardStyle: true)
@@ -539,7 +624,7 @@ struct TaskComponents {
             bodyItemStyle: .bulletPoint, useCardStyle: true)
         
         // MARK: ✅ ORKStep 3 of 4: ORK
-        secondInformativeStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour, pointFive]
+        secondInformativeStep.bodyItems = [pointOne, pointTwo, pointThree, pointFour, /*pointFive*/]
         let QAF = ORKTextAnswerFormat()
         QAF.multipleLines = true
         
@@ -563,24 +648,19 @@ struct TaskComponents {
     static func storeCheckInPreSurveyResults(randomizationGroup: String, userUID: String, docTitle: String, resultID: String, resultValue: String) {
         
         // MARK: STATUS 🟡
-        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
-        
-        // Here is the logic for storing the preSurvey, will need to expand the input parameters
+
         let db = Firestore.firestore()
         let docRef = db
             .collection(randomizationGroup)
             .document(userUID)
             .collection("Docs for \(userUID)")
             .document(docTitle)
-        // Uncomment below code once the data can be captured in the required format of [String:Any]
+       
+        // Capture results
         docRef.updateData([resultID : resultValue])
-        //        tempStorageDestination.updateData(["\(resultID)" : "\(resultValue)"])
-        print(resultID + "& \(resultValue)")
-        
-        // In final product, this is ideally how storing the results should be
-        //        let idealStorageDestination = db
-        //            .collection("users").document("usersUniqueIDObject")
-        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+      
+       // print(resultID + "& \(resultValue)")
+       
     }
     
     static func  storeCheckInPostSurveyResults(randomizationGroup: String, userUID: String, docTitle: String, resultID: String, resultValue: String, start: String, end: String) {
@@ -596,23 +676,15 @@ struct TaskComponents {
             
             print("Arrived at storeWithdrawTaskResults(), shoould have data")
         // MARK: STATUS 🟡
-        /// I believe these storage functions will be a general start in the right direction for storing the captured results from the specified ORKTask.
-        
-        // Here is the logic for storing the preSurvey, will need to expand the input parameters
 
-        // Uncomment below code once the data can be captured in the required format of [String:Any]
+        // Capture results
        docRef.updateData(["Task Start:" : start,
                                            "Task End:" : end,
                                            "User Logged In:" : userUID,
                                            "\(resultID)" : "\(resultValue)"])
         
-        print("\(resultID) - \(resultValue)")
-        // db.child("users").child(User.uid).setValue(["username": username])
-        
-        // In final product, this is ideally how storing the results should be
-        //        let idealStorageDestination = db
-        //            .collection("users").document("usersUniqueIDObject")
-        //            .collection("CheckInSurveyResults").document("CheckInSurvey#") // in the form of Question:SelectedAnswer
+       // print("\(resultID) - \(resultValue)")
+       
     }
     
     static func  storeOffboardingTaskResults() {
@@ -650,15 +722,7 @@ struct TaskComponents {
             .document(userUID)
         
         docRef2.updateData(["EnrollmentStatus" : "Withdrawn"])
-        
-        print("Arrived at storeWithdrawTaskResults(), shoould have data")
-        //db.collection(randomizationGroup).document(userUID).collection("Docs for \(userUID)").document(docTitle).setData(["SurveyName" : docTitle])
-        // Uncomment below code once the data can be captured in the required format of [String:Any]
-        
-        // In final product, this is ideally how storing the results should be
-        //        let idealStorageDestination = db
-        //            .collection("users").document("usersUniqueIDObject")
-        //            .collection("WithdrawFeedbackResults").document("WithdrawFeedbackResults") // in the form of [WithdrawFeedbackQuestion:usersText]
+        //print("Arrived at storeWithdrawTaskResults(), shoould have data")
         
     }
 }

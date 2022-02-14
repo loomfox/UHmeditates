@@ -24,7 +24,6 @@
 		4961DA4425BFD632001DE248 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4325BFD632001DE248 /* SignUpViewController.swift */; };
 		4961DA4825BFD64F001DE248 /* WeeklyTasksTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4725BFD64F001DE248 /* WeeklyTasksTabViewController.swift */; };
 		4961DA4C25BFD668001DE248 /* CommunicationsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA4B25BFD668001DE248 /* CommunicationsTabViewController.swift */; };
-		4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */; };
 		D82CAFB027705AC400CA4775 /* Artboard2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D82CAFAF27705AC300CA4775 /* Artboard2@3x.png */; };
 		D8AB8D6526C9DB4C00D131F3 /* TaskComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6426C9DB4C00D131F3 /* TaskComponents.swift */; };
 		D8AB8D6B26C9DC2E00D131F3 /* DashboardTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB8D6A26C9DC2E00D131F3 /* DashboardTabViewController.swift */; };
@@ -75,7 +74,6 @@
 		4961DA4325BFD632001DE248 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4961DA4725BFD64F001DE248 /* WeeklyTasksTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTasksTabViewController.swift; sourceTree = "<group>"; };
 		4961DA4B25BFD668001DE248 /* CommunicationsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationsTabViewController.swift; sourceTree = "<group>"; };
-		4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemographicSignupViewController.swift; sourceTree = "<group>"; };
 		4D1A6F51A52C3025D26AE7F1 /* Pods_UHmeditates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UHmeditates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4AA2F918CE2552914094D /* Pods-UHmeditates-UHmeditatesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates-UHmeditatesUITests.release.xcconfig"; path = "Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6C41374FD6DC849455B637E0 /* Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig"; path = "Target Support Files/Pods-UHmeditates-UHmeditatesUITests/Pods-UHmeditates-UHmeditatesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +84,7 @@
 		D83BF268277A2B3A00CC23A6 /* Artboard2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Artboard2@3x.png"; sourceTree = "<group>"; };
 		D8AB8D6426C9DB4C00D131F3 /* TaskComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskComponents.swift; sourceTree = "<group>"; };
 		D8AB8D6A26C9DC2E00D131F3 /* DashboardTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTabViewController.swift; sourceTree = "<group>"; };
+		D8B835A227B8C3AF00663945 /* UHmeditates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UHmeditates.entitlements; sourceTree = "<group>"; };
 		D8C0DDC22734B75200D82956 /* CheckInResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInResult.swift; sourceTree = "<group>"; };
 		D8E092AC26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E092AD26C9DF0F00ABE192 /* CareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +164,7 @@
 		4961D9F025BFD57A001DE248 /* UHmeditates */ = {
 			isa = PBXGroup;
 			children = (
+				D8B835A227B8C3AF00663945 /* UHmeditates.entitlements */,
 				D8056E42270F3E5B00E5D896 /* Meditation Media */,
 				D8AB8D5E26C9D97600D131F3 /* Model */,
 				D8AB8D5F26C9D97F00D131F3 /* View */,
@@ -248,7 +248,6 @@
 			children = (
 				4961D9F525BFD57A001DE248 /* FirstViewController.swift */,
 				4961DA4325BFD632001DE248 /* SignUpViewController.swift */,
-				4961DA8225BFE3A9001DE248 /* DemographicSignupViewController.swift */,
 				4961DA3D25BFD624001DE248 /* LoginViewController.swift */,
 			);
 			path = Login_SignUp_Controllers;
@@ -571,7 +570,6 @@
 				D8AB8D6B26C9DC2E00D131F3 /* DashboardTabViewController.swift in Sources */,
 				4961DA4C25BFD668001DE248 /* CommunicationsTabViewController.swift in Sources */,
 				F5DD5E5925E37A4E00C0A0A2 /* Constants.swift in Sources */,
-				4961DA8325BFE3A9001DE248 /* DemographicSignupViewController.swift in Sources */,
 				D8C0DDC32734B75200D82956 /* CheckInResult.swift in Sources */,
 				F5897C6025E57877006511AF /* TestingTaskAccessTabViewController.swift in Sources */,
 			);
@@ -752,6 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UHmeditates/UHmeditates.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = QVD3TP56PF;
@@ -761,7 +760,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = UHYML.UHmeditates;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UHYML.UHmeditates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -774,6 +774,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UHmeditates/UHmeditates.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = QVD3TP56PF;
@@ -784,7 +785,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = UHYML.UHmeditates;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UHYML.UHmeditates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

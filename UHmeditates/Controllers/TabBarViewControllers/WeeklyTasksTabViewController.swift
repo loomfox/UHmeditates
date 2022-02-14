@@ -22,7 +22,7 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
     
     // MARK: 💠 Button outlets 💠
     @IBOutlet weak var buttonOneO: UIButton!
-    @IBOutlet var progressBarOutlet: UIView!
+    @IBOutlet weak var progressBarOutlet: UIProgressView!
     @IBOutlet weak var progresBarHeader: UILabel!
     @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
@@ -55,7 +55,9 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
     // MARK: 💠 Methods 💠
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async{ self.getData()
+        DispatchQueue.main.async{
+            
+            self.getData()
             
             // Do any additional setup after loading the view.
             
@@ -64,76 +66,110 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
             // MARK: Insert Fxn here for modifying button visibility
             self.theTableView.layer.borderWidth = 1.0
             self.theTableView.layer.cornerRadius = 5.0
+            self.buttonOneO.titleLabel?.textColor = .blue
         }
+        
+        
     }
+    
+    
+    //    typedef NS_ENUM(NSInteger, ORKTaskViewControllerFinishReason) {
+    //
+    //        /// The task was canceled by the participant or the developer, and the participant asked to save the current result.
+    //        ORKTaskViewControllerFinishReasonSaved,
+    //
+    //        /// The task was canceled by the participant or the developer, and the participant asked to discard the current result.
+    //        ORKTaskViewControllerFinishReasonDiscarded,
+    //
+    //        /// The task has completed successfully, because all steps have been completed.
+    //        ORKTaskViewControllerFinishReasonCompleted,
+    //
+    //        /// An error was detected during the current step.
+    //        ORKTaskViewControllerFinishReasonFailed
+    //    };
+    
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         
-        let authDB = Auth.auth().currentUser?.uid
-        let IPuserUID = "\(authDB!)"
-        
-        let docTitle = "Survey # \(surveys.count + 1) of 24"
-        
-        let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
-        let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
-        
-        // If the user makes it to the postSurvey screen, this will populate 20 NULL answers until user selects a new one. This allows the document to be uploaded to the database.
-        // Basically this code needs to be triggered if the step is completed so maybe I can drill down to the task and the completion step being reached?
-        // MARK: 🟧 I WAS FOCUSED HERE 🟧
+        if reason == ORKTaskViewControllerFinishReason.discarded {
+            
+            taskViewController.dismiss(animated: true, completion: nil)
+            print("use canceled task")
+            
+        } else if reason == ORKTaskViewControllerFinishReason.completed {
+            
+            let authDB = Auth.auth().currentUser?.uid
+            let IPuserUID = "\(authDB!)"
+            
+            let docTitle = "Survey # \(surveys.count + 1) of 24"
+            
+            let postResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![3] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
+            let preResults: [ORKChoiceQuestionResult] = (taskViewController.result.results![1] as! ORKStepResult).results as! [ORKChoiceQuestionResult]
+            
+            // If the user makes it to the postSurvey screen, this will populate 20 NULL answers until user selects a new one. This allows the document to be uploaded to the database.
+            // Basically this code needs to be triggered if the step is completed so maybe I can drill down to the task and the completion step being reached?
+            // MARK: 🟧 I WAS FOCUSED HERE 🟧
             /// I was trying to figure out how to trigger code based on the completion step being reached to prevent a document from being uploaded to the database.
             /// My next problem would be figuring out how to stop the Index 3 or 1 [0...0] out of bounds error.
-        if taskViewController.currentStepViewController == taskViewController.task?.step?(withIdentifier: "\(K.TaskIDs.offboardingTaskID).completion") /* OR _currentStepViewController    ORKCompletionStepViewController?    0x000000014002ea00 */   {
-            print("We made it to the completion step")
-        }
-        
-        if postResults.isEmpty != true {
-        // Layer 2: Verify the randomization group
-        TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
-            if let userGroup = userGroup?.groupName {
-                
-                // layer 3: Randomization group verified, proceed into code that needs to run after finding group
-                TaskComponents.verifyDocExist(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle) { doesExist in
-                    if doesExist == false {
-                        print(docTitle)
+            
+            if taskViewController.currentStepViewController == taskViewController.task?.step?(withIdentifier: "\(K.TaskIDs.offboardingTaskID).completion") /* OR _currentStepViewController    ORKCompletionStepViewController?    0x000000014002ea00 */   {
+                print("We made it to the completion step")
+            }
+            
+            if postResults.isEmpty != true {
+                // Layer 2: Verify the randomization group
+                TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
+                    if let userGroup = userGroup?.groupName {
                         
-                        // Layer 4: Code dependent on layer 3
-                        TaskComponents.createDoc(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle)
-                        
-                        
-                        
-                        // Loop of assigning pre results ID and answer values
-                        for result in preResults {
-                            let resultIdentifier = "\(result.identifier)"
-                            let resultValue = "\(result.answer ?? "null")"
-                            
-                            // Storing the answers in a looped process
-                            TaskComponents.storeCheckInPreSurveyResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
+                        // layer 3: Randomization group verified, proceed into code that needs to run after finding group
+                        TaskComponents.verifyDocExist(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle) { doesExist in
+                            if doesExist == false {
+                                print(docTitle)
+                                
+                                // Layer 4: Code dependent on layer 3
+                                TaskComponents.createDoc(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle)
+                                
+                                
+                                
+                                // Loop of assigning pre results ID and answer values
+                                for result in preResults {
+                                    let resultIdentifier = "\(result.identifier)"
+                                    let resultValue = "\(result.answer ?? "null")"
+                                    
+                                    // Storing the answers in a looped process
+                                    TaskComponents.storeCheckInPreSurveyResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
+                                }
+                                
+                                
+                                for result in postResults {
+                                    
+                                    let resultIdentifier = "\(result.identifier)"
+                                    let resultValue = "\(result.answer ?? "null")"
+                                    
+                                    TaskComponents.storeCheckInPostSurveyResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
+                                }
+                            } else {
+                                print("Does exist, no write made to db")
+                            }
                         }
                         
                         
-                        for result in postResults {
-                            
-                            let resultIdentifier = "\(result.identifier)"
-                            let resultValue = "\(result.answer ?? "null")"
-                            
-                            TaskComponents.storeCheckInPostSurveyResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue, start: "\(taskViewController.result.startDate)", end: "\(taskViewController.result.endDate)")
+                        if taskViewController.result.results != nil {
+                            //surveysCompleteToDate += 1
+                            print("Not Nil, meaning results do exist")
                         }
-                    } else {
-                        print("Does exist, no write made to db")
+                        
+                        taskViewController.dismiss(animated: true, completion: self.getData)
                     }
                 }
-                
-                
-                if taskViewController.result.results != nil {
-                    //surveysCompleteToDate += 1
-                    print("Not Nil, meaning results do exist")
-                }
-                
-                taskViewController.dismiss(animated: true, completion: self.getData)
+            } else {
+                taskViewController.dismiss(animated: true, completion: nil)
             }
-        }
+            
         } else {
-            taskViewController.dismiss(animated: true, completion: nil)
+            print(error)
         }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -194,7 +230,25 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
                                                                endDate: d["Task End:"] as? String ?? "",
                                                                surveyName: d["Created"] as? String ?? "")
                                 }
-                                self.buttonOneO.setTitle("Start Check-in Survey #\(self.surveys.count)", for: .normal)
+                                
+                                // MARK: Progress Bar and Header Modifiers
+                                self.buttonOneO.setTitle("Start Check-iIn Survey #\(self.surveys.count + 1)", for: .normal)
+                                self.buttonOneO.titleLabel?.textColor = .blue
+                                self.progressBarOutlet.progress = Float(self.surveys.count) / Float(24)
+                                let progressBarValue = self.surveys.count
+                                
+                                switch progressBarValue {
+                                    case 0 :
+                                        self.progresBarHeader.text = "Once you complete a survey, your progress will load here!"
+                                    case 1...3:
+                                        self.progresBarHeader.text = "You're doing great so far!"
+                                    case 4...11:
+                                        self.progresBarHeader.text = "You're half way done with the study, congratulations!"
+                                    case 12...24:
+                                        self.progresBarHeader.text = "Great!"
+                                    default:
+                                        self.progresBarHeader.text = "Once you complete a survey, your progress will load here!"
+                                }
                                 print("Num testSurveys: \(self.surveys.count)")
                                 self.tableView.reloadData()
                             }

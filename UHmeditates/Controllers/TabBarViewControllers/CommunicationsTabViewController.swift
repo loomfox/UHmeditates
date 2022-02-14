@@ -19,10 +19,18 @@ import FirebaseAuth
 class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     // MARK: 1.1 - IBOutlets
+    @IBOutlet weak var stackViewOne: UIStackView!
+    @IBOutlet weak var stackViewTwo: UIStackView!
+    @IBOutlet weak var stackViewThree: UIStackView!
     @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var userUID: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var withdrawButtonO: UIButton!
+    @IBOutlet weak var haveQuestionsL: UILabel!
+    @IBOutlet weak var PIDescriptionL: UILabel!
+    @IBOutlet weak var chasePI: UILabel!
+    @IBOutlet weak var guyPI: UILabel!
+    @IBOutlet weak var piyaPI: UILabel!
+    @IBOutlet weak var studyIDL: UILabel!
     
     // MARK: 1.2 - Top-Level Object
     let mailButton = UIButton()
@@ -33,68 +41,78 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
     func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         // MARK: STATUS: 🟡 -
         
-        // MARK: ✅ - Write code for collecting and storing feedback
-        let db = Firestore.firestore()
-        let authDB = Auth.auth().currentUser?.uid
-        let IPuserUID = "\(authDB!)"
-        
-        let docTitle = "Withdrawal Doc"
-        
-        // Layer 2: Verify the randomization group
-        TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
-            if let userGroup = userGroup?.groupName {
-                
-                // layer 3: Randomization group verified, proceed into code that needs to run after finding group
-                TaskComponents.verifyDocExist(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle) { doesExist in
-                    if doesExist == false {
-                        print(docTitle)
-                        
-                        // Layer 4: Code dependent on layer 3
-                        TaskComponents.createDoc(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle)
-                        
-                        
-                        // Could be used to condense createDoc & any store_() that uploads results for all surveys the
-                        // This code block should go inside of the createDoc() and potentially have a switch case or just a simple if the results are there, then go ahead and also upload results; otherwise simply create the doc and exit the function
-                        // Essentially this would move the creation of the doc and storage into layer 5, and an input parameter for the results would be added to the func to be handled if present
-//                        if results != nil {
-//
-//                        } else {
-//
-//                        }
-                        
-                        let feedback: [ORKTextQuestionResult] = (taskViewController.result.results![2] as! ORKStepResult).results as! [ORKTextQuestionResult]
-                        
-                        // Loop of assigning pre results ID and answer values
-                        for result in feedback {
+        if reason == ORKTaskViewControllerFinishReason.discarded {
+            
+            taskViewController.dismiss(animated: true, completion: nil)
+            print("use canceled task")
+            
+        } else if reason == ORKTaskViewControllerFinishReason.completed {
+            
+            
+            // MARK: ✅ - Write code for collecting and storing feedback
+            let authDB = Auth.auth().currentUser?.uid
+            let IPuserUID = "\(authDB!)"
+            
+            let docTitle = "Withdrawal Doc"
+            
+            // Layer 2: Verify the randomization group
+            TaskComponents.verifyUserGroup(userUID: IPuserUID) { userGroup in
+                if let userGroup = userGroup?.groupName {
+                    
+                    // layer 3: Randomization group verified, proceed into code that needs to run after finding group
+                    TaskComponents.verifyDocExist(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle) { doesExist in
+                        if doesExist == false {
+                            print(docTitle)
                             
-                            // Layer 5: Code dependent on layer 4
-                            let resultIdentifier = "\(result.identifier)"
-                            let resultValue = "\(result.answer ?? "null")"
+                            // Layer 4: Code dependent on layer 3
+                            TaskComponents.createDoc(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle)
                             
                             
-                            // Storing the answers in a looped process
-                            TaskComponents.storeWithdrawTaskResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
-                            print("Arrived at Layer 5 to store withdraw results ")
-                           
+                            // Could be used to condense createDoc & any store_() that uploads results for all surveys the
+                            // This code block should go inside of the createDoc() and potentially have a switch case or just a simple if the results are there, then go ahead and also upload results; otherwise simply create the doc and exit the function
+                            // Essentially this would move the creation of the doc and storage into layer 5, and an input parameter for the results would be added to the func to be handled if present
+    //                        if results != nil {
+    //
+    //                        } else {
+    //
+    //                        }
+                            
+                            let feedback: [ORKTextQuestionResult] = (taskViewController.result.results![2] as! ORKStepResult).results as! [ORKTextQuestionResult]
+                            
+                            // Loop of assigning pre results ID and answer values
+                            for result in feedback {
+                                
+                                // Layer 5: Code dependent on layer 4
+                                let resultIdentifier = "\(result.identifier)"
+                                let resultValue = "\(result.answer ?? "null")"
+                                
+                                
+                                // Storing the answers in a looped process
+                                TaskComponents.storeWithdrawTaskResults(randomizationGroup: userGroup, userUID: IPuserUID, docTitle: docTitle, resultID: resultIdentifier, resultValue: resultValue)
+                                print("Arrived at Layer 5 to store withdraw results ")
+                               
+                            }
+                            
+                            
                         }
-                        
-                        
+                        else {
+                            print("Does exist, no write made to db")
+                        }
                     }
-                    else {
-                        print("Does exist, no write made to db")
-                    }
+                    
                 }
+            }
+     
+            if taskViewController.result.results != nil {
+                print("Not Nil, meaning results do exist")
                 
             }
-        }
- 
-        if taskViewController.result.results != nil {
-            print("Not Nil, meaning results do exist")
+            
+            taskViewController.dismiss(animated: true, completion: TaskComponents.signOutUser)
+            //signOutUser()
             
         }
         
-        taskViewController.dismiss(animated: true, completion: TaskComponents.signOutUser)
-        //signOutUser()
     }
 
     func setupButton() {
@@ -128,16 +146,34 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
         super.viewDidLoad()
         
         userLabel.layer.borderWidth = 1
-        userUID.layer.borderWidth = 1
+        userLabel.layer.cornerRadius = 5
         userEmail.layer.borderWidth = 1
+        userEmail.layer.cornerRadius = 5
+        studyIDL.layer.borderWidth = 1
+        studyIDL.layer.cornerRadius = 5
         userEmail.layer.borderColor = UIColor.black.cgColor
         
+        stackViewOne.layer.borderWidth = 1
+        stackViewOne.layer.cornerRadius = 5
         
-        setupButton()
+        stackViewTwo.layer.borderWidth = 1
+        stackViewTwo.layer.cornerRadius = 5
+        
+        stackViewThree.layer.borderWidth = 1
+        stackViewThree.layer.cornerRadius = 5
+        
+        withdrawButtonO.layer.borderWidth = 1
+        withdrawButtonO.layer.cornerRadius = 10.0
+        
+        
+        
+        //setupButton()
+        
+        
         if let user = Auth.auth().currentUser {
-            userLabel.text = "Current User: \(user.uid)"
+            userLabel.text = " Current User: \(user.uid)"
             //            userUID.text = "User ID: \(user.uid)"
-            userEmail.text = "User Email: \(user.email ?? "None")"
+            userEmail.text = " User Email: \(user.email ?? "None")"
         }
         
         
@@ -147,6 +183,9 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
     @IBAction func userTappedSignOut(_ sender: UIBarButtonItem) {
         // MARK: STATUS: 🟢
         TaskComponents.signOutUser()
+    }
+    @IBAction func emailUsButton(_ sender: UIButton) {
+        showMailComposer()
     }
     
     @IBAction func withdrawFromStudy(_ sender: UIButton) {

@@ -16,7 +16,8 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.signupButton.layer.cornerRadius = 10
+        self.loginButton.layer.cornerRadius = 10
         func transitionToApp() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                    let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")

@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>UHMeditates</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>
@@ -55,6 +57,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We do not require use of the microphone on your device nor do we collect data using it. </string>
+	<key>NSCameraUsageDescription</key>
+	<string>We do not require use of the camera on your device nor do we collect data using it. </string>
+	<key>NSMotionUsageDescription</key>
+	<string>We do not collect motion-related data from your device.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We do not collect speech recognition data from your device.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We will collect heart rate data from either a provided smart watch or an authorized and participant provided smart watch for the duration of the study.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>We will not make any updates to your health data stored on your device.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We do not collect any location data from your device during the duration of this study.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

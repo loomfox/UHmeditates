@@ -11,6 +11,7 @@ import FirebaseAuth
 import MessageUI
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var stackView: UIStackView!
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -24,6 +25,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
+
     }
     
     func setUpElements() {
