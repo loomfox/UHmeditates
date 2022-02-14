@@ -62,6 +62,10 @@ class LoginViewController: UIViewController {
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = PasswordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        // MARK: 🟧 I WAS FOCUSED HERE 🟧
+        // Need to Add in the withdrawal check here. This will require the admin user doc to have a map property that also uploads their email to check for.
+        // After fixing that, I need to add in the alert feature below 
+        
         // Signing in the user
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             
