@@ -42,8 +42,8 @@ class LoginViewController: UIViewController {
         
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
-        composer.setToRecipients(["piyamalhan@gmail.com"])
-        composer.setSubject("Hey there!")
+        composer.setToRecipients(["GameTheoryStudyAtUH@gmail.com"])
+        composer.setSubject("Feedback Requested")
         composer.setMessageBody("Hi, I'm currently facing issues with logging into the application.", isHTML: false)
         present(composer, animated: true, completion: nil)
         

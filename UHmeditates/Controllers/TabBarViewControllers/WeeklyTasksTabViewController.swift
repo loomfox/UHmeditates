@@ -239,7 +239,7 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
                                 
                                 switch progressBarValue {
                                     case 0 :
-                                        self.progresBarHeader.text = "Once you complete a survey, your progress will load here!"
+                                        self.progresBarHeader.text = "Once you complete a survey, your progress will load here! Why not start your first survey then? :)"
                                     case 1...3:
                                         self.progresBarHeader.text = "You're doing great so far!"
                                     case 4...11:
@@ -247,7 +247,7 @@ class WeeklyTasksTabViewController: UIViewController, UITableViewDataSource, ORK
                                     case 12...24:
                                         self.progresBarHeader.text = "Great!"
                                     default:
-                                        self.progresBarHeader.text = "Once you complete a survey, your progress will load here!"
+                                        self.progresBarHeader.text = "Once you complete a survey, your progress will load here! Why not start your first survey then? :)"
                                 }
                                 print("Num testSurveys: \(self.surveys.count)")
                                 self.tableView.reloadData()

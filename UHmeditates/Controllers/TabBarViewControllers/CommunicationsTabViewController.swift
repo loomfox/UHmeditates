@@ -193,7 +193,7 @@ class CommunicationsTabViewController: UIViewController, ORKTaskViewControllerDe
         // All this code runs in a straight line without stopping
         
         // MARK: 1.4.3 - Create the alert (Separate into it's own method later)
-        let alert = UIAlertController(title: "Warning: Withdrawal Notice", message: "You have selected to withdraw from the research study which will require you to _. By selecting 'I Understand' you are confirming that you understand proceeding will cancel your participation within the study and will thus require you to promptly return any research related devices.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Warning: Withdrawal Notice", message: "You have selected to withdraw from the research study which will require you to establish a drop off appointment for FitBit devices if you were provided one. By selecting 'I Understand' you are confirming that you understand proceeding will cancel your participation within the study and will thus require you to promptly return any research related devices.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "I Understand", style: UIAlertAction.Style.destructive, handler: {
             
